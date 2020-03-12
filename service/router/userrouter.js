@@ -5,3 +5,14 @@
  功能:  关于用户的路由
  */
 
+// require( 'koa-router' )()是引入并且初始化 ,等同于下面2句
+// const Router = require('koa-router')
+// const router = new Router()
+const router = require( 'koa-router' )()
+
+const usercontroller = require( '../controller/user' )
+
+let prefix = '/api/user';
+
+router.post( `${ prefix }/IsExistsMobile` , usercontroller.IsExistsMobile )
+// router.get( '/adds/insertMany' , controller.insertMany )

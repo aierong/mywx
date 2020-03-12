@@ -6,7 +6,7 @@
  */
 
 var mongoose = require( 'mongoose' );
-const user = require( './modules/user.js' )
+const usermodel = require( './modules/user.js' )
 
 module.exports = {
     /**
@@ -22,11 +22,35 @@ module.exports = {
             mobile : mobile
         }
 
-        let isexists = await user.exists( where );
+        let isexists = await usermodel.exists( where );
 
         // console.log( 'newkit ' , newkit )
 
         return isexists;
+    } ,
+    AddUser : async ( postData ) => {
+        //数据解构出来
+        let { ids , mobile , avatar , password , name , email } = postData;
+
+        //构建数据
+        var newuser = new usermodel( {
+            ids ,
+            mobile ,
+            avatar ,
+            password ,
+            name ,
+            email ,
+            lastlogindate : '' ,
+            logintimes : 0 ,
+            adddate : '' ,  //暂时给空
+
+        } );
+
+        let newobj = await newuser.save();
+
+        // console.log( 'newkit ' , newkit )
+
+        return newobj;
     } ,
 }
 

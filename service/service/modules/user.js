@@ -9,32 +9,55 @@ var mongoose = require( 'mongoose' );
 
 //定义Schema
 var kittySchema = mongoose.Schema( {
-    ids : String ,
-    mobile : String ,
-    avatar : String ,
+    ids : {
+        type : String ,
+        unique : true
+    } ,
+    mobile : {
+        type : String ,
+        unique : true
+    } ,
+    avatar : {
+        type : String ,
+        default : ''
+    } ,
     password : String ,
 
     name : String ,
-    email : String ,
 
-    //最后一次登录时间
-    lastlogindate : String ,
-    //累计登录次数
-    logintimes : {
-
-        type : Number ,
-        min : 0
-
+    email : {
+        type : String ,
+        default : ''
     } ,
 
-    adddate : String ,
-    updatedate : String ,
-    deletedate : String ,
+    //最后一次登录时间
+    lastlogindate : {
+        type : String ,
+        default : ''
+    } ,
+    //累计登录次数
+    logintimes : {
+        type : Number ,
+        min : 0 ,
+        default : 0
+    } ,
+    adddate : {
+        type : String ,
+        default : ''
+    } ,
+    updatedate : {
+        type : String ,
+        default : ''
+    } ,
+    deletedate : {
+        type : String ,
+        default : ''
+    } ,
 
 } , {
     //versionKey =false 禁用版本，要不每次插入数据都带一个__v
     versionKey : false
 } );
 
-let user = mongoose.model( 'user' , kittySchema , 'user' );
-module.exports = user;
+let usermodel = mongoose.model( 'user' , kittySchema , 'user' );
+module.exports = usermodel;

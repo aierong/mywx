@@ -7,6 +7,7 @@
 
 var mongoose = require( 'mongoose' );
 const usermodel = require( './modules/user.js' )
+var dayjs = require( 'dayjs' )
 
 module.exports = {
     /**
@@ -38,6 +39,8 @@ module.exports = {
         //数据解构出来
         let { ids , mobile , avatar , password , name , email } = postData;
 
+        let now = dayjs();
+
         //构建数据
         var newuser = new usermodel( {
             ids ,
@@ -48,7 +51,8 @@ module.exports = {
             email ,
             lastlogindate : '' ,
             logintimes : 0 ,
-            adddate : '' ,  //暂时给空
+
+            adddate : now.format( 'YYYY-MM-DD HH:mm:ss' ) ,  //暂时给空
 
         } );
 

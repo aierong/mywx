@@ -82,7 +82,7 @@ module.exports = {
         let obj = await usermodel.findOneAndUpdate( where , {
             lastlogindate : common.GetNowString() ,
 
-            logintimes : logintimes
+            logintimes : logintimes + 1
         } );
 
         return obj;

@@ -28,6 +28,12 @@ module.exports = {
 
         return isexists;
     } ,
+    /**
+     * 添加用户
+     * @param postData
+     * @returns {Promise<any>}
+     * @constructor
+     */
     AddUser : async ( postData ) => {
         //数据解构出来
         let { ids , mobile , avatar , password , name , email } = postData;

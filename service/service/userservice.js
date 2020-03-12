@@ -37,11 +37,11 @@ module.exports = {
      */
     AddUser : async ( postData ) => {
         //数据解构出来
-        let { ids , mobile , avatar , password , name , email } = postData;
+        let { mobile , avatar , password , name , email } = postData;
 
         //构建数据
         var newuser = new usermodel( {
-            ids ,
+
             mobile ,
             avatar ,
             password ,
@@ -50,9 +50,10 @@ module.exports = {
             lastlogindate : '' ,
             logintimes : 0 ,
 
-            // adddate : now.format( 'YYYY-MM-DD HH:mm:ss' ) ,  //最新时间
-            adddate : common.GetNowString() ,  // 最新时间
-
+            // 最新时间
+            adddate : common.GetNowString() ,
+            // 搞一个guid
+            ids : common.GetGuid()
         } );
 
         let newobj = await newuser.save();

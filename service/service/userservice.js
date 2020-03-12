@@ -74,9 +74,19 @@ module.exports = {
 
         return obj;
     } ,
-    Login : async () => {
+    Login : async ( mobile = '' , logintimes = 0 ) => {
+        let where = {
+            mobile : mobile
+        };
 
-    }
+        let obj = await usermodel.findOneAndUpdate( where , {
+            lastlogindate : common.GetNowString() ,
+
+            logintimes : logintimes
+        } );
+
+        return obj;
+    } ,
 }
 
 

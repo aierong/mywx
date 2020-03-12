@@ -40,19 +40,11 @@ module.exports = {
     AddUser : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/add
 
-        // let result = {
-        //     isok : true ,
-        //     errmsg : '' ,
-        //     data : null
-        // }
-
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
 
         // console.log( postData )
-
-        // let { mobile } = postData;
 
         let obj = await userservice.AddUser( postData );
 

@@ -46,6 +46,19 @@ module.exports = {
 
         return ciphertext;
     } ,
+    /**
+     * 加密密码
+     * @param str
+     * @returns {string}
+     * @constructor
+     */
+    EncryptPassWord : ( str = '' ) => {
+        const key = 'MyWx';
+
+        var str = EncryptString( str , key );
+
+        return key;
+    } ,
 }
 
 

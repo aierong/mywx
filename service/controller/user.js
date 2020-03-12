@@ -7,6 +7,7 @@
 
 // 引入 service 文件
 const userservice = require( '../service/userservice.js' )
+const common = require( '../common/common.js' )
 
 module.exports = {
     IsExistsMobile : async ( ctx , next ) => {
@@ -49,6 +50,58 @@ module.exports = {
         let flag = await userservice.AddUser( postData );
 
         ctx.body = flag
+
+    } ,
+    Login : async ( ctx , next ) => {
+        //  http://localhost:3001/api/user/login
+
+        let result = {
+
+            isok : true ,
+            errmsg : '' ,
+            data : null
+        }
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        let { mobile , password } = postData;
+        // console.log( postData )
+
+        let _user = await userservice.GetUserByMobile( mobile );
+
+        if ( _user == null ) {
+            result = {
+
+                isok : false ,
+                errmsg : '手机号码不存在' ,
+                data : null
+            }
+        }
+        else {
+            //判断密码是否一样
+            if ( _user.password != common.EncryptPassWord( password ) ) {
+                result = {
+
+                    isok : false ,
+                    errmsg : '密码不正确' ,
+                    data : null
+                }
+            }
+            else {
+                //操作一下
+
+                result = {
+
+                    isok : true ,
+                    errmsg : '' ,
+                    data : _user
+                }
+            }
+        }
+
+        ctx.body = result
 
     } ,
 }

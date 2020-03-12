@@ -39,9 +39,8 @@ module.exports = {
         //数据解构出来
         let { mobile , avatar , password , name , email } = postData;
 
-        const key = 'MyWx';
         //密码要再次加密一下，
-        password = common.EncryptString( password , key );
+        password = common.EncryptPassWord( password );
 
         //构建数据
         var newuser = new usermodel( {
@@ -66,6 +65,18 @@ module.exports = {
 
         return true;
     } ,
+    GetUserByMobile : async ( mobile = '' ) => {
+        let where = {
+            mobile : mobile
+        };
+
+        let obj = await usermodel.findOne( where );
+
+        return obj;
+    } ,
+    Login : async () => {
+
+    }
 }
 
 

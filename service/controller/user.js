@@ -46,9 +46,9 @@ module.exports = {
 
         // console.log( postData )
 
-        let obj = await userservice.AddUser( postData );
+        let flag = await userservice.AddUser( postData );
 
-        ctx.body = obj
+        ctx.body = flag
 
     } ,
 }

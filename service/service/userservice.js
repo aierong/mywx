@@ -60,7 +60,7 @@ module.exports = {
 
         // console.log( 'newkit ' , newkit )
 
-        return newobj;
+        return true;
     } ,
 }
 

@@ -36,4 +36,5 @@ var kittySchema = mongoose.Schema( {
     versionKey : false
 } );
 
-
+let user = mongoose.model( 'user' , kittySchema , 'user' );
+module.exports = user;

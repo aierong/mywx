@@ -6,6 +6,7 @@
  */
 
 var dayjs = require( 'dayjs' )
+const UUID = require( 'uuid' )
 
 module.exports = {
 
@@ -20,6 +21,11 @@ module.exports = {
         let now = dayjs();
 
         return now.format( formatstring );
+    } ,
+    GetGuid : () => {
+        var u1 = UUID.v1();  //基于时间戳生成  （time-based）
+
+        return u1;
     } ,
 }
 

@@ -41,7 +41,9 @@ module.exports = {
      * @constructor
      */
     EncryptString : ( str = '' , key = 'key' ) => {
+        var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
 
+        return ciphertext;
     } ,
 }
 

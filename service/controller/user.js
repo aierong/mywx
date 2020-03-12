@@ -10,7 +10,7 @@ const userservice = require( '../service/userservice.js' )
 
 module.exports = {
     IsExistsMobile : async ( ctx , next ) => {
-        //  http://localhost:3001/api/user/IsExistsMobile
+        //  http://localhost:3001/api/user/isexists
 
         let result = {
 
@@ -31,14 +31,14 @@ module.exports = {
 
         if ( isexists ) {
             result.isok = false;
-            result.errmsg = "手机号码";
+            result.errmsg = "手机号码已存在";
         }
 
         ctx.body = result
 
     } ,
     AddUser : async ( ctx , next ) => {
-        //  http://localhost:3001/api/user/
+        //  http://localhost:3001/api/user/add
 
         // let result = {
         //     isok : true ,
@@ -49,6 +49,8 @@ module.exports = {
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
+
+        // console.log( postData )
 
         // let { mobile } = postData;
 

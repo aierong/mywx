@@ -14,6 +14,31 @@ const bodyParser = require( 'koa-bodyparser' )
 const app = new Koa()
 app.use( bodyParser() )
 
+var mongoose = require( 'mongoose' );
+//链接说明：默认端口27017可以不写   mytest是数据库名 (如果链接的数据库名不存在，会自动创建一个)
+mongoose.connect( 'mongodb://localhost/wx' , {
+    //不加这2个参数 ,程序编译启动 会有警告提示
+    useNewUrlParser : true ,
+    useUnifiedTopology : true
+} , () => {
+    console.log( 'mongodb链接成功' )
+} );
+
+mongoose.connection.on( 'connected' , function () {
+
+    console.log( 'Mongoose connection open  ' );
+} );
+
+mongoose.connection.on( 'error' , function ( err ) {
+
+    console.log( 'Mongoose connection error: ' + err );
+} );/** * 连接异常  */
+
+mongoose.connection.on( 'disconnected' , function () {
+
+    console.log( 'Mongoose connection disconnected' );
+} ); /** * 连接断开 */
+
 // require-directory可以自动加载某个目录下的所有路由文件
 
 requireDirectory( module , "./router" , {

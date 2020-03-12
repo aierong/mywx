@@ -14,5 +14,7 @@ const usercontroller = require( '../controller/user' )
 
 let prefix = '/api/user';
 
-router.post( `${ prefix }/IsExistsMobile` , usercontroller.IsExistsMobile )
-// router.get( '/adds/insertMany' , controller.insertMany )
+router.post( `${ prefix }/isexists` , usercontroller.IsExistsMobile )
+router.post( `${ prefix }/add` , usercontroller.AddUser )
+
+module.exports = router

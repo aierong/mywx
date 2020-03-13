@@ -81,7 +81,10 @@ module.exports = {
         }
         else {
             //判断密码是否一样
-            if ( _user.password != common.EncryptPassWord( password ) ) {
+            console.log( '_user' , _user )
+            let _EncryptPassWord = common.EncryptPassWord( password );
+            console.log( '_EncryptPassWord' , _EncryptPassWord )
+            if ( _user.password != _EncryptPassWord ) {
                 result = {
 
                     isok : false ,

@@ -18,8 +18,10 @@ var CryptoJS = require( "crypto-js" );
  * @returns {string}
  * @constructor
  */
-function EncryptString ( str = '' , key = 'key' ) {
-    var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
+function EncryptString ( str = '' ) {
+    // var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
+
+    var ciphertext = CryptoJS.SHA512( str ).toString()
 
     // console.log( 'ciphertext' , ciphertext )
 
@@ -33,9 +35,9 @@ function EncryptString ( str = '' , key = 'key' ) {
  * @constructor
  */
 function EncryptPassWord ( str = '' ) {
-    const key = 'MyWx';
+    // const key = 'MyWx';
 
-    var str = EncryptString( str , key );
+    var str = EncryptString( str );
 
     return str;
 }

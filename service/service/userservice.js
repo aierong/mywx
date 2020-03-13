@@ -81,15 +81,10 @@ module.exports = {
             mobile : mobile
         };
 
-        // lastlogindate : common.GetNowString() ,
-        //
-        //     logintimes : logintimes + 1
-        //
-
         let obj = await usermodel.findOneAndUpdate( where , [
             {
                 $set : {
-                    logintimes : { $add : [ { $ifNull : [ "logintimes" , 0 ] } , 1 ] } ,
+                    logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
                     lastlogindate : common.GetNowString()
                 }
             }

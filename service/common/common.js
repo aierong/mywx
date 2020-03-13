@@ -21,6 +21,7 @@ var CryptoJS = require( "crypto-js" );
 function EncryptString ( str = '' , key = 'key' ) {
     var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
 
+    // console.log( 'ciphertext' , ciphertext )
     return ciphertext;
 }
 
@@ -35,7 +36,7 @@ function EncryptPassWord ( str = '' ) {
 
     var str = EncryptString( str , key );
 
-    return key;
+    return str;
 }
 
 /**

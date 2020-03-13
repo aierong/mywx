@@ -7,7 +7,6 @@
 
 var mongoose = require( 'mongoose' );
 
-
 //定义Schema
 var kittySchema = mongoose.Schema( {
     ids : {

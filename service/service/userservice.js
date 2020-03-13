@@ -39,8 +39,9 @@ module.exports = {
         //数据解构出来
         let { mobile , avatar , password , name , email } = postData;
 
-        //密码要再次加密一下
         // console.log( '收到password' , password )
+
+        //密码要再次加密一次
         password = common.EncryptPassWord( password );
 
         //构建数据

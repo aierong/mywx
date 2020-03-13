@@ -22,6 +22,7 @@ function EncryptString ( str = '' , key = 'key' ) {
     var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
 
     // console.log( 'ciphertext' , ciphertext )
+
     return ciphertext;
 }
 

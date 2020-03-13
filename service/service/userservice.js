@@ -62,9 +62,9 @@ async function AddUser ( postData ) {
 
     let newobj = await newuser.save();
 
-    // console.log( 'newkit ' , newkit )
+    // console.log( 'newobj' , newobj )
 
-    return true;
+    return newobj;
 }
 
 /**

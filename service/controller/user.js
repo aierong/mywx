@@ -47,9 +47,14 @@ module.exports = {
 
         // console.log( postData )
 
-        let flag = await userservice.AddUser( postData );
+        let obj = await userservice.AddUser( postData );
 
-        ctx.body = flag
+        if ( obj != null ) {
+            ctx.body = true;
+        }
+        else {
+            ctx.body = false;
+        }
 
     } ,
     Login : async ( ctx , next ) => {

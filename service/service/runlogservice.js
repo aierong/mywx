@@ -16,7 +16,7 @@ const runlogmodel = require( './modules/runlog.js' )
  * @returns {Promise<*>}
  * @constructor
  */
-async function AddLog ( mobile = '' , runtype = '' , remark = '' ) {
+async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
 
     //构建数据
     var newmodel = new runlogmodel( {
@@ -40,5 +40,5 @@ async function AddLog ( mobile = '' , runtype = '' , remark = '' ) {
 }
 
 module.exports = {
-    AddLog
+    AddRunLog
 }

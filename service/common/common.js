@@ -11,54 +11,64 @@ const UUID = require( 'uuid' )
 //引入
 var CryptoJS = require( "crypto-js" );
 
+/**
+ * 加密字符串
+ * @param str
+ * @param key
+ * @returns {string}
+ * @constructor
+ */
+function EncryptString ( str = '' , key = 'key' ) {
+    var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
+
+    return ciphertext;
+}
+
+/**
+ * 加密密码
+ * @param str
+ * @returns {string}
+ * @constructor
+ */
+function EncryptPassWord ( str = '' ) {
+    const key = 'MyWx';
+
+    var str = EncryptString( str , key );
+
+    return key;
+}
+
+/**
+ * 得最新时间字符串
+ * @param formatstring
+ * @returns {string}
+ * @constructor
+ */
+function GetNowString ( formatstring = 'YYYY-MM-DD HH:mm:ss' ) {
+
+    let now = dayjs();
+
+    return now.format( formatstring );
+}
+
+/**
+ * 得guid字符串
+ * @returns {*}
+ * @constructor
+ */
+function GetGuid () {
+    var u1 = UUID.v1();  //基于时间戳生成  （time-based）
+
+    return u1;
+}
+
 module.exports = {
 
-    /**
-     * 得最新时间字符串
-     * @param formatstring
-     * @returns {string}
-     * @constructor
-     */
-    GetNowString : ( formatstring = 'YYYY-MM-DD HH:mm:ss' ) => {
+    GetNowString ,
+    GetGuid ,
+    EncryptString ,
+    EncryptPassWord
 
-        let now = dayjs();
-
-        return now.format( formatstring );
-    } ,
-    /**
-     * 得guid字符串
-     * @returns {*}
-     * @constructor
-     */
-    GetGuid : () => {
-        var u1 = UUID.v1();  //基于时间戳生成  （time-based）
-
-        return u1;
-    } ,
-    /**
-     * 加密字符串
-     * @param str
-     * @param key
-     * @constructor
-     */
-    EncryptString : ( str = '' , key = 'key' ) => {
-        var ciphertext = CryptoJS.AES.encrypt( str , key ).toString();
-
-        return ciphertext;
-    } ,
-    /**
-     * 加密密码
-     * @param str
-     * @returns {string}
-     * @constructor
-     */
-    EncryptPassWord : ( str = '' ) => {
-        const key = 'MyWx';
-
-        var str = EncryptString( str , key );
-
-        return key;
-    } ,
 }
 
 

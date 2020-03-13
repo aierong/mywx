@@ -5,10 +5,10 @@
  功能: 用户的相关服务
  */
 
-
 var mongoose = require( 'mongoose' );
 const usermodel = require( './modules/user.js' )
 const common = require( '../common/common.js' )
+const log = require( '../common/log' )
 
 /**
  * 判断手机号码是否存在
@@ -54,13 +54,25 @@ async function AddUser ( postData ) {
         lastlogindate : '' ,
         logintimes : 0 ,
 
+
         // 最新时间
         adddate : common.GetNowString() ,
         // 搞一个guid
         ids : common.GetGuid()
     } );
 
-    let newobj = await newuser.save();
+    var result = await Promise.all( [
+        newuser.save() ,
+        log.AddRunLog( mobile , 'adduser' , `添加一个新用户${ mobile }(${ name })` )
+    ] );
+
+    let newobj = null;
+
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    //let newobj = await newuser.save();
 
     // console.log( 'newobj' , newobj )
 

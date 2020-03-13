@@ -7,6 +7,7 @@
 
 var mongoose = require( 'mongoose' );
 const runlogmodel = require( './modules/runlog.js' )
+const common = require( '../common/common.js' )
 
 /**
  * 添加日志
@@ -17,6 +18,8 @@ const runlogmodel = require( './modules/runlog.js' )
  * @constructor
  */
 async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
+
+    // console.log( 'common' , common )
 
     //构建数据
     var newmodel = new runlogmodel( {

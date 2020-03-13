@@ -11,9 +11,6 @@ const UUID = require( 'uuid' )
 //引入
 var CryptoJS = require( "crypto-js" );
 
-//service/runlogservice.js
-const runlogservice = require( '../service/runlogservice.js' )
-
 /**
  * 加密字符串
  * @param str
@@ -69,27 +66,12 @@ function GetGuid () {
     return u1;
 }
 
-/**
- * 添加日志
- * @param mobile
- * @param runtype
- * @param remark
- * @returns {Promise<*>}
- * @constructor
- */
-async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
-    let obj = await runlogservice.AddRunLog( mobile , runtype , remark );
-
-    return obj;
-}
-
 module.exports = {
 
     GetNowString ,
     GetGuid ,
     EncryptString ,
     EncryptPassWord ,
-    AddRunLog
 
 }
 

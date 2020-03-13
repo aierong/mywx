@@ -91,12 +91,14 @@ module.exports = {
             }
             else {
                 //操作一下
+                let newuser = await userservice.RunLogin( mobile );
+                newuser.password = '';  //密码置空一下
 
                 result = {
 
                     isok : true ,
                     errmsg : '' ,
-                    data : _user
+                    data : newuser
                 }
             }
         }

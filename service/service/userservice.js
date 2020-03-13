@@ -74,16 +74,24 @@ module.exports = {
 
         return obj;
     } ,
-    Login : async ( mobile = '' , logintimes = 0 ) => {
+    RunLogin : async ( mobile = '' , logintimes = 0 ) => {
         let where = {
             mobile : mobile
         };
 
-        let obj = await usermodel.findOneAndUpdate( where , {
-            lastlogindate : common.GetNowString() ,
+        // lastlogindate : common.GetNowString() ,
+        //
+        //     logintimes : logintimes + 1
+        //
 
-            logintimes : logintimes + 1
-        } );
+        let obj = await usermodel.findOneAndUpdate( where , [
+            {
+                $set : {
+                    logintimes : { $add : [ { $ifNull : [ "logintimes" , 0 ] } , 1 ] } ,
+                    lastlogindate : common.GetNowString()
+                }
+            }
+        ] );
 
         return obj;
     } ,

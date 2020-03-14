@@ -87,7 +87,7 @@
                     citySearch.getLocalCity( function ( status , result ) {
                         if ( status === "complete" && result.info === "OK" ) {
                             // 查询成功，result即为当前所在城市信息
-                            console.log( result );
+                            // console.log( result );
 
                             //api:https://lbs.amap.com/api/javascript-api/guide/services/geocoder  逆向地理编码方法
                             AMap.plugin( "AMap.Geocoder" , function () {

@@ -180,6 +180,13 @@ async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
     return newobj;
 }
 
+/**
+ * 修改密码
+ * @param mobile
+ * @param newpassword
+ * @returns {Promise<null>}
+ * @constructor
+ */
 async function UpdatePassWord ( mobile = '' , newpassword = '' ) {
     let where = {
         mobile : mobile

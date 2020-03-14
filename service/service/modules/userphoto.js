@@ -22,7 +22,8 @@ var UserPhotoSchema = mongoose.Schema( {
         default : false
     } ,
     imgs : {
-        type : Array
+        type : Array ,
+        default : []
     } ,
     adddate : {
         type : String ,

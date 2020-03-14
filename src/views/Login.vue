@@ -90,35 +90,6 @@
                     let _mobile = this.userinfo.mobile;
                     let _password = this.userinfo.password;
 
-                    // let valid = await commonmethod.isexistsmobile( _mobile )
-                    //
-                    // if ( !valid.isexists ) {
-                    //
-                    //     this.$toast( "手机号码不正确" )
-                    //
-                    //     return
-                    // }
-
-                    // let result = await commonmethod.login( _mobile , this.userinfo.password )
-                    //
-                    // if ( result.isok ) {
-                    //
-                    //     // 存储token
-                    //     let token = result.data
-                    //
-                    //     this.updateloginuser( token );
-                    //
-                    //     // 页面跳转
-                    //     this.$router.push( "/chats" )
-                    //
-                    //     return
-                    // }
-                    // else {
-                    //     this.$toast( "密码错误" )
-                    //
-                    //     return
-                    // }
-
                     let obj = await userapi.login( _mobile , _password );
                     let result = obj.data;
 

@@ -58,6 +58,8 @@ async function Save ( mobile , isshare , imgs ) {
         mobile : mobile
     };
 
+    // console.log( 'Save' , mobile , isshare , imgs )
+
     var result = await Promise.all( [
         userphotomodel.findOneAndUpdate( where , {
             isshare : isshare ,
@@ -109,7 +111,11 @@ async function GetUserPhoto ( mobile = '' ) {
         mobile : mobile
     }
 
+    // console.log( 'where' , where )
+
     let obj = await userphotomodel.findOne( where );
+
+    // console.log( 'obj' , obj )
 
     return obj;
 }

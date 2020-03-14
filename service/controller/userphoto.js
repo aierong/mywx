@@ -74,7 +74,11 @@ module.exports = {
 
         let obj = await userphotoservice.GetUserPhoto( mobile );
 
-        ctx.body = obj
+        // console.log( 'GetUserPhoto obj' , obj )
+
+        ctx.body = {
+            data : obj
+        }
     } ,
 }
 

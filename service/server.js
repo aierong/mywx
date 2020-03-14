@@ -12,9 +12,31 @@ var cors = require( 'koa2-cors' );  //引入跨域的组件
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const bodyParser = require( 'koa-bodyparser' )
+
 const app = new Koa()
 app.use( cors() ); //注册一下 即可
-app.use( bodyParser() )
+// app.use( cors( {
+//     origin : function ( ctx ) {
+//         if ( ctx.url === '/test' ) {
+//             // return false;
+//             return '*';
+//         }
+//         return '*';
+//     } ,
+//     exposeHeaders : [ 'WWW-Authenticate' , 'Server-Authorization' ] ,
+//     maxAge : 50 ,
+//     credentials : true ,
+//     allowMethods : [ 'GET' , 'POST' , 'DELETE' ] ,
+//     allowHeaders : [ 'Content-Type' , 'Authorization' , 'Accept' ] ,
+// } ) );
+
+// app.use( bodyParser() )
+app.use( bodyParser( {
+    enableTypes : [ 'json' , 'form' , 'text' ] ,
+    formLimit : '360mb' ,
+    jsonLimit : '360mb' ,
+    textLimit : '360mb'
+} ) )
 
 var mongoose = require( 'mongoose' );
 //链接说明：默认端口27017可以不写   mytest是数据库名 (如果链接的数据库名不存在，会自动创建一个)

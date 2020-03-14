@@ -14,9 +14,19 @@ let prefix = '/userphoto';
  * @param mobile
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const getuserphoto = ( mobile ) => {
+export const getuserphoto = ( mobile = '' ) => {
 
     return axios.get( `${ prefix }/getuserphoto/${ mobile }` );
 }
 
+export const save = ( mobile = '' , isshare = false , imgs = [] ) => {
+    let obj = {
+        mobile : mobile ,
+        isshare : isshare ,
+        imgs : imgs
+    };
 
+    console.log( 'save obj' , obj )
+
+    return axios.post( `${ prefix }/saveuserphoto` , obj );
+}

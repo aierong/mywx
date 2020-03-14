@@ -69,6 +69,11 @@
             </div>
         </div>
         <br>
+        <van-button size="large"
+                    @click="savepic"
+                    :disabled="isdisabledbtn"
+                    type="primary">保存
+        </van-button>
         <div class="txttip">{{ '1.最多保存'+ maxcounts +'张图片'}}</div>
         <div class="txttip">{{ '2.单张图片容量限制:' }}{{ FormatKB(imgmax,0) }}</div>
         <br>
@@ -86,7 +91,8 @@
     //导入
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    import * as userphotomethod from '@/common/bmobapi/userphoto.js'
+    // import * as userphotomethod from '@/common/bmobapi/userphoto.js'
+    import * as userphotoapi from '@/https/api/userphoto.js'
 
     // 使用前需要先引入它
     import { ImagePreview } from 'vant';
@@ -101,7 +107,7 @@
                 showFileData : [] ,
 
                 IsCZ : false ,
-                imgid : '' ,
+                // imgid : '' ,
                 isshowloading : true ,
 
                 issharephoto : false ,
@@ -109,21 +115,152 @@
                 //最多9个图片
                 maxcounts : 9 ,
                 //所有图片容量大小限制
-                allimgmax : constant.bmobapidatamax ,
-                //单张图片容量限制 15KB
-                imgmax : 15360 ,
+                // allimgmax : constant.bmobapidatamax ,
+                //单张图片容量限制 2M
+                imgmax : 2 * 1024 * 1024 ,
             }
         } ,
         //方法
         methods : {
+            getuserphotolist () {
+
+                this.$toast.loading( {
+                    duration : 0 ,
+                    forbidClick : true ,
+                    loadingType : "circular" ,
+                    message : "加油搞呀..." ,
+                    //显示背景蒙层
+                    mask : true
+                } )
+
+                let _mobile = this.loginusermobile;
+
+                userphotoapi.getuserphoto( _mobile ).then( ( result ) => {
+                    console.log( 'result' , result )
+
+                    let _data = result.data.data;
+
+                    if ( _data != null ) {
+                        this.showFileData = _data.imgs; //这个有可能是空数组
+                        this.issharephoto = _data.isshare;
+                    }
+                    else {
+                        this.showFileData = []; //这个是空数组
+                        this.issharephoto = false;
+                    }
+
+                    this.isshowloading = false;
+                    this.$toast.clear()
+                } )
+
+                // userphotomethod.getuserphotobymobile( _mobile ).then( ( result ) => {
+                //     console.log( result )
+                //
+                //     //分2种情况，一种是存在数据，一种是不存在数据
+                //     //不存在数据，我们得初始化一份数据
+                //     if ( !result.isexists ) {
+                //         //不存在数据，我们初始化一下
+                //         let newuserphoto = {
+                //             mobile : _mobile ,
+                //
+                //             //图片列表 先给一个空数组
+                //             imgs : new Array() ,
+                //             isshare : false
+                //         }
+                //
+                //         userphotomethod.adduserphoto( newuserphoto ).then( ( addresult ) => {
+                //             console.log( 'addresult' , addresult )
+                //
+                //             this.showFileData = new Array();
+                //             this.issharephoto = false;
+                //
+                //             //记录一下id，后面更新要用
+                //             if ( addresult != null ) {
+                //                 this.imgid = addresult.objectId;
+                //             }
+                //             else {
+                //                 this.imgid = '';
+                //             }
+                //
+                //             this.isshowloading = false;
+                //             this.$toast.clear()
+                //         } )
+                //
+                //     }
+                //     else {
+                //         //存在数据，有可能是没有 相册图片的
+                //
+                //         let obj = result;
+                //         let _data = obj.data;
+                //         this.showFileData = _data.imgs; //这个有可能是空数组
+                //         this.issharephoto = _data.isshare;
+                //
+                //         //记录一下id，后面更新要用
+                //         this.imgid = _data.objectId;
+                //
+                //         this.isshowloading = false;
+                //         this.$toast.clear()
+                //     }
+                // } );
+
+            } ,
+            savepic () {
+                if ( this.IsCZ ) {
+                    //改变了，要保存一下图片，
+
+                    if ( this.imgcounts > this.maxcounts ) {
+                        this.$toast( "个人最多" + this.maxcounts + "张图片,请清除一些!" )
+
+                        return;
+                    }
+
+                    this.$toast.loading( {
+                        duration : 0 ,
+                        forbidClick : true ,
+                        loadingType : "circular" ,
+                        message : "稍等..." ,
+                        //显示背景蒙层
+                        mask : true
+                    } )
+
+                    userphotoapi.save( this.loginusermobile , this.issharephoto , this.showFileData ).then( ( result ) => {
+
+                        this.$toast.clear()
+
+                        console.log( 'result' , result )
+
+                        let _data = result.data;
+
+                        if ( _data.isok ) {
+                            this.$toast.success( {
+                                duration : 1000 ,
+                                message : '成功'
+                            } );
+
+                            return;
+                        }
+                        else {
+                            this.$toast( _data.errmsg )
+
+                            return;
+                        }
+
+                        // this.$router.push( '/me' );
+                    } )
+
+                }
+                else {
+                    this.$toast( '没有变化,不必保存' )
+
+                    return;
+                }
+            } ,
             FormatKB ( value , decimalplace ) {
                 return ( value / 1024 ).toFixed( decimalplace ) + 'KB';
             } ,
-
             FormatDate ( value , formatstr ) {
                 return dayjs( value ).format( formatstr );
             } ,
-
             imgclick ( index ) {
                 // console.log( 'img' + index )
 
@@ -146,72 +283,11 @@
             sharephotochange () {
                 this.IsCZ = true; //标记一下 操作了
             } ,
-            getuserphotolist () {
-
-                this.$toast.loading( {
-                    duration : 0 ,
-                    forbidClick : true ,
-                    loadingType : "circular" ,
-                    message : "加油搞呀..." ,
-                    //显示背景蒙层
-                    mask : true
-                } )
-
-                let _mobile = this.loginusermobile;
-
-                userphotomethod.getuserphotobymobile( _mobile ).then( ( result ) => {
-                    console.log( result )
-
-                    //分2种情况，一种是存在数据，一种是不存在数据
-                    //不存在数据，我们得初始化一份数据
-                    if ( !result.isexists ) {
-                        //不存在数据，我们初始化一下
-                        let newuserphoto = {
-                            mobile : _mobile ,
-
-                            //图片列表 先给一个空数组
-                            imgs : new Array() ,
-                            isshare : false
-                        }
-
-                        userphotomethod.adduserphoto( newuserphoto ).then( ( addresult ) => {
-                            console.log( 'addresult' , addresult )
-
-                            this.showFileData = new Array();
-                            this.issharephoto = false;
-
-                            //记录一下id，后面更新要用
-                            if ( addresult != null ) {
-                                this.imgid = addresult.objectId;
-                            }
-                            else {
-                                this.imgid = '';
-                            }
-
-                            this.isshowloading = false;
-                            this.$toast.clear()
-                        } )
-
-                    }
-                    else {
-                        //存在数据，有可能是没有 相册图片的
-
-                        let obj = result;
-                        let _data = obj.data;
-                        this.showFileData = _data.imgs; //这个有可能是空数组
-                        this.issharephoto = _data.isshare;
-
-                        //记录一下id，后面更新要用
-                        this.imgid = _data.objectId;
-
-                        this.isshowloading = false;
-                        this.$toast.clear()
-                    }
-                } );
-
-            } ,
             onClickLeft () {
                 //操作者
+                this.$router.push( '/me' );
+
+                return;
 
                 if ( this.IsCZ ) {
                     //改变了，要保存一下图片，再返回
@@ -254,7 +330,7 @@
 
             } ,
             onbeforeRead ( files ) {
-                console.log( files )
+                console.log( 'onbeforeRead' , files )
 
                 //如果选择了多个文件，files就是数组,如果1个文件，files就是对象
                 var isarr = Array.isArray( files )
@@ -287,7 +363,7 @@
                 return true;
             } ,
             onAfterRead ( filedata ) {
-                console.log( filedata )
+                console.log( 'onAfterRead' , filedata )
 
                 //如果选择了多个文件，files就是数组,如果1个文件，files就是对象
                 var isarr = Array.isArray( filedata )
@@ -303,7 +379,9 @@
 
                             imgdata : element.content ,
                             size : element.file.size ,
-                            imgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
+                            filename : element.file.name ,
+                            filetype : element.file.type ,
+                            uploadimgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
 
                         }
 
@@ -316,7 +394,9 @@
                     let imgobj = {
                         imgdata : filedata.content ,
                         size : filedata.file.size ,
-                        imgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
+                        filename : filedata.file.name ,
+                        filetype : filedata.file.type ,
+                        uploadimgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
                     }
 
                     this.showFileData.push( imgobj )
@@ -328,6 +408,18 @@
         } ,
         //计算属性
         computed : {
+            //是否禁用保存按钮
+            isdisabledbtn () {
+                if ( this.imgcounts > 0 ) {
+                    if ( this.IsCZ ) {
+                        return false;
+                    }
+
+                }
+
+                //返回true 就是禁用
+                return true;
+            } ,
             //图片数量
             imgcounts () {
                 if ( this.showFileData != null ) {
@@ -343,6 +435,7 @@
                     let sum = this.showFileData.reduce( function ( total , { size } , currentIndex , arr ) {
 
                         return total + size;
+
                     } , 0 );
 
                     return sum;
@@ -364,7 +457,6 @@
                 return [];
             } ,
         } ,
-
         //生命周期(mounted)
         mounted () {
             this.getuserphotolist();

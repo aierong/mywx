@@ -15,7 +15,7 @@ const userphotocontroller = require( '../controller/userphoto' )
 let prefix = '/api/userphoto';
 
 router.get( `${ prefix }/getuserphoto/:mobile` , userphotocontroller.GetUserPhoto )
-router.post( `${ prefix }/save` , userphotocontroller.Save )
+router.post( `${ prefix }/saveuserphoto` , userphotocontroller.Save )
 
 module.exports = router
 

@@ -105,17 +105,7 @@ async function RunLogin ( mobile = '' ) {
     let where = {
         mobile : mobile
     };
-
-    // let obj = await usermodel.findOneAndUpdate( where , [
-    //     {
-    //         $set : {
-    //             logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
-    //             lastlogindate : common.GetNowString()
-    //         }
-    //     }
-    // ] , {
-    //     new : true
-    // } );
+ 
 
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , [
@@ -128,7 +118,7 @@ async function RunLogin ( mobile = '' ) {
         ] , {
             new : true
         } ) ,
-        log.AddRunLog( mobile , 'login' , `${ mobile }登录` )
+        log.AddRunLog( mobile , 'Login' , `${ mobile }登录` )
     ] );
 
     let newobj = null;

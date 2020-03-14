@@ -46,7 +46,9 @@
         mapMutations
     } from 'vuex'
 
-    import * as commonmethod from '@/common/bmobapi/users.js'
+    // import * as commonmethod from '@/common/bmobapi/users.js'
+    import * as userapi from '@/https/api/user.js'
+
     import * as constant from '@/common/constant.js'
     //导入
     import { mix } from "@/mixin/index.js"
@@ -86,43 +88,50 @@
 
                 ( async () => {
                     let _mobile = this.userinfo.mobile;
+                    let _password = this.userinfo.password;
 
-                    let valid = await commonmethod.isexistsmobile( _mobile )
+                    // let valid = await commonmethod.isexistsmobile( _mobile )
+                    //
+                    // if ( !valid.isexists ) {
+                    //
+                    //     this.$toast( "手机号码不正确" )
+                    //
+                    //     return
+                    // }
 
-                    if ( !valid.isexists ) {
+                    // let result = await commonmethod.login( _mobile , this.userinfo.password )
+                    //
+                    // if ( result.isok ) {
+                    //
+                    //     // 存储token
+                    //     let token = result.data
+                    //
+                    //     this.updateloginuser( token );
+                    //
+                    //     // 页面跳转
+                    //     this.$router.push( "/chats" )
+                    //
+                    //     return
+                    // }
+                    // else {
+                    //     this.$toast( "密码错误" )
+                    //
+                    //     return
+                    // }
 
-                        this.$toast( "手机号码不正确" )
+                    let obj = await userapi.login( _mobile , _password );
+                    let result = obj.data;
 
-                        return
-                    }
-
-                    //this.$toast( "手机ok" )
-
-                    let result = await commonmethod.login( _mobile , this.userinfo.password )
-
-                    // console.log( result )
-
-                    if ( result.isok ) {
-
-                        // 存储token
-                        let token = result.data
-                        // console.log( 'token' , token )
-
-                        //this.$store.commit( vuextypes.updateloginuser , token );
-                        this.updateloginuser( token );
-
-                        // console.log('tz')
-
-                        // 页面跳转
-                        this.$router.push( "/chats" )
+                    if ( !result.isok ) {
+                        this.$toast( `${ result.errmsg }` )
 
                         return
                     }
                     else {
-                        this.$toast( "密码错误" )
+                        //登录成功
 
-                        return
                     }
+
                 } )()
 
             } ,
@@ -147,7 +156,6 @@
         } ,
         //生命周期(mounted)
         mounted () {
-
         } ,
     }
 </script>

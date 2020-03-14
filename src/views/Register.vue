@@ -230,7 +230,10 @@
                         return;
                     }
 
-                    this.$toast.success( "成功,请登录" );
+                    this.$toast.success( {
+                        duration : 4000 ,
+                        message : '成功,请登录'
+                    } );
 
                     // this.$router.push( '/login' );
                     this.gotologin( mobile );

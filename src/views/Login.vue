@@ -55,12 +55,13 @@
         name : "Login" ,
         //导入混入对象 可以是多个,数组
         mixins : [ mix ] ,
+
         //数据模型
         data () {
             return {
                 userinfo : {
                     //手机号码
-                    mobile : '' ,
+                    mobile : this.$route.query.mobile ,
                     password : ''
                 } ,
                 days : constant.CookieExpires

@@ -148,7 +148,9 @@
             } ,
             onClickLeft () {
 
-                this.$router.push( '/login' )
+                // this.$router.push( '/login' )
+                this.gotologin( '' );
+
             } ,
             onClickRight () {
 
@@ -207,8 +209,9 @@
                 }
 
                 ( async () => {
+                    let mobile = this.userinfo.mobile;
 
-                    let result = await userapi.isexistsmobile( this.userinfo.mobile );
+                    let result = await userapi.isexistsmobile( mobile );
                     // console.log( 'result' , result )
                     if ( !result.data.isok ) {
 
@@ -229,14 +232,23 @@
 
                     this.$toast.success( "成功,请登录" );
 
-                    this.$router.push( '/login' );
+                    // this.$router.push( '/login' );
+                    this.gotologin( mobile );
 
                     return;
 
                 } )();
 
             } ,
+            /**
+             * 转向登录页
+             * @param mobile
+             */
+            gotologin ( mobile = '' ) {
 
+                this.$router.push( `/login?mobile=${ mobile }` )
+
+            } ,
         } ,
         //计算属性
         computed : {

@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import axios from '@/https/http.js';
+
 // import Bmob from "hydrogen-js-sdk";
 // 初始化
 // 旧版本的： Bmob.initialize("你的Application ID", "你的REST API Key");

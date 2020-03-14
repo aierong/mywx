@@ -7,7 +7,7 @@
 
 import Vue from 'vue'
 import axios from 'axios';
-import router from './router';
+import router from '@/router/index.js';
 
 let _url = process.env.VUE_APP_serverurl;
 axios.defaults.baseURL = `${ _url }`

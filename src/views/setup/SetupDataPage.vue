@@ -50,13 +50,18 @@
                     show-cancel-button
                     v-model="showdialog">
             <van-field clearable
-                       label="密码"
+                       label="现有密码"
                        type="password"
-                       placeholder="请输入密码"
+                       placeholder="请输入现有密码"
+                       v-model="userinfo.passwordold"/>
+            <van-field clearable
+                       label="新密码"
+                       type="password"
+                       placeholder="请输入新密码"
                        v-model="userinfo.password"/>
             <van-field clearable
                        label="再次密码"
-                       placeholder="请输入密码"
+                       placeholder="请输入新密码"
                        type="password"
                        v-model="userinfo.password2"/>
         </van-dialog>
@@ -87,7 +92,8 @@
                 userinfo : {
 
                     password : '' ,
-                    password2 : ''
+                    password2 : '' ,
+                    passwordold : '' ,
 
                 }
             }
@@ -127,11 +133,12 @@
             clearuserinfo () {
                 this.userinfo.password = "";
                 this.userinfo.password2 = "";
+                this.userinfo.passwordold = "";
             } ,
             exitsystem () {
 
                 //  清除一下
-                // this.$store.commit( vuextypes.clearloginuser );
+
                 this.clearloginuser();
 
                 //页面转向 登录
@@ -143,6 +150,13 @@
                 //点击确定按钮:action=confirm  点击取消按钮:action=cancel
 
                 if ( action === "confirm" ) {
+
+                    if ( !this.userinfo.passwordold ) {
+                        this.$toast( "请输入现有密码" )
+                        done( false )
+
+                        return;
+                    }
 
                     if ( !this.userinfo.password ) {
                         this.$toast( "请输入密码" )
@@ -165,8 +179,6 @@
 
                         return;
                     }
-
-                    // console.log( this.loginuserdata )
 
                     let user = this.loginuserdata;
 

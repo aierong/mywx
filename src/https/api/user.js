@@ -63,3 +63,14 @@ export function updateuseravatar ( mobile , avatar ) {
 
     return axios.post( `${ prefix }/updateuseravatar` , obj );
 }
+
+
+export function updateuseravatar ( mobile , avatar ) {
+
+    let obj = {
+        mobile : mobile ,
+        avatar : avatar
+    }
+
+    return axios.post( `${ prefix }/updateuseravatar` , obj );
+}

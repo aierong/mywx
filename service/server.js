@@ -8,10 +8,12 @@
  */
 
 const Koa = require( 'koa' )
+var cors = require( 'koa2-cors' );  //引入跨域的组件
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const bodyParser = require( 'koa-bodyparser' )
 const app = new Koa()
+app.use( cors() ); //注册一下 即可
 app.use( bodyParser() )
 
 var mongoose = require( 'mongoose' );

@@ -11,7 +11,7 @@ const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
 /**
- *
+ * 初始化用户相册
  * @param mobile
  * @returns {Promise<null>}
  * @constructor
@@ -45,8 +45,35 @@ async function Init ( mobile ) {
     return newobj;
 }
 
+/**
+ * 保存用户相册
+ * @param mobile
+ * @param isshare
+ * @param imgs
+ * @returns {Promise<void>}
+ * @constructor
+ */
+async function Save ( mobile , isshare , imgs ) {
+    let where = {
+        mobile : mobile
+    };
+
+    var result = await Promise.all( [
+        userphotomodel.findOneAndUpdate( where , {
+            isshare : isshare ,
+            imgs : imgs ,
+            updatedate : common.GetNowString()
+
+        } , {
+            new : true
+        } ) ,
+        log.AddRunLog( mobile , 'SaveUserPhoto' , `${ mobile }修改用户相册` )
+    ] );
+}
+
 module.exports = {
 
-    Init
+    Init ,
+    Save
 
 }

@@ -113,6 +113,26 @@ module.exports = {
             }
             else {
                 //修改密码未完
+
+                let obj = await userservice.UpdatePassWord( mobile , newpassword );
+
+                if ( obj != null ) {
+                    result = {
+
+                        isok : true ,
+                        errmsg : '' ,
+
+                    }
+                }
+                else {
+                    result = {
+
+                        isok : false ,
+                        errmsg : '密码修改失败' ,
+
+                    }
+                }
+
             }
         }
 

@@ -180,12 +180,38 @@ async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
     return newobj;
 }
 
+async function UpdatePassWord ( mobile = '' , newpassword = '' ) {
+    let where = {
+        mobile : mobile
+    };
+
+    var result = await Promise.all( [
+        usermodel.findOneAndUpdate( where , {
+            password : common.EncryptPassWord( newpassword ) ,
+            updatedate : common.GetNowString()
+
+        } , {
+            new : true
+        } ) ,
+        log.AddRunLog( mobile , 'UpdatePassWord' , `${ mobile }修改密码` )
+    ] );
+
+    let newobj = null;
+
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    return newobj;
+}
+
 module.exports = {
     IsExistsMobile ,
     AddUser ,
     GetUserByMobile ,
     RunLogin ,
-    UpdateUserAvatar
+    UpdateUserAvatar ,
+    UpdatePassWord
 }
 
 

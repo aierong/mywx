@@ -18,5 +18,6 @@ router.post( `${ prefix }/isexistsmobile` , usercontroller.IsExistsMobile )
 router.post( `${ prefix }/add` , usercontroller.AddUser )
 router.post( `${ prefix }/login` , usercontroller.Login )
 router.post( `${ prefix }/updateuseravatar` , usercontroller.UpdateUserAvatar )
+router.post( `${ prefix }/updatepassword` , usercontroller.UpdatePassWord )
 
 module.exports = router

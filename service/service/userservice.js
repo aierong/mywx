@@ -105,7 +105,6 @@ async function RunLogin ( mobile = '' ) {
     let where = {
         mobile : mobile
     };
- 
 
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , [
@@ -141,14 +140,6 @@ async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
     let where = {
         mobile : mobile
     };
-
-    // let obj = await usermodel.findOneAndUpdate( where , {
-    //     avatar : avatar ,
-    //     updatedate : common.GetNowString()
-    //
-    // } , {
-    //     new : true
-    // } );
 
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , {

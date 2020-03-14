@@ -21,9 +21,14 @@ export const isexistsmobile = ( mobile ) => {
     return axios.post( `${ prefix }/isexistsmobile` , obj );
 }
 
+/**
+ * 添加用户（注册用户）
+ * @param registerUser
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export function adduser ( registerUser ) {
 
-    // console.log(newuser)
+    // console.log(registerUser)
 
     return axios.post( `${ prefix }/add` , registerUser );
 }

@@ -1,0 +1,25 @@
+/* 引入css */
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
+.cellspantitleclass {
+    margin-left: 10px;
+}
+
+
+.myimg {
+    width: 58px;
+    height: 58px;
+}
+
+.mytip{
+    color: green;
+    font-size: small;
+    padding-left: 10px;
+}

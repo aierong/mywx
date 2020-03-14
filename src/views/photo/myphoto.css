@@ -1,0 +1,11 @@
+.myimg {
+    width: 58px;
+    height: 58px;
+}
+
+.txttip {
+    text-align: right;
+    color: green;
+    font-size: small;
+    margin-right: 10px;
+}

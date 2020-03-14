@@ -1,0 +1,33 @@
+/* 引入css */
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.myimg {
+    width: 38px;
+    height: 38px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.friendscircledate {
+    font-size: 10px;
+}
+
+.head_wrapper {
+    text-align: right;
+    height: 68px;
+    background: url("~@/assets/cricle_bg.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.cellspantitleclass {
+    color: green;
+}

@@ -32,3 +32,20 @@ export function adduser ( registerUser ) {
 
     return axios.post( `${ prefix }/add` , registerUser );
 }
+
+/**
+ * 登录
+ * @param mobile
+ * @param password
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function login ( mobile , password ) {
+    let obj = {
+        mobile : mobile ,
+        password : password
+    }
+
+    return axios.post( `${ prefix }/login` , obj );
+}
+
+

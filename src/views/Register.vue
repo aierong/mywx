@@ -148,7 +148,6 @@
             } ,
             onClickLeft () {
 
-                // this.$router.push( '/login' )
                 this.gotologin( '' );
 
             } ,
@@ -157,6 +156,7 @@
                 this.$toast( "这里可以注册新用户" )
 
             } ,
+
             regClick () {
 
                 if ( !this.userinfo.mobile ) {

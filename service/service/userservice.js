@@ -101,23 +101,43 @@ async function GetUserByMobile ( mobile = '' ) {
  * @returns {Promise<*>}
  * @constructor
  */
-async function RunLogin ( mobile = '' , logintimes = 0 ) {
+async function RunLogin ( mobile = '' ) {
     let where = {
         mobile : mobile
     };
 
-    let obj = await usermodel.findOneAndUpdate( where , [
-        {
-            $set : {
-                logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
-                lastlogindate : common.GetNowString()
-            }
-        }
-    ] , {
-        new : true
-    } );
+    // let obj = await usermodel.findOneAndUpdate( where , [
+    //     {
+    //         $set : {
+    //             logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
+    //             lastlogindate : common.GetNowString()
+    //         }
+    //     }
+    // ] , {
+    //     new : true
+    // } );
 
-    return obj;
+    var result = await Promise.all( [
+        usermodel.findOneAndUpdate( where , [
+            {
+                $set : {
+                    logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
+                    lastlogindate : common.GetNowString()
+                }
+            }
+        ] , {
+            new : true
+        } ) ,
+        log.AddRunLog( mobile , 'login' , `${ mobile }登录` )
+    ] );
+
+    let newobj = null;
+
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    return newobj;
 }
 
 /**
@@ -152,6 +172,7 @@ async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
     ] );
 
     let newobj = null;
+
     if ( result != null && result.length >= 2 ) {
         newobj = result[ 0 ];
     }

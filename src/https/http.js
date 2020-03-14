@@ -10,7 +10,8 @@ import axios from 'axios';
 import router from '@/router/index.js';
 
 let _url = process.env.VUE_APP_serverurl;
-axios.defaults.baseURL = `${ _url }`
+axios.defaults.baseURL = `${ _url }/api`
+
 //绑定到原型上
 Vue.prototype.$axios = axios;
 

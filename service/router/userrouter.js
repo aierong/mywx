@@ -14,7 +14,7 @@ const usercontroller = require( '../controller/user' )
 
 let prefix = '/api/user';
 
-router.post( `${ prefix }/isexists` , usercontroller.IsExistsMobile )
+router.post( `${ prefix }/isexistsmobile` , usercontroller.IsExistsMobile )
 router.post( `${ prefix }/add` , usercontroller.AddUser )
 router.post( `${ prefix }/login` , usercontroller.Login )
 router.post( `${ prefix }/updateuseravatar` , usercontroller.UpdateUserAvatar )

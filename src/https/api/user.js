@@ -5,5 +5,9 @@
  功能: js脚本
  */
 
+import axios from 'axios'
 
-
+//添加用户
+export const isexistsmobile = ( mobile ) => {
+    return axios.post( "/user" , user );
+}

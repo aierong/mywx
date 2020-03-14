@@ -129,7 +129,15 @@
                     }
                     else {
                         //登录成功
+                        //     // 存储token
+                        let token = result.data
+                        //
+                        this.updateloginuser( token );
 
+                        // 页面跳转
+                        this.$router.push( "/chats" )
+
+                        return
                     }
 
                 } )()

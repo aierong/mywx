@@ -79,12 +79,15 @@
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    import * as commonmethod from '@/common/bmobapi/users.js'
+    // import * as commonmethod from '@/common/bmobapi/users.js'
+    import * as userapi from '@/https/api/user.js'
 
     export default {
         name : "SetupDataPage" ,
         //导入混入对象 可以是多个,数组
-        mixins : [ mix , loginuserdatamix ] ,
+        mixins : [
+            mix , loginuserdatamix
+        ] ,
         //数据模型
         data () {
             return {
@@ -112,7 +115,7 @@
                 } ).then( () => {
                     // 点击确定按钮
 
-                    this.exitsystem();
+                    this.exitsystem( this.loginusermobile );
 
                 } ).catch( () => {
                     // 点击取消按钮
@@ -135,14 +138,14 @@
                 this.userinfo.password2 = "";
                 this.userinfo.passwordold = "";
             } ,
-            exitsystem () {
+            exitsystem ( mobile = '' ) {
 
                 //  清除一下
 
                 this.clearloginuser();
 
                 //页面转向 登录
-                this.$router.push( '/login' )
+                this.$router.push( `/login?mobile=${ mobile }` )
 
                 return;
             } ,
@@ -180,26 +183,26 @@
                         return;
                     }
 
-                    let user = this.loginuserdata;
-
                     ;( async () => {
-                        // console.log( newuser.id )
 
-                        let result = await commonmethod.updateUserPwd( user.objectId , this.userinfo.password );
+                        let obj = await userapi.updatepassword( this.loginusermobile , this.userinfo.passwordold , this.userinfo.password );
+                        let result = obj.data;
 
-                        console.log( result )
+                        if ( result.isok ) {
 
-                        if ( result != null ) {
-                            this.$toast.success( "修改成功,请重新登录!" );
+                            this.$toast.success( {
+                                duration : 3800 ,
+                                message : '修改成功,请重新登录!'
+                            } );
 
                             done()
 
-                            this.exitsystem();
+                            this.exitsystem( this.loginusermobile );
 
                             return;
                         }
                         else {
-                            this.$toast( "修改失败" )
+                            this.$toast( result.errmsg )
 
                             done()
 

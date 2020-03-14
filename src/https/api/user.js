@@ -71,7 +71,7 @@ export function updateuseravatar ( mobile , avatar ) {
  * @param newpassword
  * @returns {Promise<AxiosResponse<T>>}
  */
-export function updatepassword ( mobile , oldpassword , newpassword ) {
+export function updatepassword ( mobile = '' , oldpassword = '' , newpassword = '' ) {
 
     let obj = {
         mobile ,

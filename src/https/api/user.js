@@ -6,8 +6,24 @@
  */
 
 import axios from 'axios'
+import dayjs from "dayjs";
 
-//添加用户
+let prefix = '/user';
+
+/**
+ * 是存在手机号码
+ * @param mobile
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export const isexistsmobile = ( mobile ) => {
-    return axios.post( "/user" , user );
+    let obj = { mobile : mobile }
+
+    return axios.post( `${ prefix }/isexistsmobile` , obj );
+}
+
+export function adduser ( registerUser ) {
+
+    // console.log(newuser)
+
+    return axios.post( `${ prefix }/add` , registerUser );
 }

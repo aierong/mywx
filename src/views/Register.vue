@@ -80,7 +80,8 @@
     //导入
     import { mix } from "@/mixin/index.js"
 
-    import * as commonmethod from '@/common/bmobapi/users.js'
+    // import * as commonmethod from '@/common/bmobapi/users.js'
+    import * as userapi from '@/https/api/user.js'
 
     import * as globalconstant from '@/common/constant.js'
 
@@ -206,9 +207,10 @@
                 }
 
                 ( async () => {
-                    let result = await commonmethod.isexistsmobile( this.userinfo.mobile );
 
-                    if ( result.isexists ) {
+                    let result = await userapi.isexistsmobile( this.userinfo.mobile );
+                    // console.log( 'result' , result )
+                    if ( !result.data.isok ) {
 
                         this.$toast( "手机号码已经注册" )
 
@@ -217,15 +219,19 @@
 
                     // this.$toast( "ok" )
 
-                    let newuser = await commonmethod.adduser( this.userinfo );
+                    let status = await userapi.adduser( this.userinfo );
 
-                    if ( newuser != null ) {
-                        this.$toast.success( "成功,请登录" );
-
-                        this.$router.push( '/login' );
+                    if ( !status.data ) {
+                        this.$toast( "注册失败,稍后再试" )
 
                         return;
                     }
+
+                    this.$toast.success( "成功,请登录" );
+
+                    this.$router.push( '/login' );
+
+                    return;
 
                 } )();
 
@@ -241,7 +247,6 @@
         } ,
         //生命周期(mounted)
         mounted () {
-
         } ,
     }
 </script>

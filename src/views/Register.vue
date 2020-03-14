@@ -231,7 +231,7 @@
                     }
 
                     this.$toast.success( {
-                        duration : 4000 ,
+                        duration : 2800 ,
                         message : '成功,请登录'
                     } );
 

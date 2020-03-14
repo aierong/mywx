@@ -62,7 +62,7 @@ async function AddUser ( postData ) {
 
     var result = await Promise.all( [
         newuser.save() ,
-        log.AddRunLog( mobile , 'adduser' , `添加一个新用户${ mobile }(${ name })` )
+        log.AddRunLog( mobile , 'AddUser' , `添加一个新用户${ mobile }(${ name })` )
     ] );
 
     let newobj = null;
@@ -120,11 +120,51 @@ async function RunLogin ( mobile = '' , logintimes = 0 ) {
     return obj;
 }
 
+/**
+ * 修改头像
+ * @param mobile
+ * @param avatar
+ * @returns {Promise<void>}
+ * @constructor
+ */
+async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
+    let where = {
+        mobile : mobile
+    };
+
+    // let obj = await usermodel.findOneAndUpdate( where , {
+    //     avatar : avatar ,
+    //     updatedate : common.GetNowString()
+    //
+    // } , {
+    //     new : true
+    // } );
+
+    var result = await Promise.all( [
+        usermodel.findOneAndUpdate( where , {
+            avatar : avatar ,
+            updatedate : common.GetNowString()
+
+        } , {
+            new : true
+        } ) ,
+        log.AddRunLog( mobile , 'UpdateAvatar' , `${ mobile }修改用户头像(${ avatar })` )
+    ] );
+
+    let newobj = null;
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    return newobj;
+}
+
 module.exports = {
     IsExistsMobile ,
     AddUser ,
     GetUserByMobile ,
-    RunLogin
+    RunLogin ,
+    UpdateUserAvatar
 }
 
 

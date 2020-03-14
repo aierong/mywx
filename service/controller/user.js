@@ -57,6 +57,26 @@ module.exports = {
         }
 
     } ,
+    UpdateUserAvatar : async ( ctx , next ) => {
+        //  http://localhost:3001/api/user/updateuseravatar
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        // console.log( postData )
+        let { mobile , avatar } = postData;
+
+        let obj = await userservice.UpdateUserAvatar( mobile , avatar );
+
+        if ( obj != null ) {
+            ctx.body = true;
+        }
+        else {
+            ctx.body = false;
+        }
+
+    } ,
     Login : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/login
 

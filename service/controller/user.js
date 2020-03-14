@@ -112,7 +112,7 @@ module.exports = {
                 }
             }
             else {
-                //修改密码未完
+                //修改密码
 
                 let obj = await userservice.UpdatePassWord( mobile , newpassword );
 

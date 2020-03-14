@@ -28,7 +28,6 @@ module.exports = {
 
         //保存，步骤：1，先判断是否存在，如果不存在就先创建一个，再保存
 
-        //这里不验证是否为空
         //判断是否存在
         let isexists = await userphotoservice.IsExistsUserPhoto( mobile );
 

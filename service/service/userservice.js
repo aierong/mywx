@@ -54,7 +54,6 @@ async function AddUser ( postData ) {
         lastlogindate : '' ,
         logintimes : 0 ,
 
-
         // 最新时间
         adddate : common.GetNowString() ,
         // 搞一个guid
@@ -114,7 +113,9 @@ async function RunLogin ( mobile = '' , logintimes = 0 ) {
                 lastlogindate : common.GetNowString()
             }
         }
-    ] );
+    ] , {
+        new : true
+    } );
 
     return obj;
 }

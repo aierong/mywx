@@ -19,7 +19,9 @@ var mongoose = require( 'mongoose' );
 mongoose.connect( 'mongodb://localhost/wx' , {
     //不加这2个参数 ,程序编译启动 会有警告提示
     useNewUrlParser : true ,
-    useUnifiedTopology : true
+    useUnifiedTopology : true ,
+    //不加这1个参数 ,调用findOneAndUpdate findOneAndDelete 会有警告提示
+    useFindAndModify : false
 } , () => {
     console.log( 'mongodb链接成功' )
 } );

@@ -68,11 +68,10 @@ module.exports = {
 
     } ,
     GetUserPhoto : async ( ctx , next ) => {
-        //先接收post的参数
-        //接收到post数据 postData是一个对象
-        let postData = ctx.request.body;
+        //先接收参数
+        let params = ctx.params;
 
-        let { mobile } = postData;
+        let { mobile } = params;
 
         let obj = await userphotoservice.GetUserPhoto( mobile );
 

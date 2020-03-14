@@ -77,6 +77,47 @@ module.exports = {
         }
 
     } ,
+    UpdatePassWord : async ( ctx , next ) => {
+        let result = {
+
+            isok : true ,
+            errmsg : '' ,
+
+        }
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        let { mobile , oldpassword , newpassword } = postData;
+
+        let _user = await userservice.GetUserByMobile( mobile );
+
+        if ( _user == null ) {
+            result = {
+
+                isok : false ,
+                errmsg : '手机号码不存在' ,
+
+            }
+        }
+        else {
+
+            if ( _user.password != common.EncryptPassWord( oldpassword ) ) {
+                result = {
+
+                    isok : false ,
+                    errmsg : '现有密码不正确' ,
+
+                }
+            }
+            else {
+
+            }
+        }
+
+        ctx.body = result
+    } ,
     Login : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/login
 

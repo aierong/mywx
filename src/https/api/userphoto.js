@@ -7,7 +7,16 @@
 
 import axios from 'axios'
 
-let prefix = '/user';
+let prefix = '/userphoto';
 
+/**
+ * 获取用户图片列表
+ * @param mobile
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export const getuserphoto = ( mobile ) => {
+
+    return axios.get( `${ prefix }/getuserphoto/${ mobile }` );
+}
 
 

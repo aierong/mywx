@@ -8,7 +8,7 @@ module.exports = {
     devServer : {
 
         //配置端口
-        port : 8125
+        port : 8126
 
     } ,
 

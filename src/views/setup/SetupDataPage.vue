@@ -30,7 +30,7 @@
                     <use xlink:href="#icon-shezhi"></use>
                 </svg>
                 <span class="cellspantitleclass">
-                    <a href="https://github.com/aierong/mywxbmob"
+                    <a href="https://github.com/aierong/mywx"
                        target="_blank">github</a></span>
             </template>
         </van-cell>

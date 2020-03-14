@@ -48,4 +48,18 @@ export function login ( mobile , password ) {
     return axios.post( `${ prefix }/login` , obj );
 }
 
+/**
+ * 修改用户头像
+ * @param mobile
+ * @param avatar
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function updateuseravatar ( mobile , avatar ) {
 
+    let obj = {
+        mobile : mobile ,
+        avatar : avatar
+    }
+
+    return axios.post( `${ prefix }/updateuseravatar` , obj );
+}

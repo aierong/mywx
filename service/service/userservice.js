@@ -62,7 +62,7 @@ async function AddUser ( postData ) {
 
     var result = await Promise.all( [
         newuser.save() ,
-        log.AddRunLog( mobile , 'AddUser' , `添加一个新用户${ mobile }(${ name })` )
+        log.AddRunLog( mobile , 'AddUser' , `注册一个新用户${ mobile }(${ name })` )
     ] );
 
     let newobj = null;

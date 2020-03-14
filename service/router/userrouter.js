@@ -20,5 +20,3 @@ router.post( `${ prefix }/login` , usercontroller.Login )
 router.post( `${ prefix }/updateuseravatar` , usercontroller.UpdateUserAvatar )
 
 module.exports = router
-
-

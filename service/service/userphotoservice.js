@@ -97,10 +97,28 @@ async function IsExistsUserPhoto ( mobile = '' ) {
     return isexists;
 }
 
+/**
+ * 得用户图片
+ * @param mobile
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function GetUserPhoto ( mobile = '' ) {
+    //构建条件
+    let where = {
+        mobile : mobile
+    }
+
+    let obj = await userphotomodel.findOne( where );
+
+    return obj;
+}
+
 module.exports = {
 
     Init ,
     Save ,
-    IsExistsUserPhoto
+    IsExistsUserPhoto ,
+    GetUserPhoto
 
 }

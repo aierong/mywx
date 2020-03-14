@@ -9,7 +9,6 @@
 <template>
 
     <div>
-
         <br>
         <!--这里整个头像-->
         <van-cell size="large"
@@ -21,7 +20,6 @@
                     <use v-bind:xlink:href="loginuseravatar | iconallname"></use>
                 </svg>
                 <span class="cellspantitleclass">{{ loginusername +'('  + loginusermobile + ')' }}</span>
-
             </template>
         </van-cell>
         <br>
@@ -105,9 +103,7 @@
 
 <!-- js脚本代码片段 -->
 <script>
-    import {
-        mapMutations
-    } from 'vuex'
+    import { mapMutations } from 'vuex'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"

@@ -67,13 +67,40 @@ async function Save ( mobile , isshare , imgs ) {
         } , {
             new : true
         } ) ,
-        log.AddRunLog( mobile , 'SaveUserPhoto' , `${ mobile }修改用户相册` )
+        log.AddRunLog( mobile , 'SaveUserPhoto' , `${ mobile }保存用户相册` )
     ] );
+
+    let newobj = null;
+
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    return newobj;
+}
+
+/**
+ * 是存在用户相册
+ * @param mobile
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function IsExistsUserPhoto ( mobile = '' ) {
+
+    //构建条件
+    let where = {
+        mobile : mobile
+    }
+
+    let isexists = await userphotomodel.exists( where );
+
+    return isexists;
 }
 
 module.exports = {
 
     Init ,
-    Save
+    Save ,
+    IsExistsUserPhoto
 
 }

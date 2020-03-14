@@ -112,7 +112,8 @@
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    import * as commonmethod from '@/common/bmobapi/users.js'
+    // import * as commonmethod from '@/common/bmobapi/users.js'
+    import * as userapi from '@/https/api/user.js'
 
     //导入组件
     import userselectavatar from '@/components/userselectavatar.vue'
@@ -165,19 +166,14 @@
                     return;
                 }
 
-                let user = this.loginuserdata;
-
                 ;( async () => {
-                    // console.log( newuser.id )
 
-                    let result = await commonmethod.updateUserAvatar( user.objectId , _avatar );
+                    let obj = await userapi.updateuseravatar( this.loginusermobile , _avatar );
+                    let result = obj.data;
 
-                    console.log( result )
-
-                    if ( result != null ) {
-
-                        //重新设置一下
-                        // this.$store.commit( vuextypes.updateloginuseravatar , _avatar );
+                    if ( result ) {
+                        //成功修改头像
+                        //     //重新设置一下
                         this.updateloginuseravatar( _avatar );
 
                         return;

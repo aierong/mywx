@@ -64,13 +64,20 @@ export function updateuseravatar ( mobile , avatar ) {
     return axios.post( `${ prefix }/updateuseravatar` , obj );
 }
 
-
-export function updateuseravatar ( mobile , avatar ) {
+/**
+ * 修改密码
+ * @param mobile
+ * @param oldpassword
+ * @param newpassword
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function updatepassword ( mobile , oldpassword , newpassword ) {
 
     let obj = {
-        mobile : mobile ,
-        avatar : avatar
+        mobile ,
+        oldpassword ,
+        newpassword
     }
 
-    return axios.post( `${ prefix }/updateuseravatar` , obj );
+    return axios.post( `${ prefix }/updatepassword` , obj );
 }

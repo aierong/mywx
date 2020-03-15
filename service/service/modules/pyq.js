@@ -7,7 +7,6 @@
 
 var mongoose = require( 'mongoose' );
 
-
 //定义Schema
 var PyqSchema = mongoose.Schema( {
     ids : {

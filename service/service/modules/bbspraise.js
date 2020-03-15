@@ -8,6 +8,8 @@ var mongoose = require( 'mongoose' );
 
 //定义Schema
 var PyqPraiseSchema = mongoose.Schema( {
+    //外键id 没有定义
+
     ids : {
         type : String ,
         unique : true
@@ -30,8 +32,6 @@ var PyqPraiseSchema = mongoose.Schema( {
         type : String ,
         default : ''
     } ,
-
-
 
     adddate : {
         type : String ,

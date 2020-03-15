@@ -9,6 +9,8 @@ var mongoose = require( 'mongoose' );
 
 //定义Schema
 var PyqBbsSchema = mongoose.Schema( {
+    //外键id 没有定义
+
     ids : {
         type : String ,
         unique : true

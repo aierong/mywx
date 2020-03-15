@@ -19,6 +19,13 @@ export const getuserphoto = ( mobile = '' ) => {
     return axios.get( `${ prefix }/getuserphoto/${ mobile }` );
 }
 
+/**
+ * 修改个人相册
+ * @param mobile
+ * @param isshare
+ * @param imgs
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export const save = ( mobile = '' , isshare = false , imgs = [] ) => {
     let obj = {
         mobile : mobile ,
@@ -28,5 +35,7 @@ export const save = ( mobile = '' , isshare = false , imgs = [] ) => {
 
     console.log( 'save obj' , obj )
 
-    return axios.post( `${ prefix }/saveuserphoto` , obj );
+    return axios.post( `${ prefix }/save` , obj );
 }
+
+

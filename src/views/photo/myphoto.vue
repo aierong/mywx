@@ -47,7 +47,7 @@
                              alt=""
                              @click="imgclick(index)"
                              :src="file_img.imgdata"/>
-                        <span>{{  FormatDate(file_img.imgdate,'YYYY-MM-DD') }}</span>
+                        <span>{{  FormatDate(file_img.uploadimgdate,'YYYY-MM-DD') }}</span>
                         <span>{{ '(' }}{{    FormatKB(file_img.size,2)  }}{{ ')' }}</span>
                     </template>
                     <template slot="right-icon">
@@ -237,6 +237,8 @@
                                 message : '成功'
                             } );
 
+                            this.IsCZ = false;
+
                             return;
                         }
                         else {
@@ -289,48 +291,48 @@
 
                 return;
 
-                if ( this.IsCZ ) {
-                    //改变了，要保存一下图片，再返回
-
-                    if ( this.imgcounts > this.maxcounts ) {
-                        this.$toast( "个人最多" + this.maxcounts + "张图片,请清除一些!" )
-
-                        return;
-                    }
-
-                    //constant
-                    if ( this.RongLiang > this.allimgmax ) {
-                        this.$toast( "云数据库bmob限制每次api数据大小:" + this.allimgmax + ",请尽量使用小图片!" )
-
-                        return;
-                    }
-
-                    this.$toast.loading( {
-                        duration : 0 ,
-                        forbidClick : true ,
-                        loadingType : "circular" ,
-                        message : "稍等..." ,
-                        //显示背景蒙层
-                        mask : true
-                    } )
-
-                    userphotomethod.updateuserphoto(
-                        this.imgid ,
-                        this.showFileData ,
-                        this.issharephoto ).then( ( result ) => {
-                        console.log( 'result' , result )
-                        this.$toast.clear()
-                        this.$router.push( '/me' );
-                    } )
-
-                }
-                else {
-                    this.$router.push( '/me' );
-                }
+                // if ( this.IsCZ ) {
+                //     //改变了，要保存一下图片，再返回
+                //
+                //     if ( this.imgcounts > this.maxcounts ) {
+                //         this.$toast( "个人最多" + this.maxcounts + "张图片,请清除一些!" )
+                //
+                //         return;
+                //     }
+                //
+                //     //constant
+                //     if ( this.RongLiang > this.allimgmax ) {
+                //         this.$toast( "云数据库bmob限制每次api数据大小:" + this.allimgmax + ",请尽量使用小图片!" )
+                //
+                //         return;
+                //     }
+                //
+                //     this.$toast.loading( {
+                //         duration : 0 ,
+                //         forbidClick : true ,
+                //         loadingType : "circular" ,
+                //         message : "稍等..." ,
+                //         //显示背景蒙层
+                //         mask : true
+                //     } )
+                //
+                //     userphotomethod.updateuserphoto(
+                //         this.imgid ,
+                //         this.showFileData ,
+                //         this.issharephoto ).then( ( result ) => {
+                //         console.log( 'result' , result )
+                //         this.$toast.clear()
+                //         this.$router.push( '/me' );
+                //     } )
+                //
+                // }
+                // else {
+                //     this.$router.push( '/me' );
+                // }
 
             } ,
             onbeforeRead ( files ) {
-                console.log( 'onbeforeRead' , files )
+                // console.log( 'onbeforeRead' , files )
 
                 //如果选择了多个文件，files就是数组,如果1个文件，files就是对象
                 var isarr = Array.isArray( files )
@@ -363,7 +365,7 @@
                 return true;
             } ,
             onAfterRead ( filedata ) {
-                console.log( 'onAfterRead' , filedata )
+                // console.log( 'onAfterRead' , filedata )
 
                 //如果选择了多个文件，files就是数组,如果1个文件，files就是对象
                 var isarr = Array.isArray( filedata )

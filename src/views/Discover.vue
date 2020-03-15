@@ -18,7 +18,7 @@
                 <svg class="icon"
                      aria-hidden="true"
                      style="font-size:20px;">
-                    <use xlink:href="#icon-friends"></use>
+                    <use xlink:href="#icon-pengyouquan"></use>
                 </svg>
                 <span class="cellspantitleclass">朋友圈</span>
             </template>
@@ -39,7 +39,7 @@
                 <svg class="icon"
                      aria-hidden="true"
                      style="font-size:20px;">
-                    <use xlink:href="#icon-yaoyiyao"></use>
+                    <use xlink:href="#icon-yaoyiyao1"></use>
                 </svg>
                 <span class="cellspantitleclass">摇一摇</span>
             </template>
@@ -60,7 +60,7 @@
                 <svg class="icon"
                      aria-hidden="true"
                      style="font-size:20px;">
-                    <use xlink:href="#icon-souyisou"></use>
+                    <use xlink:href="#icon-souyisou1"></use>
                 </svg>
                 <span class="cellspantitleclass">搜一搜</span>
             </template>
@@ -82,7 +82,7 @@
                 <svg class="icon"
                      aria-hidden="true"
                      style="font-size:20px;">
-                    <use xlink:href="#icon-gouwu-copy-copy"></use>
+                    <use xlink:href="#icon-gouwudai"></use>
                 </svg>
                 <span class="cellspantitleclass">购物</span>
             </template>

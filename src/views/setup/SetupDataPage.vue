@@ -11,17 +11,65 @@
                      @click-left="onClickLeft"/>
         <br>
         <br>
-        <van-cell is-link
-                  @click="updatepwdClick">
+        <van-cell>
             <template slot="title">
-                <svg class="icon"
-                     aria-hidden="true"
-                     style="font-size:20px;">
-                    <use xlink:href="#icon-shezhi"></use>
-                </svg>
-                <span class="cellspantitleclass">修改密码</span>
+                <span class="cellspantitleclass">帐号与安全</span>
             </template>
         </van-cell>
+        <br>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">新消息提醒</span>
+            </template>
+        </van-cell>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">勿扰模式</span>
+            </template>
+        </van-cell>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">聊天</span>
+            </template>
+        </van-cell>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">隐私</span>
+            </template>
+        </van-cell>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">通用</span>
+            </template>
+        </van-cell>
+        <br>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">关于微信</span>
+            </template>
+        </van-cell>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">帮助与反馈</span>
+            </template>
+        </van-cell>
+        <br>
+        <van-cell>
+            <template slot="title">
+                <span class="cellspantitleclass">插件</span>
+            </template>
+        </van-cell>
+        <!--        <van-cell is-link-->
+        <!--                  @click="updatepwdClick">-->
+        <!--            <template slot="title">-->
+        <!--                <svg class="icon"-->
+        <!--                     aria-hidden="true"-->
+        <!--                     style="font-size:20px;">-->
+        <!--                    <use xlink:href="#icon-shezhi"></use>-->
+        <!--                </svg>-->
+        <!--                <span class="cellspantitleclass">修改密码</span>-->
+        <!--            </template>-->
+        <!--        </van-cell>-->
         <van-cell>
             <template slot="title">
                 <svg class="icon"
@@ -31,21 +79,34 @@
                 </svg>
                 <span class="cellspantitleclass">
                     <a href="https://github.com/aierong/mywx"
-                       target="_blank">github</a></span>
+                       target="_blank">本项目Github</a></span>
             </template>
         </van-cell>
-        <br>
-        <van-cell is-link
-                  @click="exitClick">
-            <template slot="title">
-                <svg class="icon"
-                     aria-hidden="true"
-                     style="font-size:20px;">
-                    <use xlink:href="#icon-tuichu"></use>
-                </svg>
-                <span class="cellspantitleclass">退出</span>
-            </template>
-        </van-cell>
+
+        <van-button size="large"
+                    @click="updatepwdClick"
+                    type="default">修改密码
+        </van-button>
+        <br><br>
+        <van-button size="large"
+                    type="default">退出
+            <svg class="icon"
+                 aria-hidden="true"
+                 style="font-size:20px;">
+                <use xlink:href="#icon-shezhi"></use>
+            </svg>
+        </van-button>
+        <!--        <van-cell is-link-->
+        <!--                  @click="exitClick">-->
+        <!--            <template slot="title">-->
+        <!--                <svg class="icon"-->
+        <!--                     aria-hidden="true"-->
+        <!--                     style="font-size:20px;">-->
+        <!--                    <use xlink:href="#icon-tuichu"></use>-->
+        <!--                </svg>-->
+        <!--                <span class="cellspantitleclass">退出</span>-->
+        <!--            </template>-->
+        <!--        </van-cell>-->
         <van-dialog :before-close="beforeClose"
                     show-cancel-button
                     v-model="showdialog">

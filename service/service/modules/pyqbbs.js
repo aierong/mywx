@@ -6,11 +6,13 @@
  */
 
 var mongoose = require( 'mongoose' );
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //定义Schema
 var PyqBbsSchema = mongoose.Schema( {
-    //外键id 没有定义
 
+    //外键id
+    pyq_id : ObjectId ,
     ids : {
         type : String ,
         unique : true

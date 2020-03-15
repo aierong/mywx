@@ -142,7 +142,7 @@
                 // } )
 
                 userapi.getuserlist().then( ( res ) => {
-                    // console.log( 'res' , res )
+                     console.log( 'res' , res )
 
                     setTimeout( () => {
                         this.userlist = res.data;

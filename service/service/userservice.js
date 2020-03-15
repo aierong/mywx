@@ -199,7 +199,8 @@ async function UpdatePassWord ( mobile = '' , newpassword = '' ) {
  * @constructor
  */
 async function GetUserList () {
-    let obj = await usermodel.find( {} );
+    //把密码排除了
+    let obj = await usermodel.find( {} ).select( { password : 0 } );
 
     return obj;
 }

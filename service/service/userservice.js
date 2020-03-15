@@ -205,6 +205,19 @@ async function GetUserList () {
     return obj;
 }
 
+/**
+ * 由手机号得用户
+ * @param mobile
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function GetUserByMobile ( mobile = '' ) {
+    //把密码排除了
+    let obj = await usermodel.findOne( { mobile : mobile } ).select( { password : 0 } );
+
+    return obj;
+}
+
 module.exports = {
     IsExistsMobile ,
     AddUser ,
@@ -212,7 +225,8 @@ module.exports = {
     RunLogin ,
     UpdateUserAvatar ,
     UpdatePassWord ,
-    GetUserList
+    GetUserList ,
+    GetUserByMobile
 }
 
 

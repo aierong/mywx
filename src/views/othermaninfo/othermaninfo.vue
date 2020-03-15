@@ -62,9 +62,7 @@
 js脚本代码片段
 -->
 <script>
-    import {
-        mapMutations
-    } from 'vuex'
+    import { mapMutations } from 'vuex'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
@@ -202,13 +200,7 @@ js脚本代码片段
             } ,
         } ,
         //生命周期(mounted)
-
         created () {
-            // console.group( 'created 创建完毕状态===============》' );
-
-            // console.log( 'created' , this.queryusermobile )
-
-            // this.maninfo.mobile = this.queryusermobile;
         } ,
         mounted () {
             //接收参数

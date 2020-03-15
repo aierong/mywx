@@ -89,11 +89,12 @@
         </van-button>
         <br><br>
         <van-button size="large"
+                    @click="exitClick"
                     type="default">退出
             <svg class="icon"
                  aria-hidden="true"
                  style="font-size:20px;">
-                <use xlink:href="#icon-shezhi"></use>
+                <use xlink:href="#icon-tuichu"></use>
             </svg>
         </van-button>
         <!--        <van-cell is-link-->

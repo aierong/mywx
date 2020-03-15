@@ -59,5 +59,3 @@ let pyqbbsmodel = mongoose.model( 'pyqbbs' , PyqBbsSchema , 'pyqbbs' );
 module.exports = pyqbbsmodel;
 
 
-
-

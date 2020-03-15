@@ -4,8 +4,54 @@
  Time: 14:11
  功能: js脚本
  */
+var mongoose = require( 'mongoose' );
+
+//定义Schema
+var PyqPraiseSchema = mongoose.Schema( {
+    ids : {
+        type : String ,
+        unique : true
+    } ,
+    date : {
+        type : String ,
+        default : ''
+    } ,
+
+    mobile : {
+        type : String ,
+        default : ''
+    } ,
+
+    name : {
+        type : String ,
+        default : ''
+    } ,
+    avatar : {
+        type : String ,
+        default : ''
+    } ,
 
 
 
+    adddate : {
+        type : String ,
+        default : ''
+    } ,
+    updatedate : {
+        type : String ,
+        default : ''
+    } ,
+    deletedate : {
+        type : String ,
+        default : ''
+    } ,
+
+} , {
+    //versionKey =false 禁用版本，要不每次插入数据都带一个__v
+    versionKey : false
+} );
+
+let pyqpraisemodel = mongoose.model( 'pyqpraise' , PyqPraiseSchema , 'pyqpraise' );
+module.exports = pyqpraisemodel;
 
 

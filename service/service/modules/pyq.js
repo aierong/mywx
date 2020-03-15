@@ -41,7 +41,11 @@ var PyqSchema = mongoose.Schema( {
         type : String ,
         default : ''
     } ,
-
+    bbscounts:{
+        type : Number ,
+        min : 0 ,
+        default : 0
+    },
 
     adddate : {
         type : String ,

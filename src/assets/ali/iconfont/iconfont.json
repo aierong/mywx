@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4414959",
+      "name": "搜一搜",
+      "font_class": "souyisou1",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "8784227",
+      "name": "购物袋",
+      "font_class": "gouwudai",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "11476910",
+      "name": "摇一摇",
+      "font_class": "yaoyiyao1",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "9453987",
+      "name": "朋友圈",
+      "font_class": "pengyouquan",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "10994625",
+      "name": "新朋友",
+      "font_class": "xinpengyou",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
       "icon_id": "1973188",
       "name": "男头像",
       "font_class": "touxiang7",

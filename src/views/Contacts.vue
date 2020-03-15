@@ -19,7 +19,8 @@
                 <svg class="icon"
                      aria-hidden="true"
                      style="font-size:20px;">
-                    <use xlink:href="#icon-pengyou"></use>
+                    <!--                    <use xlink:href="#icon-pengyou"></use>-->
+                    <use xlink:href="#icon-xinpengyou"></use>
                 </svg>
 
                 <span class="cellspantitleclass">新的朋友</span>
@@ -142,7 +143,7 @@
                 // } )
 
                 userapi.getuserlist().then( ( res ) => {
-                     console.log( 'res' , res )
+                    console.log( 'res' , res )
 
                     setTimeout( () => {
                         this.userlist = res.data;

@@ -95,7 +95,8 @@
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    import * as api from '@/common/bmobapi/users.js'
+    // import * as api from '@/common/bmobapi/users.js'
+    import * as userapi from '@/https/api/user.js'
 
     import mytabbar from "@/components/mytabbar.vue";
 
@@ -128,16 +129,29 @@
             getuserlist () {
                 console.log( 'getuserlist start' )
 
-                api.getuserlist().then( ( res ) => {
+                // api.getuserlist().then( ( res ) => {
+                //
+                //     setTimeout( () => {
+                //         this.userlist = res;
+                //
+                //         console.log( 'getuserlist ok' )
+                //
+                //         this.isskeletonloading = false;
+                //         //故意延时一下 可以看看骨架屏效果
+                //     } , 4500 );
+                // } )
+
+                userapi.getuserlist().then( ( res ) => {
+                    // console.log( 'res' , res )
 
                     setTimeout( () => {
-                        this.userlist = res;
+                        this.userlist = res.data;
 
-                        console.log( 'getuserlist ok' )
+                        // console.log( 'getuserlist ok' )
 
                         this.isskeletonloading = false;
                         //故意延时一下 可以看看骨架屏效果
-                    } , 4500 );
+                    } , 1500 );
                 } )
 
             } ,

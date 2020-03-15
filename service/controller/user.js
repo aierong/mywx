@@ -195,6 +195,10 @@ module.exports = {
         ctx.body = result
 
     } ,
+    GetUserList : async ( ctx , next ) => {
+        let obj = await userservice.GetUserList();
+        ctx.body = obj
+    }
 }
 
 

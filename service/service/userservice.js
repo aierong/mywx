@@ -193,13 +193,25 @@ async function UpdatePassWord ( mobile = '' , newpassword = '' ) {
     return newobj;
 }
 
+/**
+ * 的用户列表
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function GetUserList () {
+    let obj = await usermodel.find( {} );
+
+    return obj;
+}
+
 module.exports = {
     IsExistsMobile ,
     AddUser ,
     GetUserByMobile ,
     RunLogin ,
     UpdateUserAvatar ,
-    UpdatePassWord
+    UpdatePassWord ,
+    GetUserList
 }
 
 

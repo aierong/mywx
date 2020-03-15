@@ -80,3 +80,12 @@ export function updatepassword ( mobile = '' , oldpassword = '' , newpassword = 
 
     return axios.post( `${ prefix }/updatepassword` , obj );
 }
+
+/**
+ * 的用户列表
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function getuserlist () {
+
+    return axios.get( `${ prefix }/getuserlist` );
+}

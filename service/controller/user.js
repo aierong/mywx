@@ -198,6 +198,18 @@ module.exports = {
     GetUserList : async ( ctx , next ) => {
         let obj = await userservice.GetUserList();
         ctx.body = obj
+    } ,
+    GetUserByMobile : async ( ctx , next ) => {
+        //先接收参数
+        let params = ctx.params;
+
+        let { mobile } = params;
+
+        let obj = await userservice.GetUserByMobile( mobile );
+
+        ctx.body = {
+            data : obj
+        }
     }
 }
 

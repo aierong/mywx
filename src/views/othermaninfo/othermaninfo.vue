@@ -71,8 +71,11 @@ js脚本代码片段
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    import * as commonmethod from '@/common/bmobapi/users.js'
-    import * as userphoto from '@/common/bmobapi/userphoto.js'
+    // import * as commonmethod from '@/common/bmobapi/users.js'
+    // import * as userphoto from '@/common/bmobapi/userphoto.js'
+
+    import * as userapi from '@/https/api/user.js'
+    import * as userphotoapi from '@/https/api/userphoto.js'
 
     //导入组件
     import userselectavatar from '@/components/userselectavatar.vue'
@@ -137,35 +140,74 @@ js脚本代码片段
                 } )
 
                 let _mobile = this.maninfo.mobile;
-                commonmethod.getuserbymobile( _mobile ).then( ( res ) => {
-                    // console.log( 'res' , res )
+                userapi.getuserbymobile( _mobile ).then( ( res ) => {
 
-                    if ( res != null && res.length > 0 ) {
-                        let _data = res[ 0 ];  //取第一个出来就好
+                    let user = res.data.data;
 
-                        this.maninfo.name = _data.name;
-                        this.maninfo.avatar = _data.avatar;
-                        this.maninfo.email = _data.email;
+                    // console.log( 'user' , user )
+
+                    if ( user != null ) {
+                        this.maninfo.name = user.name;
+                        this.maninfo.avatar = user.avatar;
+                        this.maninfo.email = user.email;
+
+                        //再取相册信息
+                        userphotoapi.getuserphoto( _mobile ).then( ( photo ) => {
+                            console.log( 'photo' , photo )
+
+                            let photodata = photo.data.data;
+
+                            if ( photodata != null ) {
+                                this.issharephoto = photodata.isshare;
+                                if ( !this.issharephoto ) {
+                                    this.showFileData = [];
+                                }
+                                else {
+                                    this.showFileData = photodata.imgs;
+                                }
+                            }
+
+                            this.isshowloading = false;
+                            this.$toast.clear()
+                        } )
                     }
-
-                    userphoto.getuserphotobymobile( _mobile ).then( ( res ) => {
-                        console.log( 'res' , res )
-
-                        if ( res.isexists ) {
-                            this.issharephoto = res.data.isshare;
-                            if ( !this.issharephoto ) {
-                                this.showFileData = [];
-                            }
-                            else {
-                                this.showFileData = res.data.imgs;
-                            }
-                        }
-
+                    else {
                         this.isshowloading = false;
                         this.$toast.clear()
+                    }
 
-                    } )
                 } )
+
+                // let _mobile = this.maninfo.mobile;
+                // commonmethod.getuserbymobile( _mobile ).then( ( res ) => {
+                //     // console.log( 'res' , res )
+                //
+                //     if ( res != null && res.length > 0 ) {
+                //         let _data = res[ 0 ];  //取第一个出来就好
+                //
+                //         this.maninfo.name = _data.name;
+                //         this.maninfo.avatar = _data.avatar;
+                //         this.maninfo.email = _data.email;
+                //     }
+                //
+                //     userphoto.getuserphotobymobile( _mobile ).then( ( res ) => {
+                //         console.log( 'res' , res )
+                //
+                //         if ( res.isexists ) {
+                //             this.issharephoto = res.data.isshare;
+                //             if ( !this.issharephoto ) {
+                //                 this.showFileData = [];
+                //             }
+                //             else {
+                //                 this.showFileData = res.data.imgs;
+                //             }
+                //         }
+                //
+                //         this.isshowloading = false;
+                //         this.$toast.clear()
+                //
+                //     } )
+                // } )
             } ,
             imgclick ( index ) {
                 //点击了图片按钮，我们全屏看图片哦

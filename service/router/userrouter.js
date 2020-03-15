@@ -15,6 +15,7 @@ const usercontroller = require( '../controller/user' )
 let prefix = '/api/user';
 
 router.get( `${ prefix }/getuserlist` , usercontroller.GetUserList )
+router.get( `${ prefix }/getuserbymobile/:mobile` , usercontroller.GetUserByMobile )
 router.post( `${ prefix }/isexistsmobile` , usercontroller.IsExistsMobile )
 router.post( `${ prefix }/add` , usercontroller.AddUser )
 router.post( `${ prefix }/login` , usercontroller.Login )

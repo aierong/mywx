@@ -89,3 +89,15 @@ export function getuserlist () {
 
     return axios.get( `${ prefix }/getuserlist` );
 }
+
+/**
+ * 得某个用户信息
+ * @param mobile
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function getuserbymobile ( mobile = '' ) {
+
+    return axios.get( `${ prefix }/getuserbymobile/${ mobile }` );
+}
+
+

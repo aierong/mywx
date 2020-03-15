@@ -15,22 +15,9 @@ const bodyParser = require( 'koa-bodyparser' )
 
 const app = new Koa()
 app.use( cors() ); //注册一下 即可
-// app.use( cors( {
-//     origin : function ( ctx ) {
-//         if ( ctx.url === '/test' ) {
-//             // return false;
-//             return '*';
-//         }
-//         return '*';
-//     } ,
-//     exposeHeaders : [ 'WWW-Authenticate' , 'Server-Authorization' ] ,
-//     maxAge : 50 ,
-//     credentials : true ,
-//     allowMethods : [ 'GET' , 'POST' , 'DELETE' ] ,
-//     allowHeaders : [ 'Content-Type' , 'Authorization' , 'Accept' ] ,
-// } ) );
 
 // app.use( bodyParser() )
+//设置一下容量大小，要不又限制，会提交失败
 app.use( bodyParser( {
     enableTypes : [ 'json' , 'form' , 'text' ] ,
     formLimit : '360mb' ,

@@ -45,11 +45,10 @@ module.exports = {
 
         }
 
-        //先接收post的参数
-        //接收到post数据 postData是一个对象
-        let postData = ctx.request.body;
+        //先接收参数
+        let params = ctx.params;
 
-        let { _id } = postData;
+        let { _id } = params;
 
         let obj = await pyqservice.Delete( _id );
 

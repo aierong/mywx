@@ -9,6 +9,11 @@ var mongoose = require( 'mongoose' );
 
 //定义Schema
 var PyqSchema = mongoose.Schema( {
+    //是删除
+    isdelete : {
+        type : Boolean ,
+        default : false
+    } ,
     ids : {
         type : String ,
         unique : true

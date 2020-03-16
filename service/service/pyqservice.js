@@ -55,6 +55,44 @@ async function Add ( postData ) {
 }
 
 
+async function Delete ( postData ) {
+    //数据解构出来
+    let { mobile , avatar , name , txt , imglist } = postData;
+
+    let nowstr = common.GetNowString();
+
+    //构建数据
+    var newmodel = new pyqmodel( {
+
+        mobile ,
+        avatar ,
+        name ,
+        txt ,
+        imglist ,
+
+        bbscounts : 0 ,
+        praisecounts : 0 ,
+        // 最新时间
+        adddate : nowstr ,
+        date : nowstr ,
+        // 搞一个guid
+        ids : common.GetGuid()
+    } );
+
+    var result = await Promise.all( [
+        newmodel.save() ,
+        log.AddRunLog( mobile , 'AddPYQ' , `用户${ mobile }(${ name })发布一个朋友圈` )
+    ] );
+
+    let newobj = null;
+
+    if ( result != null && result.length >= 2 ) {
+        newobj = result[ 0 ];
+    }
+
+    return newobj;
+}
+
 
 module.exports = {
 

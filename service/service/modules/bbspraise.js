@@ -11,6 +11,11 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var PyqPraiseSchema = mongoose.Schema( {
     //外键id
     pyq_id : ObjectId ,
+    //是删除
+    isdelete : {
+        type : Boolean ,
+        default : false
+    } ,
     ids : {
         type : String ,
         unique : true

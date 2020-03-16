@@ -25,6 +25,7 @@ async function Add ( postData ) {
     //构建数据
     var newmodel = new pyqpraisemodel( {
         isdelete : false ,
+        pyq_id : pyq_id ,
 
         mobile ,
         avatar ,
@@ -37,7 +38,9 @@ async function Add ( postData ) {
         ids : common.GetGuid()
     } );
 
+    //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
     var result = await Promise.all( [
+
         newmodel.save() ,
         log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` )
     ] );
@@ -50,8 +53,6 @@ async function Add ( postData ) {
 
     return newobj;
 }
-
-
 
 module.exports = {
 

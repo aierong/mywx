@@ -96,8 +96,39 @@ async function Delete ( _id ) {
     return newobj;
 }
 
+/**
+ * 修改点赞数量
+ * @param _id
+ * @param num
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function UpdatePraiseCount ( _id = '' , num = 1 ) {
+
+    let nowstr = common.GetNowString();
+
+    let where = {
+        _id : _id
+    };
+
+    let newobj = await pyqmodel.findOneAndUpdate( where , [
+        {
+            $set : {
+                praisecounts : { $add : [ { $ifNull : [ "$praisecounts" , 0 ] } , num ] } ,
+                updatedate : nowstr
+            }
+        }
+    ] , {
+        new : true
+    } );
+
+    return newobj;
+}
+
 module.exports = {
 
     Add ,
-    Delete
+    Delete ,
+    UpdatePraiseCount
+
 }

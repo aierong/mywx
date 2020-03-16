@@ -10,6 +10,8 @@ const pyqpraisemodel = require( './modules/pyqpraise.js' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
+const pyqservice = require( './pyqservice.js' )
+
 /**
  * 点赞
  * @param postData
@@ -42,13 +44,14 @@ async function Add ( postData ) {
     var result = await Promise.all( [
 
         newmodel.save() ,
+        pyqservice.UpdatePraiseCount( pyq_id , 1 ) ,
         log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` )
     ] );
 
     let newobj = null;
 
-    if ( result != null && result.length >= 2 ) {
-        newobj = result[ 0 ];
+    if ( result != null && result.length >= 3 ) {
+        newobj = result[ 1 ];  //这里返回 朋友圈 这条记录
     }
 
     return newobj;

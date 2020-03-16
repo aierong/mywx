@@ -24,6 +24,7 @@ async function Add ( postData ) {
 
     //构建数据
     var newmodel = new pyqmodel( {
+        isdelete : false ,
 
         mobile ,
         avatar ,
@@ -33,6 +34,7 @@ async function Add ( postData ) {
 
         bbscounts : 0 ,
         praisecounts : 0 ,
+
         // 最新时间
         adddate : nowstr ,
         date : nowstr ,

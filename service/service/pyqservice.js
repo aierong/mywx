@@ -44,7 +44,7 @@ async function Add ( postData ) {
 
     var result = await Promise.all( [
         newmodel.save() ,
-        log.AddRunLog( mobile , 'AddPYQ' , `用户${ mobile }(${ name })发布一个朋友圈` )
+        log.AddRunLog( mobile , 'AddPyq' , `用户${ mobile }(${ name })发布一个朋友圈` )
     ] );
 
     let newobj = null;
@@ -84,7 +84,7 @@ async function Delete ( _id ) {
         } , {
             new : true
         } ) ,
-        log.AddRunLog( mobile , 'DeletePYQ' , `用户${ mobile }(${ name })删除一个朋友圈 _id:${ _id }` )
+        log.AddRunLog( mobile , 'DeletePyq' , `用户${ mobile }(${ name })删除一个朋友圈 _id:${ _id }` )
     ] );
 
     let newobj = null;

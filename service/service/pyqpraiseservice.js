@@ -10,23 +10,26 @@ const pyqpraisemodel = require( './modules/pyqpraise.js' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
+/**
+ * 点赞
+ * @param postData
+ * @returns {Promise<null>}
+ * @constructor
+ */
 async function Add ( postData ) {
     //数据解构出来
-    let { mobile , avatar , name , txt , imglist } = postData;
+    let { mobile , avatar , name , pyq_id } = postData;
 
     let nowstr = common.GetNowString();
 
     //构建数据
-    var newmodel = new pyqmodel( {
+    var newmodel = new pyqpraisemodel( {
+        isdelete : false ,
 
         mobile ,
         avatar ,
         name ,
-        txt ,
-        imglist ,
 
-        bbscounts : 0 ,
-        praisecounts : 0 ,
         // 最新时间
         adddate : nowstr ,
         date : nowstr ,
@@ -36,7 +39,7 @@ async function Add ( postData ) {
 
     var result = await Promise.all( [
         newmodel.save() ,
-        log.AddRunLog( mobile , 'AddPYQ' , `用户${ mobile }(${ name })发布一个朋友圈` )
+        log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` )
     ] );
 
     let newobj = null;
@@ -46,4 +49,12 @@ async function Add ( postData ) {
     }
 
     return newobj;
+}
+
+
+
+module.exports = {
+
+    Add
+
 }

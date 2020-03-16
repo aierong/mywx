@@ -13,6 +13,7 @@ var PyqSchema = mongoose.Schema( {
         type : String ,
         unique : true
     } ,
+    //发朋友圈的时间
     date : {
         type : String ,
 
@@ -73,9 +74,5 @@ var PyqSchema = mongoose.Schema( {
 
 let pyqmodel = mongoose.model( 'pyq' , PyqSchema , 'pyq' );
 module.exports = pyqmodel;
-
-
-
-
 
 

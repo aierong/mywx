@@ -178,36 +178,6 @@ js脚本代码片段
 
                 } )
 
-                // let _mobile = this.maninfo.mobile;
-                // commonmethod.getuserbymobile( _mobile ).then( ( res ) => {
-                //     // console.log( 'res' , res )
-                //
-                //     if ( res != null && res.length > 0 ) {
-                //         let _data = res[ 0 ];  //取第一个出来就好
-                //
-                //         this.maninfo.name = _data.name;
-                //         this.maninfo.avatar = _data.avatar;
-                //         this.maninfo.email = _data.email;
-                //     }
-                //
-                //     userphoto.getuserphotobymobile( _mobile ).then( ( res ) => {
-                //         console.log( 'res' , res )
-                //
-                //         if ( res.isexists ) {
-                //             this.issharephoto = res.data.isshare;
-                //             if ( !this.issharephoto ) {
-                //                 this.showFileData = [];
-                //             }
-                //             else {
-                //                 this.showFileData = res.data.imgs;
-                //             }
-                //         }
-                //
-                //         this.isshowloading = false;
-                //         this.$toast.clear()
-                //
-                //     } )
-                // } )
             } ,
             imgclick ( index ) {
                 //点击了图片按钮，我们全屏看图片哦

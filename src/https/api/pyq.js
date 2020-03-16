@@ -18,7 +18,7 @@ let prefix = '/pyq';
  * @param imglist
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const add = ( mobile , avatar , name , txt , imglist ) => {
+export const add = ( mobile , name , avatar , txt , imglist ) => {
     let obj = {
         mobile ,
         avatar ,

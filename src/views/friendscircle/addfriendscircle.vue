@@ -70,7 +70,9 @@
     //导入dayjs
     import dayjs from 'dayjs'
 
-    import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
+    // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
+    import * as pyqapi from '@/https/api/pyq.js'
+
     import * as constant from '@/common/constant.js'
 
     // 使用前需要先引入它
@@ -198,11 +200,10 @@
                     let imgobj = {
 
                         imgdata : filedata.content ,
-                        size : filedata.file.size,
+                        size : filedata.file.size ,
                         filename : filedata.file.name ,
                         filetype : filedata.file.type ,
                         uploadimgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
-
 
                     }
 
@@ -244,19 +245,46 @@
                     mask : true
                 } )
 
-                friendscirclemethod.addfriendscircle( this.pyq ).then( ( res ) => {
+                // friendscirclemethod.addfriendscircle( this.pyq ).then( ( res ) => {
+                //     console.log( res )
+                //
+                //     //故意延时一下
+                //     setTimeout( () => {
+                //
+                //         this.$toast.clear()
+                //
+                //         this.goback();
+                //
+                //     } , 1000 )
+                //
+                // } )
+
+                pyqapi.add( this.pyq.mobile , this.pyq.name , this.pyq.avatar , this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
                     console.log( res )
 
-                    //故意延时一下
-                    setTimeout( () => {
+                    if ( res != null && res.data.isok ) {
+                        //故意延时一下
+                        setTimeout( () => {
 
+                            this.$toast.clear()
+
+                            this.$toast.success( {
+                                duration : 1000 ,
+                                message : '成功'
+                            } );
+
+                            this.goback();
+
+                        } , 1000 )
+                    }
+                    else {
                         this.$toast.clear()
 
-                        this.goback();
-
-                    } , 1000 )
+                        this.$toast( "失败" )
+                    }
 
                 } )
+
             } ,
         } ,
         //计算属性

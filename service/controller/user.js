@@ -153,7 +153,7 @@ module.exports = {
         let postData = ctx.request.body;
 
         let { mobile , password } = postData;
-        console.log( 'Login' , postData )
+        // console.log( 'Login' , postData )
 
         let _user = await userservice.GetUserByMobile( mobile , true );
 
@@ -167,9 +167,9 @@ module.exports = {
         }
         else {
             //判断密码是否一样
-            console.log( '_user' , _user )
+            // console.log( '_user' , _user )
             let _EncryptPassWord = common.EncryptPassWord( password );
-            console.log( '_EncryptPassWord' , _EncryptPassWord )
+            // console.log( '_EncryptPassWord' , _EncryptPassWord )
             if ( _user.password != _EncryptPassWord ) {
                 result = {
 

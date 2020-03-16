@@ -78,22 +78,6 @@ async function AddUser ( postData ) {
     return newobj;
 }
 
-// /**
-//  *
-//  * @param mobile
-//  * @returns {Promise<*>}
-//  * @constructor
-//  */
-// async function GetUserByMobile ( mobile = '' ) {
-//     let where = {
-//         mobile : mobile
-//     };
-//
-//     let obj = await usermodel.findOne( where );
-//
-//     return obj;
-// }
-
 /**
  *
  * @param mobile

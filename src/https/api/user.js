@@ -60,7 +60,7 @@ export function updateuseravatar ( mobile , avatar ) {
         avatar : avatar
     }
 
-    return axios.post( `${ prefix }/updateuseravatar` , obj );
+    return axios.put( `${ prefix }/updateuseravatar` , obj );
 }
 
 /**
@@ -78,7 +78,7 @@ export function updatepassword ( mobile = '' , oldpassword = '' , newpassword = 
         newpassword
     }
 
-    return axios.post( `${ prefix }/updatepassword` , obj );
+    return axios.put( `${ prefix }/updatepassword` , obj );
 }
 
 /**

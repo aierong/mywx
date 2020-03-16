@@ -26,7 +26,7 @@ async function Add ( postData ) {
 
     //构建数据
     var newmodel = new pyqpraisemodel( {
-        isdelete : false ,
+        iscancel : false ,
         pyq_id : pyq_id ,
 
         mobile ,
@@ -57,8 +57,55 @@ async function Add ( postData ) {
     return newobj;
 }
 
+/**
+ * 点赞检查
+ * @param ispraise
+ * @param mobile
+ * @param pyq_id
+ * @returns {Promise<boolean>}
+ * @constructor
+ */
+async function PraiseCheck ( ispraise , mobile , pyq_id ) {
+    let where = {
+        pyq_id : pyq_id ,
+        mobile : mobile ,
+        iscancel : false
+
+    }
+
+    let isexists = false;
+
+    isexists = await pyqpraisemodel.exists( where );
+
+    if ( ispraise ) {
+        // where = {
+        //
+        //     pyq_id : pyq_id ,
+        //     mobile : mobile ,
+        //     iscancel : false
+        //
+        // }
+
+        // 存在点赞记录，就不可以再点赞
+        if ( isexists ) {
+            return false;
+        }
+    }
+    else {
+        // isexists = await pyqpraisemodel.exists( where );
+
+        // 不存在未取消的点赞记录，不允许取消点赞
+        if ( !isexists ) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 module.exports = {
 
-    Add
+    Add ,
+    PraiseCheck
 
 }

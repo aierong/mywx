@@ -5,7 +5,9 @@
  功能: js脚本
  */
 
-
+// 引入 service 文件
+const pyqpraiseservice = require( '../service/pyqpraiseservice' )
+const common = require( '../common/common.js' )
 
 
 

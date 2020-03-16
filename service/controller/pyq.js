@@ -9,3 +9,30 @@
 const pyqservice = require( '../service/pyqservice' )
 const common = require( '../common/common.js' )
 
+module.exports = {
+    Add : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyq/add
+
+        let result = {
+
+            isok : true ,
+            errmsg : '' ,
+
+        }
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        let obj = await pyqservice.Add( postData );
+
+        if ( obj != null ) {
+            result.isok = true;
+        }
+        else {
+            result.isok = false;
+        }
+
+        ctx.body = result;
+    } ,
+}

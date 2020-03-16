@@ -78,21 +78,21 @@ async function AddUser ( postData ) {
     return newobj;
 }
 
-/**
- *
- * @param mobile
- * @returns {Promise<*>}
- * @constructor
- */
-async function GetUserByMobile ( mobile = '' ) {
-    let where = {
-        mobile : mobile
-    };
-
-    let obj = await usermodel.findOne( where );
-
-    return obj;
-}
+// /**
+//  *
+//  * @param mobile
+//  * @returns {Promise<*>}
+//  * @constructor
+//  */
+// async function GetUserByMobile ( mobile = '' ) {
+//     let where = {
+//         mobile : mobile
+//     };
+//
+//     let obj = await usermodel.findOne( where );
+//
+//     return obj;
+// }
 
 /**
  *
@@ -211,9 +211,19 @@ async function GetUserList () {
  * @returns {Promise<*>}
  * @constructor
  */
-async function GetUserByMobile ( mobile = '' ) {
-    //把密码排除了
-    let obj = await usermodel.findOne( { mobile : mobile } ).select( { password : 0 } );
+async function GetUserByMobile ( mobile = '' , isdisplaypassword = false ) {
+
+    let obj;
+    if ( isdisplaypassword ) {
+
+        obj = await usermodel.findOne( { mobile : mobile } );
+
+    }
+    else {
+        //把密码排除了
+        obj = await usermodel.findOne( { mobile : mobile } ).select( { password : 0 } );
+
+    }
 
     return obj;
 }
@@ -221,7 +231,7 @@ async function GetUserByMobile ( mobile = '' ) {
 module.exports = {
     IsExistsMobile ,
     AddUser ,
-    GetUserByMobile ,
+
     RunLogin ,
     UpdateUserAvatar ,
     UpdatePassWord ,

@@ -91,7 +91,7 @@ module.exports = {
 
         let { mobile , oldpassword , newpassword } = postData;
 
-        let _user = await userservice.GetUserByMobile( mobile );
+        let _user = await userservice.GetUserByMobile( mobile , true );
 
         if ( _user == null ) {
             result = {
@@ -153,9 +153,9 @@ module.exports = {
         let postData = ctx.request.body;
 
         let { mobile , password } = postData;
-        // console.log( postData )
+        console.log( 'Login' , postData )
 
-        let _user = await userservice.GetUserByMobile( mobile );
+        let _user = await userservice.GetUserByMobile( mobile , true );
 
         if ( _user == null ) {
             result = {
@@ -167,9 +167,9 @@ module.exports = {
         }
         else {
             //判断密码是否一样
-            // console.log( '_user' , _user )
+            console.log( '_user' , _user )
             let _EncryptPassWord = common.EncryptPassWord( password );
-            // console.log( '_EncryptPassWord' , _EncryptPassWord )
+            console.log( '_EncryptPassWord' , _EncryptPassWord )
             if ( _user.password != _EncryptPassWord ) {
                 result = {
 
@@ -205,7 +205,7 @@ module.exports = {
 
         let { mobile } = params;
 
-        let obj = await userservice.GetUserByMobile( mobile );
+        let obj = await userservice.GetUserByMobile( mobile , false );
 
         ctx.body = {
             data : obj

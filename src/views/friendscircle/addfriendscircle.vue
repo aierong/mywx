@@ -57,8 +57,8 @@
                 </draggable>
             </van-row>
         </van-cell>
-        <div style="color: green;text-align: right;">单击图片可放大预览,拖动图片可调整位置</div>
-        <div style="color: green;text-align: right;">{{ '最多发布' + maxpiccounts + '张图片' }}</div>
+        <div class="mytxt">单击图片可放大预览,拖动图片可调整位置</div>
+        <div class="mytxt">{{ '最多发布' + maxpiccounts + '张图片' }}</div>
     </div>
 </template>
 
@@ -90,21 +90,18 @@
         //数据模型
         data () {
             return {
-                //其实是可以做9张的，由于bmob容量限制，我这里控制3张
-                maxpiccounts : 3 ,
-                //单张图片容量限制 15KB
-                imgmax : 15360 ,
+                //做9张的
+                maxpiccounts : 9 ,
+                //单张图片容量限制 2M
+                imgmax : 2 * 1024 * 1024 ,
 
                 pyq : {
                     txt : '' ,
                     imglist : new Array() ,
 
-                    praiselist : new Array() ,
-                    bbslist : new Array() ,
                     mobile : '' ,
                     name : '' ,
                     avatar : '' ,
-                    date : '' ,
 
                 }
             }
@@ -185,7 +182,10 @@
                         let imgobj = {
 
                             imgdata : element.content ,
-                            size : element.file.size
+                            size : element.file.size ,
+                            filename : element.file.name ,
+                            filetype : element.file.type ,
+                            uploadimgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
 
                         }
 
@@ -198,7 +198,11 @@
                     let imgobj = {
 
                         imgdata : filedata.content ,
-                        size : filedata.file.size
+                        size : filedata.file.size,
+                        filename : filedata.file.name ,
+                        filetype : filedata.file.type ,
+                        uploadimgdate : dayjs().format( 'YYYY-MM-DD HH:mm:ss' )
+
 
                     }
 
@@ -219,17 +223,17 @@
                     return;
                 }
 
-                if ( this.RongLiang > constant.bmobapidatamax ) {
-                    this.$toast( "bmob限制api数据大小:" + constant.bmobapidatamax + ",请尽量整小图片!" )
-
-                    return;
-                }
+                // if ( this.RongLiang > constant.bmobapidatamax ) {
+                //     this.$toast( "bmob限制api数据大小:" + constant.bmobapidatamax + ",请尽量整小图片!" )
+                //
+                //     return;
+                // }
 
                 //把一些属性补齐
                 this.pyq.name = this.loginusername;
                 this.pyq.mobile = this.loginusermobile;
                 this.pyq.avatar = this.loginuseravatar;
-                this.pyq.date = dayjs().format( 'YYYY-MM-DD HH:mm:ss' );
+                // this.pyq.date = dayjs().format( 'YYYY-MM-DD HH:mm:ss' );
 
                 this.$toast.loading( {
                     duration : 0 ,
@@ -295,7 +299,6 @@
         } ,
         //生命周期(mounted)
         mounted () {
-
         } ,
     }
 </script>

@@ -240,45 +240,6 @@
 
                 return;
 
-                // if ( this.IsCZ ) {
-                //     //改变了，要保存一下图片，再返回
-                //
-                //     if ( this.imgcounts > this.maxcounts ) {
-                //         this.$toast( "个人最多" + this.maxcounts + "张图片,请清除一些!" )
-                //
-                //         return;
-                //     }
-                //
-                //     //constant
-                //     if ( this.RongLiang > this.allimgmax ) {
-                //         this.$toast( "云数据库bmob限制每次api数据大小:" + this.allimgmax + ",请尽量使用小图片!" )
-                //
-                //         return;
-                //     }
-                //
-                //     this.$toast.loading( {
-                //         duration : 0 ,
-                //         forbidClick : true ,
-                //         loadingType : "circular" ,
-                //         message : "稍等..." ,
-                //         //显示背景蒙层
-                //         mask : true
-                //     } )
-                //
-                //     userphotomethod.updateuserphoto(
-                //         this.imgid ,
-                //         this.showFileData ,
-                //         this.issharephoto ).then( ( result ) => {
-                //         console.log( 'result' , result )
-                //         this.$toast.clear()
-                //         this.$router.push( '/me' );
-                //     } )
-                //
-                // }
-                // else {
-                //     this.$router.push( '/me' );
-                // }
-
             } ,
             onbeforeRead ( files ) {
                 // console.log( 'onbeforeRead' , files )

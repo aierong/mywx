@@ -54,34 +54,35 @@ async function Add ( postData ) {
     return newobj;
 }
 
-
-async function Delete ( postData ) {
-    //数据解构出来
-    let { mobile , avatar , name , txt , imglist } = postData;
+/**
+ * 删除朋友圈
+ * @param _id
+ * @returns {Promise<null>}
+ * @constructor
+ */
+async function Delete ( _id ) {
 
     let nowstr = common.GetNowString();
 
-    //构建数据
-    var newmodel = new pyqmodel( {
+    let where = {
+        _id : _id
+    };
 
-        mobile ,
-        avatar ,
-        name ,
-        txt ,
-        imglist ,
-
-        bbscounts : 0 ,
-        praisecounts : 0 ,
-        // 最新时间
-        adddate : nowstr ,
-        date : nowstr ,
-        // 搞一个guid
-        ids : common.GetGuid()
-    } );
+    // pyqmodel.findOneAndUpdate( where , {
+    //     isdelete : true ,
+    //     deletedate : nowstr
+    // } , {
+    //     new : true
+    // } )
 
     var result = await Promise.all( [
-        newmodel.save() ,
-        log.AddRunLog( mobile , 'AddPYQ' , `用户${ mobile }(${ name })发布一个朋友圈` )
+        pyqmodel.findOneAndUpdate( where , {
+            isdelete : true ,
+            deletedate : nowstr
+        } , {
+            new : true
+        } ) ,
+        log.AddRunLog( mobile , 'DeletePYQ' , `用户${ mobile }(${ name })删除一个朋友圈 _id:${ _id }` )
     ] );
 
     let newobj = null;
@@ -93,9 +94,8 @@ async function Delete ( postData ) {
     return newobj;
 }
 
-
 module.exports = {
 
     Add ,
-
+    Delete
 }

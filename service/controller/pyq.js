@@ -35,4 +35,31 @@ module.exports = {
 
         ctx.body = result;
     } ,
+    Delete : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyq/delete
+
+        let result = {
+
+            isok : true ,
+            errmsg : '' ,
+
+        }
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        let { _id } = postData;
+
+        let obj = await pyqservice.Delete( _id );
+
+        if ( obj != null ) {
+            result.isok = true;
+        }
+        else {
+            result.isok = false;
+        }
+
+        ctx.body = result;
+    } ,
 }

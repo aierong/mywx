@@ -15,5 +15,6 @@ const pyqcontroller = require( '../controller/pyq' )
 let prefix = '/api/pyq';
 
 router.post( `${ prefix }/add` , pyqcontroller.Add )
+router.post( `${ prefix }/delete` , pyqcontroller.Delete )
 
 module.exports = router

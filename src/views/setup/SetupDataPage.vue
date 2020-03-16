@@ -59,17 +59,7 @@
                 <span class="cellspantitleclass">插件</span>
             </template>
         </van-cell>
-        <!--        <van-cell is-link-->
-        <!--                  @click="updatepwdClick">-->
-        <!--            <template slot="title">-->
-        <!--                <svg class="icon"-->
-        <!--                     aria-hidden="true"-->
-        <!--                     style="font-size:20px;">-->
-        <!--                    <use xlink:href="#icon-shezhi"></use>-->
-        <!--                </svg>-->
-        <!--                <span class="cellspantitleclass">修改密码</span>-->
-        <!--            </template>-->
-        <!--        </van-cell>-->
+
         <van-cell>
             <template slot="title">
                 <svg class="icon"
@@ -97,17 +87,7 @@
                 <use xlink:href="#icon-tuichu"></use>
             </svg>
         </van-button>
-        <!--        <van-cell is-link-->
-        <!--                  @click="exitClick">-->
-        <!--            <template slot="title">-->
-        <!--                <svg class="icon"-->
-        <!--                     aria-hidden="true"-->
-        <!--                     style="font-size:20px;">-->
-        <!--                    <use xlink:href="#icon-tuichu"></use>-->
-        <!--                </svg>-->
-        <!--                <span class="cellspantitleclass">退出</span>-->
-        <!--            </template>-->
-        <!--        </van-cell>-->
+
         <van-dialog :before-close="beforeClose"
                     show-cancel-button
                     v-model="showdialog">

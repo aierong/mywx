@@ -114,8 +114,7 @@
 
                 //最多9个图片
                 maxcounts : 9 ,
-                //所有图片容量大小限制
-                // allimgmax : constant.bmobapidatamax ,
+
                 //单张图片容量限制 2M
                 imgmax : 2 * 1024 * 1024 ,
             }
@@ -152,56 +151,6 @@
                     this.isshowloading = false;
                     this.$toast.clear()
                 } )
-
-                // userphotomethod.getuserphotobymobile( _mobile ).then( ( result ) => {
-                //     console.log( result )
-                //
-                //     //分2种情况，一种是存在数据，一种是不存在数据
-                //     //不存在数据，我们得初始化一份数据
-                //     if ( !result.isexists ) {
-                //         //不存在数据，我们初始化一下
-                //         let newuserphoto = {
-                //             mobile : _mobile ,
-                //
-                //             //图片列表 先给一个空数组
-                //             imgs : new Array() ,
-                //             isshare : false
-                //         }
-                //
-                //         userphotomethod.adduserphoto( newuserphoto ).then( ( addresult ) => {
-                //             console.log( 'addresult' , addresult )
-                //
-                //             this.showFileData = new Array();
-                //             this.issharephoto = false;
-                //
-                //             //记录一下id，后面更新要用
-                //             if ( addresult != null ) {
-                //                 this.imgid = addresult.objectId;
-                //             }
-                //             else {
-                //                 this.imgid = '';
-                //             }
-                //
-                //             this.isshowloading = false;
-                //             this.$toast.clear()
-                //         } )
-                //
-                //     }
-                //     else {
-                //         //存在数据，有可能是没有 相册图片的
-                //
-                //         let obj = result;
-                //         let _data = obj.data;
-                //         this.showFileData = _data.imgs; //这个有可能是空数组
-                //         this.issharephoto = _data.isshare;
-                //
-                //         //记录一下id，后面更新要用
-                //         this.imgid = _data.objectId;
-                //
-                //         this.isshowloading = false;
-                //         this.$toast.clear()
-                //     }
-                // } );
 
             } ,
             savepic () {

@@ -5,7 +5,15 @@
  功能: js脚本
  */
 
+// require( 'koa-router' )()是引入并且初始化 ,等同于下面2句
+// const Router = require('koa-router')
+// const router = new Router()
+const router = require( 'koa-router' )()
 
+const pyqcontroller = require( '../controller/pyq' )
 
+let prefix = '/api/pyq';
 
+router.post( `${ prefix }/add` , pyqcontroller.Add )
 
+module.exports = router

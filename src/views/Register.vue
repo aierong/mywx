@@ -77,6 +77,9 @@
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
+
+    import * as util from '@/common/util/util.js'
+
     //导入
     import { mix } from "@/mixin/index.js"
 
@@ -221,7 +224,9 @@
                     }
 
                     // this.$toast( "ok" )
+                    let registerUser = {
 
+                    }
                     let status = await userapi.adduser( this.userinfo );
 
                     if ( !status.data ) {

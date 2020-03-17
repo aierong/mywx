@@ -12,7 +12,10 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var PyqBbsSchema = mongoose.Schema( {
 
     //外键id
-    pyq_id : ObjectId ,
+    pyq_id : {
+        required : true ,
+        type : ObjectId
+    } ,
     //是删除
     isdelete : {
         type : Boolean ,

@@ -10,7 +10,10 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 //定义Schema
 var PyqPraiseSchema = mongoose.Schema( {
     //外键id
-    pyq_id : ObjectId ,
+    pyq_id : {
+        required : true ,
+        type : ObjectId
+    } ,
     //是取消点赞  是删除
     iscancel : {
         type : Boolean ,

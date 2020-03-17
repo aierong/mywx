@@ -42,9 +42,9 @@
 
 <!-- js脚本代码片段 -->
 <script>
-    import {
-        mapMutations
-    } from 'vuex'
+    import { mapMutations } from 'vuex'
+
+    import * as util from '@/common/util/util.js'
 
     // import * as commonmethod from '@/common/bmobapi/users.js'
     import * as userapi from '@/https/api/user.js'
@@ -90,7 +90,7 @@
                     let _mobile = this.userinfo.mobile;
                     let _password = this.userinfo.password;
 
-                    let obj = await userapi.login( _mobile , _password );
+                    let obj = await userapi.login( _mobile , util.EncryptPassWord( _password ) );
                     let result = obj.data;
 
                     if ( !result.isok ) {

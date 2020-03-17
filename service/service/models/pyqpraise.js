@@ -57,7 +57,6 @@ var PyqPraiseSchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let pyqpraisemodel = mongoose.model( 'pyqpraise' , PyqPraiseSchema , 'pyqpraise' );
-module.exports = pyqpraisemodel;
+module.exports = mongoose.model( 'pyqpraise' , PyqPraiseSchema , 'pyqpraise' );
 
 

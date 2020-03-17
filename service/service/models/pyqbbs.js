@@ -64,7 +64,7 @@ var PyqBbsSchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let pyqbbsmodel = mongoose.model( 'pyqbbs' , PyqBbsSchema , 'pyqbbs' );
-module.exports = pyqbbsmodel;
+
+module.exports = mongoose.model( 'pyqbbs' , PyqBbsSchema , 'pyqbbs' );
 
 

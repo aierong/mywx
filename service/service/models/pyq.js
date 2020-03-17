@@ -77,7 +77,6 @@ var PyqSchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let pyqmodel = mongoose.model( 'pyq' , PyqSchema , 'pyq' );
-module.exports = pyqmodel;
+module.exports = mongoose.model( 'pyq' , PyqSchema , 'pyq' );
 
 

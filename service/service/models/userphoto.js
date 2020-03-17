@@ -43,7 +43,6 @@ var UserPhotoSchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let userphotomodel = mongoose.model( 'userphoto' , UserPhotoSchema , 'userphoto' );
-module.exports = userphotomodel;
+module.exports = mongoose.model( 'userphoto' , UserPhotoSchema , 'userphoto' );
 
 

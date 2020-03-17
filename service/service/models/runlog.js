@@ -45,5 +45,4 @@ var RunLogSchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let runlogmodel = mongoose.model( 'runlog' , RunLogSchema , 'runlog' );
-module.exports = runlogmodel;
+module.exports = mongoose.model( 'runlog' , RunLogSchema , 'runlog' );

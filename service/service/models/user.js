@@ -59,5 +59,4 @@ var kittySchema = mongoose.Schema( {
     versionKey : false
 } );
 
-let usermodel = mongoose.model( 'user' , kittySchema , 'user' );
-module.exports = usermodel;
+module.exports = mongoose.model( 'user' , kittySchema , 'user' );

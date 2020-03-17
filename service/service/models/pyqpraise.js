@@ -27,7 +27,8 @@ var PyqPraiseSchema = mongoose.Schema( {
 
     mobile : {
         type : String ,
-        default : ''
+        default : '' ,
+        required : true
     } ,
 
     name : {

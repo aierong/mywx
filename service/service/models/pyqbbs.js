@@ -29,7 +29,8 @@ var PyqBbsSchema = mongoose.Schema( {
 
     mobile : {
         type : String ,
-        default : ''
+        default : '' ,
+        required : true
     } ,
 
     name : {
@@ -63,7 +64,6 @@ var PyqBbsSchema = mongoose.Schema( {
     //versionKey =false 禁用版本，要不每次插入数据都带一个__v
     versionKey : false
 } );
-
 
 module.exports = mongoose.model( 'pyqbbs' , PyqBbsSchema , 'pyqbbs' );
 

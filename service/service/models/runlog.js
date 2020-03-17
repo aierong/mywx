@@ -11,7 +11,8 @@ var mongoose = require( 'mongoose' );
 var RunLogSchema = mongoose.Schema( {
     runtype : {
         type : String ,
-        default : 'login'
+        default : 'login' ,
+        required : true
     } ,
     ids : {
         type : String ,
@@ -20,6 +21,8 @@ var RunLogSchema = mongoose.Schema( {
     mobile : {
 
         type : String ,
+        default : '' ,
+        required : true
 
     } ,
     remark : {

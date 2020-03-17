@@ -30,7 +30,8 @@ var PyqSchema = mongoose.Schema( {
 
     mobile : {
         type : String ,
-        default : ''
+        default : '' ,
+        required : true
     } ,
 
     name : {

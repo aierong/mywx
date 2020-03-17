@@ -114,6 +114,8 @@
 <script>
     import { mapMutations } from 'vuex'
 
+    import * as util from '@/common/util/util.js'
+
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
 
@@ -152,9 +154,7 @@
             ] ) ,
             exitClick () {
 
-                this.$dialog.confirm( {
-                    message : '确定退出微信吗?'
-                } ).then( () => {
+                this.$dialog.confirm( { message : '确定退出微信吗?' } ).then( () => {
                     // 点击确定按钮
 
                     this.exitsystem( this.loginusermobile );
@@ -227,7 +227,10 @@
 
                     ;( async () => {
 
-                        let obj = await userapi.updatepassword( this.loginusermobile , this.userinfo.passwordold , this.userinfo.password );
+                        let obj = await userapi.updatepassword( this.loginusermobile ,
+                            util.EncryptPassWord( this.userinfo.passwordold ) ,
+                            util.EncryptPassWord( this.userinfo.password ) );
+
                         let result = obj.data;
 
                         if ( result.isok ) {

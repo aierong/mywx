@@ -232,7 +232,8 @@
                         name : this.userinfo.name ,
                         email : this.userinfo.email
                     }
-                    let status = await userapi.adduser( this.userinfo );
+
+                    let status = await userapi.adduser( registerUser );
 
                     if ( !status.data ) {
                         this.$toast( "注册失败,稍后再试" )

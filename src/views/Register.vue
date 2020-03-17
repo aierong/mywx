@@ -225,7 +225,12 @@
 
                     // this.$toast( "ok" )
                     let registerUser = {
-
+                        mobile : this.userinfo.mobile ,
+                        avatar : this.userinfo.avatar ,
+                        // 密码加密一下
+                        password : util.EncryptPassWord( this.userinfo.password ) ,
+                        name : this.userinfo.name ,
+                        email : this.userinfo.email
                     }
                     let status = await userapi.adduser( this.userinfo );
 

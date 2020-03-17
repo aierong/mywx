@@ -78,13 +78,6 @@ async function PraiseCheck ( ispraise , mobile , pyq_id ) {
     isexists = await pyqpraisemodel.exists( where );
 
     if ( ispraise ) {
-        // where = {
-        //
-        //     pyq_id : pyq_id ,
-        //     mobile : mobile ,
-        //     iscancel : false
-        //
-        // }
 
         // 存在点赞记录，就不可以再点赞
         if ( isexists ) {

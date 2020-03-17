@@ -13,7 +13,7 @@
         </van-nav-bar>
         <br>
         <br>
-        <div v-if="!isshowloading">
+        <div>
             <van-cell size="large">
                 <template slot="title">
                     <svg class="icon"
@@ -110,7 +110,7 @@ js脚本代码片段
                 } ,
                 showFileData : [] ,
 
-                isshowloading : true ,
+                // isshowloading : true ,
 
                 issharephoto : false
             }
@@ -130,14 +130,14 @@ js脚本代码片段
                 // this.$router.push( '/contacts' );
             } ,
             getuserinfo () {
-                this.$toast.loading( {
-                    duration : 0 ,
-                    forbidClick : true ,
-                    loadingType : "spinner" ,
-                    message : "加油搞呀..." ,
-                    //显示背景蒙层
-                    mask : true
-                } )
+                // this.$toast.loading( {
+                //     duration : 0 ,
+                //     forbidClick : true ,
+                //     loadingType : "spinner" ,
+                //     message : "加油搞呀..." ,
+                //     //显示背景蒙层
+                //     mask : true
+                // } )
 
                 let _mobile = this.maninfo.mobile;
                 userapi.getuserbymobile( _mobile ).then( ( res ) => {
@@ -167,13 +167,13 @@ js脚本代码片段
                                 }
                             }
 
-                            this.isshowloading = false;
-                            this.$toast.clear()
+                            // this.isshowloading = false;
+                            // this.$toast.clear()
                         } )
                     }
                     else {
-                        this.isshowloading = false;
-                        this.$toast.clear()
+                        // this.isshowloading = false;
+                        // this.$toast.clear()
                     }
 
                 } )

@@ -16,7 +16,7 @@
 
                 <van-uploader :after-read="onAfterRead"
                               :before-read="onbeforeRead"
-                              accept="image/gif, image/jpeg"
+                              accept="image/gif,image/jpeg,image/png"
                               :max-count="maxcounts"
                               multiple>
                     <van-icon name="photograph"/>

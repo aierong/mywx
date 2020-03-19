@@ -32,7 +32,7 @@
             <template slot="title">
                 <van-uploader :after-read="onAfterRead"
                               :before-read="onbeforeRead"
-                              accept="image/gif, image/jpeg"
+                              accept="image/gif,image/jpeg,image/png"
                               multiple>
                     <van-icon name="photograph"/>
                 </van-uploader>

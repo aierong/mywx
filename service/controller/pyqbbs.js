@@ -9,10 +9,9 @@
 const pyqbbsservice = require( '../service/pyqbbsservice' )
 const common = require( '../common/common.js' )
 
-
 module.exports = {
     Add : async ( ctx , next ) => {
-        //  http://localhost:3001/api/pyqpraise/add
+        //  http://localhost:3001/api/pyqbbs/add
 
         let result = {
 
@@ -25,37 +24,57 @@ module.exports = {
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
 
-        let { mobile , pyq_id } = postData;
-        let ischeck = await pyqpraiseservice.PraiseCheck( true , mobile , pyq_id );
+        let obj = await pyqbbsservice.Add( postData );
 
-        if ( !ischeck ) {
-            //检查不合格
+        if ( obj != null ) {
+            result = {
+
+                isok : true ,
+                errmsg : '' ,
+
+            }
+        }
+        else {
             result = {
 
                 isok : false ,
-                errmsg : '不允许点赞' ,
+                errmsg : '评论失败' ,
 
             }
+        }
+
+        ctx.body = result;
+    } ,
+    Delete : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyqbbs/delete
+
+        let result = {
+
+            isok : true ,
+            errmsg : '' ,
 
         }
-        else {
-            let obj = await pyqpraiseservice.Add( postData );
 
-            if ( obj != null ) {
-                result = {
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
 
-                    isok : true ,
-                    errmsg : '' ,
+        let obj = await pyqbbsservice.Delete( postData );
 
-                }
+        if ( obj != null ) {
+            result = {
+
+                isok : true ,
+                errmsg : '' ,
+
             }
-            else {
-                result = {
+        }
+        else {
+            result = {
 
-                    isok : false ,
-                    errmsg : '点赞失败' ,
+                isok : false ,
+                errmsg : '删除评论失败' ,
 
-                }
             }
         }
 

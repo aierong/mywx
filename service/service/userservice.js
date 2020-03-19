@@ -92,12 +92,14 @@ async function RunLogin ( mobile = '' ) {
         mobile : mobile
     };
 
+    let now = new Date();
+
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , [
             {
                 $set : {
                     logintimes : { $add : [ { $ifNull : [ "$logintimes" , 0 ] } , 1 ] } ,
-                    lastlogindate : common.GetNowString()
+                    lastlogindate : common.GetNowString( now )
                 }
             }
         ] , {
@@ -161,10 +163,12 @@ async function UpdatePassWord ( mobile = '' , newpassword = '' ) {
         mobile : mobile
     };
 
+    let now = new Date();
+
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , {
             password : common.EncryptPassWord( newpassword ) ,
-            updatedate : common.GetNowString()
+            updatedate : common.GetNowString( now )
 
         } , {
             new : true

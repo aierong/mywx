@@ -42,7 +42,6 @@ var PyqSchema = mongoose.Schema( {
         type : String ,
         default : ''
     } ,
-
     txt : {
         type : String ,
         default : ''

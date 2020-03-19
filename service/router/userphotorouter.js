@@ -18,5 +18,3 @@ router.get( `${ prefix }/getuserphoto/:mobile` , userphotocontroller.GetUserPhot
 router.post( `${ prefix }/save` , userphotocontroller.Save )
 
 module.exports = router
-
-

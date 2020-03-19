@@ -60,6 +60,11 @@ module.exports = {
 
         ctx.body = result;
     } ,
+    Delete : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyqpraise/delete
+
+
+    } ,
 }
 
 

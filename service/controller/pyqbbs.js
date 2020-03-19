@@ -5,7 +5,60 @@
  功能: js脚本
  */
 
+// 引入 service 文件
+const pyqbbsservice = require( '../service/pyqbbsservice' )
+const common = require( '../common/common.js' )
 
 
+module.exports = {
+    Add : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyqpraise/add
 
+        let result = {
 
+            isok : true ,
+            errmsg : '' ,
+
+        }
+
+        //先接收post的参数
+        //接收到post数据 postData是一个对象
+        let postData = ctx.request.body;
+
+        let { mobile , pyq_id } = postData;
+        let ischeck = await pyqpraiseservice.PraiseCheck( true , mobile , pyq_id );
+
+        if ( !ischeck ) {
+            //检查不合格
+            result = {
+
+                isok : false ,
+                errmsg : '不允许点赞' ,
+
+            }
+
+        }
+        else {
+            let obj = await pyqpraiseservice.Add( postData );
+
+            if ( obj != null ) {
+                result = {
+
+                    isok : true ,
+                    errmsg : '' ,
+
+                }
+            }
+            else {
+                result = {
+
+                    isok : false ,
+                    errmsg : '点赞失败' ,
+
+                }
+            }
+        }
+
+        ctx.body = result;
+    } ,
+}

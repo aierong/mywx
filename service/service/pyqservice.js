@@ -19,6 +19,7 @@ const log = require( '../common/log' )
 async function Add ( postData ) {
     //数据解构出来
     let { mobile , avatar , name , txt , imglist } = postData;
+
     let now = new Date();
     let nowstr = common.GetNowString( now );
 
@@ -64,7 +65,8 @@ async function Add ( postData ) {
  */
 async function Delete ( _id ) {
 
-    let nowstr = common.GetNowString();
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
 
     let where = {
         _id : _id
@@ -105,7 +107,8 @@ async function Delete ( _id ) {
  */
 async function UpdatePraiseCount ( _id = '' , num = 1 ) {
 
-    let nowstr = common.GetNowString();
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
 
     let where = {
         _id : _id

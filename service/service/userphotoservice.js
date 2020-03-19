@@ -61,12 +61,13 @@ async function Save ( mobile , isshare , imgs ) {
     };
 
     // console.log( 'Save' , mobile , isshare , imgs )
+    let now = new Date();
 
     var result = await Promise.all( [
         userphotomodel.findOneAndUpdate( where , {
             isshare : isshare ,
             imgs : imgs ,
-            updatedate : common.GetNowString()
+            updatedate : common.GetNowString( now )
 
         } , {
             new : true

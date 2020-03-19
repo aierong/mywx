@@ -48,11 +48,24 @@ function EncryptPassWord ( str = '' ) {
  * @returns {string}
  * @constructor
  */
-function GetNowString ( formatstring = 'YYYY-MM-DD HH:mm:ss' ) {
+function GetNowString ( now , formatstring = 'YYYY-MM-DD HH:mm:ss' ) {
 
-    let now = dayjs();
+    let _now = dayjs( now );
 
-    return now.format( formatstring );
+    return _now.format( formatstring );
+}
+
+/**
+ * 13位的时间戳
+ * @param now
+ * @returns {number}
+ * @constructor
+ */
+function GetNowUnix ( now ) {
+    let _now = dayjs( now );
+
+    // .valueOf()  13位的时间戳
+    return _now.valueOf();
 }
 
 /**
@@ -69,6 +82,7 @@ function GetGuid () {
 module.exports = {
 
     GetNowString ,
+    GetNowUnix ,
     GetGuid ,
     EncryptString ,
     EncryptPassWord ,

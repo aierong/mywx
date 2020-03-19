@@ -19,8 +19,8 @@ const log = require( '../common/log' )
 async function Add ( postData ) {
     //数据解构出来
     let { mobile , avatar , name , txt , imglist } = postData;
-
-    let nowstr = common.GetNowString();
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
 
     //构建数据
     var newmodel = new pyqmodel( {

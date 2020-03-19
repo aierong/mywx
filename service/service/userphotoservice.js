@@ -18,6 +18,8 @@ const log = require( '../common/log' )
  */
 async function Init ( mobile ) {
 
+    let now = new Date();
+
     //构建数据
     var newdata = new userphotomodel( {
 
@@ -26,7 +28,7 @@ async function Init ( mobile ) {
         isshare : false ,
         imgs : [] ,
         // 最新时间
-        adddate : common.GetNowString() ,
+        adddate : common.GetNowString( now ) ,
         // 搞一个guid
         ids : common.GetGuid()
     } );

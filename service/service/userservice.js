@@ -43,6 +43,8 @@ async function AddUser ( postData ) {
     //密码要再次加密一次
     password = common.EncryptPassWord( password );
 
+    let now = new Date();
+
     //构建数据
     var newuser = new usermodel( {
 
@@ -55,7 +57,7 @@ async function AddUser ( postData ) {
         logintimes : 0 ,
 
         // 最新时间
-        adddate : common.GetNowString() ,
+        adddate : common.GetNowString( now ) ,
         // 搞一个guid
         ids : common.GetGuid()
     } );

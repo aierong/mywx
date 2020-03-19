@@ -22,7 +22,8 @@ async function Add ( postData ) {
     //数据解构出来
     let { mobile , avatar , name , pyq_id } = postData;
 
-    let nowstr = common.GetNowString();
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
 
     //构建数据
     var newmodel = new pyqpraisemodel( {
@@ -68,7 +69,8 @@ async function Delete ( postData ) {
     //数据解构出来
     let { pyq_id , name , mobile } = postData;
 
-    let nowstr = common.GetNowString();
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
 
     let where = {
         pyq_id : pyq_id ,

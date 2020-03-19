@@ -37,6 +37,7 @@ async function Add ( postData ) {
         praisecounts : 0 ,
 
         // 最新时间
+        addunix : common.GetNowUnix( now ) ,
         adddate : nowstr ,
         date : nowstr ,
         // 搞一个guid

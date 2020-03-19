@@ -59,7 +59,11 @@ var PyqSchema = mongoose.Schema( {
         min : 0 ,
         default : 0
     } ,
+    //Unix 时间戳 13位
+    addunix : {
+        type : Number ,
 
+    } ,
     adddate : {
         type : String ,
         default : ''

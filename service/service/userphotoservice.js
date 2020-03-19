@@ -61,7 +61,6 @@ async function Save ( mobile , isshare , imgs ) {
         mobile : mobile
     };
 
-    // console.log( 'Save' , mobile , isshare , imgs )
     let now = new Date();
 
     var result = await Promise.all( [
@@ -69,7 +68,6 @@ async function Save ( mobile , isshare , imgs ) {
             isshare : isshare ,
             imgs : imgs ,
             updatedate : common.GetNowString( now )
-
         } , {
             new : true
         } ) ,

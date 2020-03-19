@@ -10,6 +10,14 @@ const pyqbbsmodel = require( './models/pyqbbs' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
+const pyqservice = require( './pyqservice.js' )
+
+/**
+ * 评论
+ * @param postData
+ * @returns {Promise<null>}
+ * @constructor
+ */
 async function Add ( postData ) {
     //数据解构出来
     let { mobile , avatar , name , pyq_id , txt } = postData;
@@ -39,8 +47,8 @@ async function Add ( postData ) {
     var result = await Promise.all( [
 
         newmodel.save() ,
-        pyqservice.UpdatePraiseCount( pyq_id , 1 ) ,
-        log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` )
+        pyqservice.UpdateBbsCount( pyq_id , 1 ) ,
+        log.AddRunLog( mobile , 'AddPyqBbs' , `用户${ mobile }(${ name })评论一个朋友圈 朋友圈_id:${ pyq_id }` )
 
     ] );
 
@@ -51,4 +59,10 @@ async function Add ( postData ) {
     }
 
     return newobj;
+}
+
+module.exports = {
+
+    Add ,
+
 }

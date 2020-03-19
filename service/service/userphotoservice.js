@@ -77,7 +77,7 @@ async function Save ( mobile , isshare , imgs ) {
         } ) ,
         log.AddRunLog( mobile ,
             'SaveUserPhoto' ,
-            `${ mobile }保存用户相册(${ issharetxt }),${ imgcounts }个照片,` )
+            `${ mobile }保存用户相册(${ issharetxt }),${ imgcounts }个照片` )
     ] );
 
     let newobj = null;

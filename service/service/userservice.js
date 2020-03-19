@@ -127,10 +127,12 @@ async function UpdateUserAvatar ( mobile = '' , avatar = '' ) {
         mobile : mobile
     };
 
+    let now = new Date();
+
     var result = await Promise.all( [
         usermodel.findOneAndUpdate( where , {
             avatar : avatar ,
-            updatedate : common.GetNowString()
+            updatedate : common.GetNowString( now )
 
         } , {
             new : true

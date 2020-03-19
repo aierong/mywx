@@ -20,6 +20,7 @@ const common = require( '../common/common.js' )
 async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
 
     // console.log( 'common' , common )
+    let now = new Date();
 
     //构建数据
     var newmodel = new runlogmodel( {
@@ -31,7 +32,7 @@ async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
         ids : common.GetGuid() ,
 
         // 最新时间
-        adddate : common.GetNowString() ,
+        adddate : common.GetNowString( now ) ,
 
     } );
 

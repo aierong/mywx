@@ -26,6 +26,11 @@ var UserPhotoSchema = mongoose.Schema( {
         type : Array ,
         default : []
     } ,
+    //Unix 时间戳 13位
+    addunix : {
+        type : Number ,
+
+    } ,
     adddate : {
         type : String ,
         default : ''

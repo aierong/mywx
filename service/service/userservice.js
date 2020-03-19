@@ -57,6 +57,7 @@ async function AddUser ( postData ) {
         logintimes : 0 ,
 
         // 最新时间
+        addunix : common.GetNowUnix( now ) ,
         adddate : common.GetNowString( now ) ,
         // 搞一个guid
         ids : common.GetGuid()
@@ -72,10 +73,6 @@ async function AddUser ( postData ) {
     if ( result != null && result.length >= 2 ) {
         newobj = result[ 0 ];
     }
-
-    //let newobj = await newuser.save();
-
-    // console.log( 'newobj' , newobj )
 
     return newobj;
 }

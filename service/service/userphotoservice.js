@@ -28,6 +28,7 @@ async function Init ( mobile ) {
         isshare : false ,
         imgs : [] ,
         // 最新时间
+        addunix : common.GetNowUnix( now ) ,
         adddate : common.GetNowString( now ) ,
         // 搞一个guid
         ids : common.GetGuid()

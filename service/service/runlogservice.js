@@ -32,6 +32,7 @@ async function AddRunLog ( mobile = '' , runtype = '' , remark = '' ) {
         ids : common.GetGuid() ,
 
         // 最新时间
+        addunix : common.GetNowUnix( now ) ,
         adddate : common.GetNowString( now ) ,
 
     } );

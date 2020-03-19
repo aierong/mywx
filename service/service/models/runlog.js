@@ -29,7 +29,11 @@ var RunLogSchema = mongoose.Schema( {
         type : String ,
         default : ''
     } ,
+    //Unix 时间戳 13位
+    addunix : {
+        type : Number ,
 
+    } ,
     adddate : {
         type : String ,
         default : ''

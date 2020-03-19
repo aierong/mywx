@@ -63,6 +63,10 @@ async function Save ( mobile , isshare , imgs ) {
 
     let now = new Date();
 
+    let imgcounts = imgs != null ? imgs.length : 0;
+
+    let issharetxt = isshare ? '是共享' : '不共享';
+
     var result = await Promise.all( [
         userphotomodel.findOneAndUpdate( where , {
             isshare : isshare ,
@@ -71,7 +75,9 @@ async function Save ( mobile , isshare , imgs ) {
         } , {
             new : true
         } ) ,
-        log.AddRunLog( mobile , 'SaveUserPhoto' , `${ mobile }保存用户相册` )
+        log.AddRunLog( mobile ,
+            'SaveUserPhoto' ,
+            `${ mobile }保存用户相册(${ issharetxt }),${ imgcounts }个照片,` )
     ] );
 
     let newobj = null;

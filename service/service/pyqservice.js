@@ -129,10 +129,41 @@ async function UpdatePraiseCount ( _id = '' , num = 1 ) {
     return newobj;
 }
 
+/**
+ * 修改bbs数量
+ * @param _id
+ * @param num
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function UpdateBbsCount ( _id = '' , num = 1 ) {
+
+    let now = new Date();
+    let nowstr = common.GetNowString( now );
+
+    let where = {
+        _id : _id
+    };
+
+    let newobj = await pyqmodel.findOneAndUpdate( where , [
+        {
+            $set : {
+                bbscounts : { $add : [ { $ifNull : [ "$bbscounts" , 0 ] } , num ] } ,
+                updatedate : nowstr
+            }
+        }
+    ] , {
+        new : true
+    } );
+
+    return newobj;
+}
+
 module.exports = {
 
     Add ,
     Delete ,
-    UpdatePraiseCount
+    UpdatePraiseCount ,
+    UpdateBbsCount
 
 }

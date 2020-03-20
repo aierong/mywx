@@ -92,7 +92,8 @@
                                                               :color="getpraisecolor(item.praiselist)"
                                                               name="thumb-circle-o"
                                                               @click="praiseClick(item.objectId,index)"/>
-                                                    <span>{{ getpraisecounttxt(item.praiselist) }}</span>
+                                                    <!--                                                    <span>{{ getpraisecounttxt(item.praiselist) }}</span>-->
+                                                    <span>{{ getpraisecounttxt( item.praisecounts ) }}</span>
                                                 </van-col>
                                                 <van-col span="12">
                                                     <div style="text-align: right;">
@@ -271,10 +272,25 @@
 
                 return "";
             } ,
+            // //点赞数量
+            // getpraisecounttxt ( praiselist ) {
+            //     if ( praiselist != null && praiselist.length > 0 ) {
+            //         let counts = praiselist.length;
+            //
+            //         //大于99
+            //         if ( counts > 99 ) {
+            //             return "99+";
+            //         }
+            //         else {
+            //             return counts;
+            //         }
+            //     }
+            //
+            //     return "";
+            // } ,
             //点赞数量
-            getpraisecounttxt ( praiselist ) {
-                if ( praiselist != null && praiselist.length > 0 ) {
-                    let counts = praiselist.length;
+            getpraisecounttxt ( counts ) {
+                if ( counts > 0 ) {
 
                     //大于99
                     if ( counts > 99 ) {
@@ -388,7 +404,6 @@
 
                 } )();
             } ,
-
             //图片单击预览
             imgclick ( index , imgs ) {
                 let arrimgs = [];

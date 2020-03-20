@@ -59,6 +59,33 @@ async function Add ( postData ) {
 }
 
 /**
+ * 检查删除
+ * @param _id
+ * @param mobile
+ * @returns {Promise<void>}
+ * @constructor
+ */
+async function CheckDelete ( _id , mobile ) {
+
+    let where = {
+        _id : _id
+    }
+
+    let obj = await pyqmodel.findOne( where );
+
+    if ( obj == null ) {
+        return "ID错误";
+    }
+
+    if ( obj.mobile == mobile ) {
+        return "";
+    }
+    else {
+        return "不是发表人不允许删除"
+    }
+}
+
+/**
  * 删除朋友圈
  * @param _id
  * @returns {Promise<null>}
@@ -72,13 +99,6 @@ async function Delete ( _id ) {
     let where = {
         _id : _id
     };
-
-    // pyqmodel.findOneAndUpdate( where , {
-    //     isdelete : true ,
-    //     deletedate : nowstr
-    // } , {
-    //     new : true
-    // } )
 
     var result = await Promise.all( [
         pyqmodel.findOneAndUpdate( where , {
@@ -238,7 +258,7 @@ async function GetList () {
      ])
      */
 
-    
+
 
     let obj = pyqmodel.aggregate( [
         {
@@ -318,6 +338,7 @@ module.exports = {
     Delete ,
     UpdatePraiseCount ,
     UpdateBbsCount ,
-    GetList
+    GetList ,
+    CheckDelete
 
 }

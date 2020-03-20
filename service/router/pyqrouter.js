@@ -16,6 +16,6 @@ let prefix = '/api/pyq';
 
 router.get( `${ prefix }/getlist` , pyqcontroller.GetList )
 router.post( `${ prefix }/add` , pyqcontroller.Add )
-router.delete( `${ prefix }/:_id` , pyqcontroller.Delete )
+router.delete( `${ prefix }/:_id/:mobile` , pyqcontroller.Delete )
 
 module.exports = router

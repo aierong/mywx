@@ -48,15 +48,32 @@ module.exports = {
         //先接收参数
         let params = ctx.params;
 
-        let { _id } = params;
+        let { _id , mobile } = params;
 
-        let obj = await pyqservice.Delete( _id );
+        let resultcheck = await pyqservice.CheckDelete( _id , mobile );
 
-        if ( obj != null ) {
-            result.isok = true;
+        if ( resultcheck != '' ) {
+            result = {
+
+                isok : false ,
+                errmsg : resultcheck ,
+
+            }
         }
         else {
-            result.isok = false;
+            let obj = await pyqservice.Delete( _id );
+
+            if ( obj != null ) {
+                result.isok = true;
+            }
+            else {
+                result = {
+
+                    isok : false ,
+                    errmsg : '操作失败' ,
+
+                }
+            }
         }
 
         ctx.body = result;
@@ -69,5 +86,6 @@ module.exports = {
         ctx.body = {
             listdata : obj
         }
-    },
+    } ,
+
 }

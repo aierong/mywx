@@ -94,8 +94,8 @@
             return {
                 //做9张的
                 maxpiccounts : 9 ,
-                //单张图片容量限制 2M
-                imgmax : 2 * 1024 * 1024 ,
+                //单张图片容量限制 3M
+                imgmax : 3 * 1024 * 1024 ,
 
                 pyq : {
                     txt : '' ,

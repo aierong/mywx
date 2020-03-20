@@ -61,4 +61,13 @@ module.exports = {
 
         ctx.body = result;
     } ,
+    GetList : async ( ctx , next ) => {
+        //  http://localhost:3001/api/pyq/getlist
+
+        let obj = await pyqservice.GetList();
+
+        ctx.body = {
+            listdata : obj
+        }
+    },
 }

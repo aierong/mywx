@@ -159,11 +159,165 @@ async function UpdateBbsCount ( _id = '' , num = 1 ) {
     return newobj;
 }
 
+/**
+ * 查询
+ * @returns {Promise<Aggregate>}
+ * @constructor
+ */
+async function GetList () {
+    /**
+
+
+     db.pyq.aggregate([
+     {
+        $match: {
+            isdelete: false,
+            addunix: { $gt: 1 }
+        }
+    },
+     {
+        $lookup:
+            {
+                from: "pyqpraise",
+                let: { pyq_id: "$_id" },
+                pipeline: [
+                    {
+                        $match:
+                            {
+                                $expr:
+                                    {
+                                        $and:
+                                            [
+
+                                                { $eq: ["$pyq_id", "$$pyq_id"] },
+                                                { $eq: ["$iscancel", false] }
+
+                                            ]
+                                    }
+                            }
+                    }
+
+                ],
+                as: "praiselist"
+            }
+
+    },
+     {
+         $lookup:
+            {
+                from: "pyqbbs",
+                let: { pyq_id: "$_id" },
+                pipeline: [
+                    {
+                        $match:
+                            {
+                                $expr:
+                                    {
+                                        $and:
+                                            [
+
+                                                { $eq: ["$pyq_id", "$$pyq_id"] },
+                                                { $eq: ["$isdelete", false] }
+
+                                            ]
+                                    }
+                            }
+                    }
+
+                ],
+                as: "bbslist"
+            }
+    },
+     {
+        $sort: { addunix: 1 }
+    },
+     {
+
+        $limit: 1000
+    }
+     ])
+     */
+
+    
+
+    let obj = pyqmodel.aggregate( [
+        {
+            $match : {
+                isdelete : false ,
+                addunix : { $gt : 1 }
+            }
+        } ,
+        {
+            $lookup :
+                {
+                    from : "pyqpraise" ,
+                    let : { pyq_id : "$_id" } ,
+                    pipeline : [
+                        {
+                            $match :
+                                {
+                                    $expr :
+                                        {
+                                            $and :
+                                                [
+
+                                                    { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
+                                                    { $eq : [ "$iscancel" , false ] }
+
+                                                ]
+                                        }
+                                }
+                        }
+
+                    ] ,
+                    as : "praiselist"
+                }
+
+        } ,
+        {
+            $lookup :
+                {
+                    from : "pyqbbs" ,
+                    let : { pyq_id : "$_id" } ,
+                    pipeline : [
+                        {
+                            $match :
+                                {
+                                    $expr :
+                                        {
+                                            $and :
+                                                [
+
+                                                    { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
+                                                    { $eq : [ "$isdelete" , false ] }
+
+                                                ]
+                                        }
+                                }
+                        }
+
+                    ] ,
+                    as : "bbslist"
+                }
+        } ,
+        {
+            $sort : { addunix : 1 }
+        } ,
+        {
+
+            $limit : 1000
+        }
+    ] );
+
+    return obj;
+}
+
 module.exports = {
 
     Add ,
     Delete ,
     UpdatePraiseCount ,
-    UpdateBbsCount
+    UpdateBbsCount ,
+    GetList
 
 }

@@ -177,7 +177,8 @@
 
 <!-- js脚本代码片段 -->
 <script>
-    import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
+    // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
+    import * as pyqapi from '@/https/api/pyq.js'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
@@ -424,14 +425,24 @@
                 } )
 
                 //新方法
-                friendscirclemethod.getfriendscirclelistBingXing( counts ).then( ( res ) => {
+                // friendscirclemethod.getfriendscirclelistBingXing( counts ).then( ( res ) => {
+                //     console.log( res )
+                //
+                //     this.pyqlist = res;
+                //
+                //     this.isshowloading = false;
+                //     this.$toast.clear()
+                // } );
+
+                pyqapi.getlist().then( ( res ) => {
                     console.log( res )
 
-                    this.pyqlist = res;
-
+                    let _data = res.data.listdata;
+                    this.pyqlist = _data;
+                    //
                     this.isshowloading = false;
                     this.$toast.clear()
-                } );
+                } )
             } ,
             //下拉刷新
             onPullRefreshRefresh () {

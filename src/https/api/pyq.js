@@ -30,3 +30,6 @@ export const add = ( mobile , name , avatar , txt , imglist ) => {
     return axios.post( `${ prefix }/add` , obj );
 }
 
+export const getlist = () => {
+    return axios.get( `${ prefix }/getlist` );
+}

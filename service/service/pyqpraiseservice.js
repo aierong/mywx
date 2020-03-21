@@ -137,7 +137,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
     //只搞 没有删除的
     let where = {
 
-        pyq_id : pyq_id ,
+        pyq_id : mongoose.Types.ObjectId( pyq_id ) ,
         mobile : mobile ,
         isdelete : false
 
@@ -157,7 +157,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
 
         //把id记录下来
         result = {
-            id : obj._id
+            id : obj._id.toString()
         };
 
         if ( obj.iscancel ) {

@@ -442,7 +442,7 @@ async function GetPyqById ( _id ) {
 
     ] );
 
-    console.log( 'GetPyqById obj' , obj )
+    // console.log( 'GetPyqById obj' , obj )
 
     if ( obj != null && obj.length > 0 ) {
         return obj[ 0 ];

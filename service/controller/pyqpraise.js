@@ -139,11 +139,11 @@ module.exports = {
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
 
-        console.log( 'Praise postData' , postData )
+        // console.log( 'Praise postData' , postData )
         let { mobile , pyq_id } = postData;
         let _IsPraiseStatus = await pyqpraiseservice.IsPraiseStatus( mobile , pyq_id );
 
-        console.log( 'Praise _IsPraiseStatus' , _IsPraiseStatus )
+        // console.log( 'Praise _IsPraiseStatus' , _IsPraiseStatus )
 
         let obj = false;
 
@@ -154,13 +154,13 @@ module.exports = {
             obj = await pyqpraiseservice.Delete( postData );
         }
 
-        console.log( 'Praise obj' , obj )
+        // console.log( 'Praise obj' , obj )
 
         if ( obj ) {
 
             let _data = await pyqservice.GetPyqById( pyq_id );  //取最新的这条记录回来
 
-            console.log( 'Praise _data' , _data )
+            // console.log( 'Praise _data' , _data )
 
             result = {
 
@@ -182,9 +182,5 @@ module.exports = {
         ctx.body = result;
     } ,
 }
-
-
-
-
 
 

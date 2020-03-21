@@ -377,14 +377,11 @@ async function GetList ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
  */
 async function GetPyqById ( _id ) {
 
-    // let where = {
-    //     _id : _id
-    // };
-
     let obj = await pyqmodel.aggregate( [
         {
             $match : {
-                _id : _id
+                // 注意 这里要转换一下
+                _id : mongoose.Types.ObjectId( _id )
 
             }
         } ,
@@ -445,7 +442,7 @@ async function GetPyqById ( _id ) {
 
     ] );
 
-    // console.log( 'GetPyqById obj' , obj )
+    console.log( 'GetPyqById obj' , obj )
 
     if ( obj != null && obj.length > 0 ) {
         return obj[ 0 ];

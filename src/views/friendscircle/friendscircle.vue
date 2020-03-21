@@ -91,7 +91,7 @@
                                                     <van-icon size="20px"
                                                               :color="getpraisecolor(item.praiselist)"
                                                               name="thumb-circle-o"
-                                                              @click="praiseClick(item.objectId,index)"/>
+                                                              @click="praiseClick(item._id,index)"/>
                                                     <!--
                                                     <span>{{ getpraisecounttxt(item.praiselist) }}</span>
                                                     -->
@@ -100,7 +100,7 @@
                                                 <van-col span="12">
                                                     <div style="text-align: right;">
                                                         <van-tag mark
-                                                                 @click="bbsClick(item.objectId,index)"
+                                                                 @click="bbsClick(item._id,index)"
                                                                  type="success">评论
                                                         </van-tag>
                                                     </div>
@@ -306,9 +306,8 @@
 
                 return "";
             } ,
-
             //点赞
-            praiseClick ( objectId , _index ) {
+            praiseClick ( _id , _index ) {
                 //objectId
                 ;( async () => {
 
@@ -320,8 +319,6 @@
                         this.loginusername
                     );
                     console.log( 'resultdata' , resultdata )
-                    //重新取一下吧
-                    //this.getpyqlist( 5 ); //重新取一下吧
 
                     //重新取一下吧
                     let _data = await friendscirclemethod.getfriendscirclebyid( objectId );
@@ -334,7 +331,6 @@
                     return;
 
                 } )();
-
             } ,
             //评论 ok
             bbsClick ( _id , _index ) {

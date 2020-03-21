@@ -587,26 +587,28 @@
 
                 return 0;
             } ,
+            // 得最小
             getminid () {
                 if ( this.pyqcounts > 0 ) {
 
                     let obj = _.minBy( this.pyqlist , ( val ) => {
-                        return val.id;
+                        return val.addunix;
                     } )
 
-                    return obj.id;
+                    return obj.addunix;
                 }
 
                 return 0;
             } ,
+            // 得最大
             getmaxid () {
                 if ( this.pyqcounts > 0 ) {
 
                     let obj = _.maxBy( this.pyqlist , ( val ) => {
-                        return val.id;
+                        return val.addunix;
                     } )
 
-                    return obj.id;
+                    return obj.addunix;
                 }
 
                 return 0;

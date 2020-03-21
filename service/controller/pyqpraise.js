@@ -31,17 +31,17 @@ module.exports = {
 
         // console.log( 'Praise postData' , postData )
         let { mobile , pyq_id } = postData;
-        let _IsPraiseStatus = await pyqpraiseservice.IsPraiseStatus( mobile , pyq_id );
+        let _IsPraiseStatusResult = await pyqpraiseservice.IsPraiseStatus( mobile , pyq_id );
 
-        console.log( 'Praise _IsPraiseStatus' , _IsPraiseStatus )
+        // console.log( 'Praise _IsPraiseStatusResult' , _IsPraiseStatusResult )
 
         let obj = false;
 
-        if ( _IsPraiseStatus.IsPraise ) {
-            obj = await pyqpraiseservice.Add( postData , _IsPraiseStatus.Praise_id );
+        if ( _IsPraiseStatusResult.IsPraise ) {
+            obj = await pyqpraiseservice.Add( postData , _IsPraiseStatusResult.Praise_id );
         }
         else {
-            obj = await pyqpraiseservice.Delete( postData , _IsPraiseStatus.Praise_id );
+            obj = await pyqpraiseservice.Delete( postData , _IsPraiseStatusResult.Praise_id );
         }
 
         // console.log( 'Praise obj' , obj )

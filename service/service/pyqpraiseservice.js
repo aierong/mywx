@@ -30,7 +30,7 @@ async function Add ( postData , Praise_id ) {
     let updatecount = pyqservice.UpdatePraiseCount( pyq_id , 1 );
     let addlog = log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` );
 
-    // let updatedata = null;
+    // 有id 就修改
     if ( Praise_id != '' ) {
 
         result = await Promise.all( [
@@ -49,6 +49,8 @@ async function Add ( postData , Praise_id ) {
         ] );
     }
     else {
+        //没有id，就创建
+
         //构建数据
         var newmodel = new pyqpraisemodel( {
             iscancel : false ,
@@ -68,8 +70,6 @@ async function Add ( postData , Praise_id ) {
             ids : common.GetGuid()
         } );
 
-        // let savedata = ;
-
         //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
         result = await Promise.all( [
 
@@ -79,15 +79,6 @@ async function Add ( postData , Praise_id ) {
 
         ] );
     }
-
-    //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
-    // var result = await Promise.all( [
-    //
-    //     savedata ,
-    //     updatecount ,
-    //     addlog
-    //
-    // ] );
 
     let newobj = false;
 
@@ -170,7 +161,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
     //把这个用户，这个帖子的 最后一个流水找回来
     let obj = await pyqpraisemodel.findOne( where ).sort( { addunix : -1 } );
 
-    console.log( 'IsPraiseStatus obj' , obj )
+    // console.log( 'IsPraiseStatus obj' , obj )
 
     if ( obj != null ) {
 

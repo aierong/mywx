@@ -196,7 +196,7 @@ async function UpdateBbsCount ( _id = '' , num = 1 ) {
  * @returns {Promise<Aggregate>}
  * @constructor
  */
-async function GetList ( querytype: 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) {
+async function GetList ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) {
     /**
 
 

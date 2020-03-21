@@ -294,8 +294,9 @@ async function GetList () {
                                                 [
 
                                                     { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
-                                                    { $eq : [ "$iscancel" , false ] }
-
+                                                    //没有取消 没有删除的
+                                                    { $eq : [ "$iscancel" , false ] },
+                                                    { $eq : [ "$isdelete" , false ] }
                                                 ]
                                         }
                                 }

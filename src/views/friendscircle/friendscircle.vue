@@ -92,7 +92,9 @@
                                                               :color="getpraisecolor(item.praiselist)"
                                                               name="thumb-circle-o"
                                                               @click="praiseClick(item.objectId,index)"/>
-                                                    <!--                                                    <span>{{ getpraisecounttxt(item.praiselist) }}</span>-->
+                                                    <!--
+                                                    <span>{{ getpraisecounttxt(item.praiselist) }}</span>
+                                                    -->
                                                     <span>{{ getpraisecounttxt( item.praisecounts ) }}</span>
                                                 </van-col>
                                                 <van-col span="12">

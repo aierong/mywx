@@ -142,7 +142,7 @@
                                                         <van-icon v-if="item.mobile==loginusermobile"
                                                                   size="20px"
                                                                   color="red"
-                                                                  @click="pyqdelete(item.objectId,index)"
+                                                                  @click="pyqdelete(item._id,index)"
                                                                   name="close"/>
                                                     </div>
                                                 </van-col>
@@ -429,8 +429,6 @@
                     // on cancel
                     // console.log( "点取消按钮" )
                 } )
-
-
 
                 // ;( async () => {
                 //

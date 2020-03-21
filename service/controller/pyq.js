@@ -84,9 +84,14 @@ module.exports = {
         //先接收参数
         let params = ctx.params;
 
+        // 收到的参数全部是 string
         let { querytype , pagecounts , minid , maxid } = params;
 
-        let obj = await pyqservice.GetList( querytype , pagecounts , minid , maxid )
+        // console.log( 'typeof(querytype)' , typeof ( querytype ) )
+        // console.log( 'typeof(pagecounts)' , typeof ( pagecounts ) )
+        // console.log( 'typeof(minid)' , typeof ( minid ) )
+
+        let obj = await pyqservice.GetList( querytype , parseInt( pagecounts ) , parseInt( minid ) , parseInt( maxid ) )
 
         ctx.body = {
             // 一个数组

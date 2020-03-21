@@ -245,21 +245,7 @@
                     mask : true
                 } )
 
-                // friendscirclemethod.addfriendscircle( this.pyq ).then( ( res ) => {
-                //     console.log( res )
-                //
-                //     //故意延时一下
-                //     setTimeout( () => {
-                //
-                //         this.$toast.clear()
-                //
-                //         this.goback();
-                //
-                //     } , 1000 )
-                //
-                // } )
-
-                pyqapi.add( this.pyq.mobile , this.pyq.name , this.pyq.avatar , this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
+                pyqapi.addpyq( this.pyq.mobile , this.pyq.name , this.pyq.avatar , this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
                     console.log( res )
 
                     if ( res != null && res.data.isok ) {

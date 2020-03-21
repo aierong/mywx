@@ -96,10 +96,11 @@ async function Delete ( postData ) {
 
     ] );
 
-    let newobj = null;
+    let newobj = false;
 
     if ( result != null && result.length >= 3 ) {
-        newobj = result[ 1 ];  //这里返回 朋友圈 这条记录
+        //        newobj = result[ 1 ];  //这里返回 朋友圈 这条记录
+        newobj = true;
     }
 
     return newobj;

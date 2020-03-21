@@ -73,7 +73,7 @@ module.exports = {
 
             isok : true ,
             errmsg : '' ,
-
+            data : null
         }
 
         //先接收post的参数
@@ -89,6 +89,7 @@ module.exports = {
 
                 isok : false ,
                 errmsg : '不允许取消点赞' ,
+                data : null
 
             }
 
@@ -96,11 +97,14 @@ module.exports = {
         else {
             let obj = await pyqpraiseservice.Delete( postData );
 
-            if ( obj != null ) {
+            if ( obj ) {
+                let _data = await pyqservice.GetPyqById( pyq_id );  //取最新的这条记录回来
+
                 result = {
 
                     isok : true ,
                     errmsg : '' ,
+                    data : _data
 
                 }
             }
@@ -109,6 +113,7 @@ module.exports = {
 
                     isok : false ,
                     errmsg : '取消点赞失败' ,
+                    data : null
 
                 }
             }

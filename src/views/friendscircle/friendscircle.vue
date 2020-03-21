@@ -183,6 +183,7 @@
     // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
     import * as pyqapi from '@/https/api/pyq.js'
     import * as pyqbbsapi from '@/https/api/pyqbbs.js'
+    import * as pyqpraiseapi from '@/https/api/pyqpraise.js'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
@@ -311,22 +312,22 @@
                 //objectId
                 ;( async () => {
 
-                    //去更新服务器
-                    let resultdata = await friendscirclemethod.updatepraiselist(
-                        objectId ,
-                        dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
-                        this.loginusermobile ,
-                        this.loginusername
-                    );
-                    console.log( 'resultdata' , resultdata )
-
-                    //重新取一下吧
-                    let _data = await friendscirclemethod.getfriendscirclebyid( objectId );
-                    console.log( '_data' , _data )
-                    if ( _data != null ) {
-                        //更新这条记录
-                        this.$set( this.pyqlist , _index , _data );
-                    }
+                    // //去更新服务器
+                    // let resultdata = await friendscirclemethod.updatepraiselist(
+                    //     objectId ,
+                    //     dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
+                    //     this.loginusermobile ,
+                    //     this.loginusername
+                    // );
+                    // console.log( 'resultdata' , resultdata )
+                    //
+                    // //重新取一下吧
+                    // let _data = await friendscirclemethod.getfriendscirclebyid( objectId );
+                    // console.log( '_data' , _data )
+                    // if ( _data != null ) {
+                    //     //更新这条记录
+                    //     this.$set( this.pyqlist , _index , _data );
+                    // }
 
                     return;
 

@@ -359,7 +359,8 @@ async function GetList ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
                 }
         } ,
         {
-            $sort : { addunix : 1 }
+            //最新排前面
+            $sort : { addunix : -1 }
         } ,
         {
             $limit : pagecounts

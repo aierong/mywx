@@ -14,7 +14,7 @@ const pyqpraisecontroller = require( '../controller/pyqpraise' )
 
 let prefix = '/api/pyqpraise';
 
-router.post( `${ prefix }/add` , pyqpraisecontroller.Add )
-router.post( `${ prefix }/delete` , pyqpraisecontroller.Delete )
+router.post( `${ prefix }/praise` , pyqpraisecontroller.Praise )
+// router.post( `${ prefix }/delete` , pyqpraisecontroller.Delete )
 
 module.exports = router

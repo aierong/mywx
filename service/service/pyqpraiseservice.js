@@ -114,41 +114,76 @@ async function Delete ( postData ) {
  * @returns {Promise<boolean>}
  * @constructor
  */
-async function PraiseCheck ( ispraise , mobile , pyq_id ) {
+// async function PraiseCheck ( ispraise , mobile , pyq_id ) {
+//     let where = {
+//         pyq_id : pyq_id ,
+//         mobile : mobile ,
+//         iscancel : false
+//
+//     }
+//
+//     let isexists = false;
+//
+//     isexists = await pyqpraisemodel.exists( where );
+//
+//     if ( ispraise ) {
+//
+//         // 存在点赞记录，就不可以再点赞
+//         if ( isexists ) {
+//             return false;
+//         }
+//     }
+//     else {
+//         // isexists = await pyqpraisemodel.exists( where );
+//
+//         // 不存在未取消的点赞记录，不允许取消点赞
+//         if ( !isexists ) {
+//             return false;
+//         }
+//     }
+//
+//     return true;
+// }
+
+/**
+ * 是可以点赞状态
+ * @param mobile
+ * @param pyq_id
+ * @returns {Promise<boolean>}
+ * @constructor
+ */
+async function IsPraiseStatus ( mobile , pyq_id ) {
     let where = {
+
         pyq_id : pyq_id ,
         mobile : mobile ,
-        iscancel : false
+        isdelete : false
 
     }
 
-    let isexists = false;
+    //把这个用户，这个帖子的 最后一个流水找回来
+    let obj = await pyqpraisemodel.findOne( where ).sort( { addunix : -1 } );
 
-    isexists = await pyqpraisemodel.exists( where );
-
-    if ( ispraise ) {
-
-        // 存在点赞记录，就不可以再点赞
-        if ( isexists ) {
-            return false;
+    if ( obj != null ) {
+        if ( obj.iscancel ) {
+            return true;  //可以点赞
+        }
+        else {
+            return false;  //可以取消点赞
         }
     }
     else {
-        // isexists = await pyqpraisemodel.exists( where );
-
-        // 不存在未取消的点赞记录，不允许取消点赞
-        if ( !isexists ) {
-            return false;
-        }
+        //记录 为空，说明还没有搞过
+        return true;  //可以点赞
     }
 
-    return true;
 }
 
 module.exports = {
 
     Add ,
     Delete ,
-    PraiseCheck
+    IsPraiseStatus ,
+    // PraiseCheck
 
 }

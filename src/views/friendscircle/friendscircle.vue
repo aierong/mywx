@@ -306,6 +306,7 @@
 
                 return "";
             } ,
+
             //点赞
             praiseClick ( objectId , _index ) {
                 //objectId
@@ -335,7 +336,7 @@
                 } )();
 
             } ,
-            //评论
+            //评论 ok
             bbsClick ( _id , _index ) {
                 //弹窗
                 this.bbsobj.bbstxt = "";
@@ -343,7 +344,7 @@
                 this.bbsobj.selectindex = _index;
                 this.showdialog = true;
             } ,
-            //关闭 评论 弹窗
+            //关闭 评论 弹窗 ok
             beforeClose ( action , done ) {
                 if ( action === "confirm" ) {
 
@@ -410,7 +411,7 @@
                     return;
                 }
             } ,
-            //删除朋友圈
+            //删除朋友圈 ok
             pyqdelete ( _id , _index ) {
                 //这里 做弹窗确认，做一下好些
 

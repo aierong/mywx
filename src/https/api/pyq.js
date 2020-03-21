@@ -36,7 +36,7 @@ export const addpyq = ( mobile , name , avatar , txt , imglist ) => {
  * @param _id
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const deletepyq = ( mobile , _id ) => {
+export const deletepyq = ( _id , mobile ) => {
     return axios.delete( `${ prefix }/delete/${ _id }/${ mobile }` );
 }
 

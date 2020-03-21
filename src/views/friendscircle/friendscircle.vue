@@ -389,20 +389,58 @@
                 }
             } ,
             //删除朋友圈
-            pyqdelete ( objectId , _index ) {
-                //这里 没有做弹窗确认，做一下好些
+            pyqdelete ( _id , _index ) {
+                //这里 做弹窗确认，做一下好些
 
-                ;( async () => {
+                this.$dialog.confirm( {
+                    title : "删除" ,
+                    message : "确定删除吗?"
+                } ).then( () => {
+                    // on confirm
+                    // console.log( "点确定按钮" )
 
-                    let result = await friendscirclemethod.deletefriendscirclebyid( objectId );
-                    console.log( 'result' , result )
-                    //this.getpyqlist( 5 ); //重新取一下吧
+                    ;( async () => {
 
-                    this.$delete( this.pyqlist , _index )
+                        let result = await pyqapi.deletepyq( _id , loginusermobile );
+                        // console.log( 'result' , result )
+                        //this.getpyqlist( 5 ); //重新取一下吧
 
-                    return;
+                        if ( result != null ) {
+                            let _resultdata = result.data;
 
-                } )();
+                            if ( _resultdata.isok ) {
+                                this.$toast.success( {
+                                    duration : 1000 ,
+                                    message : '成功'
+                                } );
+
+                                this.$delete( this.pyqlist , _index )
+                            }
+                            else {
+                                this.$toast( _resultdata.errmsg )
+                            }
+                        }
+
+                        return;
+
+                    } )();
+
+                } ).catch( () => {
+                    // on cancel
+                    // console.log( "点取消按钮" )
+                } )
+
+                // ;( async () => {
+                //
+                //     let result = await friendscirclemethod.deletefriendscirclebyid( objectId );
+                //     console.log( 'result' , result )
+                //     //this.getpyqlist( 5 ); //重新取一下吧
+                //
+                //     this.$delete( this.pyqlist , _index )
+                //
+                //     return;
+                //
+                // } )();
             } ,
             //图片单击预览
             imgclick ( index , imgs ) {

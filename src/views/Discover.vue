@@ -136,8 +136,8 @@
         //方法
         methods : {
             friendscircleClick () {
-                // this.$router.push( '/friendscircle' );
-                this.$router.push( '/addfriendscircle' );
+                this.$router.push( '/friendscircle' );
+                // this.$router.push( '/addfriendscircle' );
             } ,
 
         } ,

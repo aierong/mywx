@@ -277,22 +277,6 @@
 
                 return "";
             } ,
-            // //点赞数量
-            // getpraisecounttxt ( praiselist ) {
-            //     if ( praiselist != null && praiselist.length > 0 ) {
-            //         let counts = praiselist.length;
-            //
-            //         //大于99
-            //         if ( counts > 99 ) {
-            //             return "99+";
-            //         }
-            //         else {
-            //             return counts;
-            //         }
-            //     }
-            //
-            //     return "";
-            // } ,
             //点赞数量
             getpraisecounttxt ( counts ) {
                 if ( counts > 0 ) {
@@ -312,23 +296,6 @@
             praiseClick ( _id , _index ) {
                 //objectId
                 ;( async () => {
-
-                    // //去更新服务器
-                    // let resultdata = await friendscirclemethod.updatepraiselist(
-                    //     objectId ,
-                    //     dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
-                    //     this.loginusermobile ,
-                    //     this.loginusername
-                    // );
-                    // console.log( 'resultdata' , resultdata )
-                    //
-                    // //重新取一下吧
-                    // let _data = await friendscirclemethod.getfriendscirclebyid( objectId );
-                    // console.log( '_data' , _data )
-                    // if ( _data != null ) {
-                    //     //更新这条记录
-                    //     this.$set( this.pyqlist , _index , _data );
-                    // }
 
                     let resultdata = await pyqpraiseapi.praise(
                         this.loginusermobile , this.loginuseravatar , this.loginusername , _id );
@@ -517,16 +484,6 @@
                     mask : true
                 } )
 
-                //新方法
-                // friendscirclemethod.getfriendscirclelistBingXing( counts ).then( ( res ) => {
-                //     console.log( res )
-                //
-                //     this.pyqlist = res;
-                //
-                //     this.isshowloading = false;
-                //     this.$toast.clear()
-                // } );
-
                 pyqapi.getlist( 'init' , counts , 0 , 0 ).then( ( res ) => {
                     console.log( res )
 
@@ -539,20 +496,6 @@
             } ,
             //下拉刷新
             onPullRefreshRefresh () {
-
-                //新方法
-                // friendscirclemethod.getfriendscirclelistbymaxidBingXing( this.getmaxid ).then( ( res ) => {
-                //     console.log( 'onPullRefreshRefresh' , res )
-                //
-                //     if ( res != null && res.length > 0 ) {
-                //         //把列表增加数据
-                //
-                //         this.pyqlist.unshift( ...res )
-                //     }
-                //
-                //     //把新增加数据 加到数组头部
-                //     this.pullrefresh.isLoading = false
-                // } )
 
                 let counts = 2;  //每次搞2个
 
@@ -573,23 +516,6 @@
             } ,
             //下拉刷新加载数据
             onDownRefreshLoad () {
-
-                // friendscirclemethod.getfriendscirclelistbyminidBingXing( this.getminid , counts ).then( ( res ) => {
-                //     console.log( 'onDownRefreshLoad' , res )
-                //
-                //     if ( res != null && res.length > 0 ) {
-                //         //把列表增加数据
-                //
-                //         //数据加入到数组尾部
-                //         this.pyqlist.push( ...res )
-                //     }
-                //     else {
-                //         this.downrefresh.finished = true
-                //     }
-                //
-                //     this.downrefresh.loading = false
-                //
-                // } );
 
                 let counts = 2;  //每次搞2个
 

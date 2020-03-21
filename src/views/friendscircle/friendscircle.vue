@@ -329,7 +329,7 @@
                     //     this.$set( this.pyqlist , _index , _data );
                     // }
 
-                    let resultdata = await pyqpraiseapi.add(
+                    let resultdata = await pyqpraiseapi.praise(
                         this.loginusermobile , this.loginuseravatar , this.loginusername , _id );
 
                     // 返回会带数据

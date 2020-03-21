@@ -10,15 +10,16 @@ import axios from 'axios'
 let prefix = '/pyqpraise';
 
 /**
- * 点赞
+ * 点赞(点赞和取消点赞 都是这个方法)
  * @param mobile
  * @param avatar
  * @param name
  * @param pyq_id
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const addpraise = ( mobile , avatar , name , pyq_id ) => {
+export const praise = ( mobile , avatar , name , pyq_id ) => {
     let obj = {
+
         mobile ,
         avatar ,
         name ,
@@ -26,7 +27,7 @@ export const addpraise = ( mobile , avatar , name , pyq_id ) => {
 
     }
 
-    return axios.post( `${ prefix }/add` , obj );
+    return axios.post( `${ prefix }/praise` , obj );
 }
 
 

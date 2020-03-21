@@ -15,7 +15,7 @@ module.exports = {
     Praise : async ( ctx , next ) => {
         //  http://localhost:3001/api/pyqpraise/praise
 
-        console.log( 'Praise' )
+        // console.log( 'Praise' )
 
         let result = {
 
@@ -38,10 +38,10 @@ module.exports = {
         let obj = false;
 
         if ( _IsPraiseStatus.IsPraise ) {
-            obj = await pyqpraiseservice.Add( postData , _IsPraiseStatus.id );
+            obj = await pyqpraiseservice.Add( postData , _IsPraiseStatus.Praise_id );
         }
         else {
-            obj = await pyqpraiseservice.Delete( postData , _IsPraiseStatus.id );
+            obj = await pyqpraiseservice.Delete( postData , _IsPraiseStatus.Praise_id );
         }
 
         // console.log( 'Praise obj' , obj )

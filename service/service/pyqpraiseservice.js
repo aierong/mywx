@@ -18,57 +18,76 @@ const pyqservice = require( './pyqservice.js' )
  * @returns {Promise<null>}
  * @constructor
  */
-async function Add ( postData , id ) {
+async function Add ( postData , Praise_id ) {
     //数据解构出来
     let { mobile , avatar , name , pyq_id } = postData;
 
     let now = new Date();
     let nowstr = common.GetNowString( now );
 
-    //构建数据
-    var newmodel = new pyqpraisemodel( {
-        iscancel : false ,
-        isdelete : false ,
-
-        pyq_id : pyq_id ,
-
-        mobile ,
-        avatar ,
-        name ,
-
-        // 最新时间
-        addunix : common.GetNowUnix( now ) ,
-        adddate : nowstr ,
-        date : nowstr ,
-        // 搞一个guid
-        ids : common.GetGuid()
-    } );
+    var result;
 
     let updatecount = pyqservice.UpdatePraiseCount( pyq_id , 1 );
     let addlog = log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` );
 
-    let savedata = newmodel.save();
     // let updatedata = null;
-    if ( id != '' ) {
-        savedata = pyqpraisemodel.findOneAndUpdate( {
-            _id : mongoose.Types.ObjectId( id )
-        } , {
-            updatedate : nowstr ,
+    if ( Praise_id != '' ) {
+
+        result = await Promise.all( [
+
+            pyqpraisemodel.findOneAndUpdate( {
+                _id : mongoose.Types.ObjectId( Praise_id )
+            } , {
+                updatedate : nowstr ,
+                iscancel : false ,
+            } , {
+                new : true
+            } ) ,
+            updatecount ,
+            addlog
+
+        ] );
+    }
+    else {
+        //构建数据
+        var newmodel = new pyqpraisemodel( {
             iscancel : false ,
-        } , {
-            new : true
+            isdelete : false ,
+
+            pyq_id : pyq_id ,
+
+            mobile ,
+            avatar ,
+            name ,
+
+            // 最新时间
+            addunix : common.GetNowUnix( now ) ,
+            adddate : nowstr ,
+            date : nowstr ,
+            // 搞一个guid
+            ids : common.GetGuid()
         } );
 
+        // let savedata = ;
+
+        //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
+        result = await Promise.all( [
+
+            newmodel.save() ,
+            updatecount ,
+            addlog
+
+        ] );
     }
 
     //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
-    var result = await Promise.all( [
-
-        savedata ,
-        updatecount ,
-        addlog
-
-    ] );
+    // var result = await Promise.all( [
+    //
+    //     savedata ,
+    //     updatecount ,
+    //     addlog
+    //
+    // ] );
 
     let newobj = false;
 
@@ -88,7 +107,7 @@ async function Add ( postData , id ) {
  * @returns {Promise<null>}
  * @constructor
  */
-async function Delete ( postData , id ) {
+async function Delete ( postData , Praise_id ) {
     //数据解构出来
     let { pyq_id , name , mobile } = postData;
 
@@ -96,7 +115,7 @@ async function Delete ( postData , id ) {
     let nowstr = common.GetNowString( now );
 
     let where = {
-        _id : mongoose.Types.ObjectId( id )
+        _id : mongoose.Types.ObjectId( Praise_id )
     }
 
     //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
@@ -145,7 +164,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
 
     let result = {
         IsPraise : false ,
-        id : ''
+        Praise_id : ''
     };
 
     //把这个用户，这个帖子的 最后一个流水找回来
@@ -157,7 +176,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
 
         //把id记录下来
         result = {
-            id : obj._id.toString()
+            Praise_id : obj._id.toString()
         };
 
         if ( obj.iscancel ) {
@@ -174,7 +193,7 @@ async function IsPraiseStatus ( mobile , pyq_id ) {
         //可以点赞
         result = {
             IsPraise : true ,
-            id : ''
+            Praise_id : ''
         };
     }
 

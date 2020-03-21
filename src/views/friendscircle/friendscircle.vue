@@ -213,6 +213,7 @@
         //数据模型
         data () {
             return {
+                //每次5个
                 defaultcounts : 5 ,
 
                 pyqlist : [] ,

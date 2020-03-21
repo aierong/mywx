@@ -14,7 +14,7 @@ const pyqcontroller = require( '../controller/pyq' )
 
 let prefix = '/api/pyq';
 
-router.get( `${ prefix }/getlist` , pyqcontroller.GetList )
+router.get( `${ prefix }/getlist/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
 router.post( `${ prefix }/add` , pyqcontroller.Add )
 router.delete( `${ prefix }/delete/:_id/:mobile` , pyqcontroller.Delete )
 

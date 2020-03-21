@@ -196,7 +196,7 @@ async function UpdateBbsCount ( _id = '' , num = 1 ) {
  * @returns {Promise<Aggregate>}
  * @constructor
  */
-async function GetList () {
+async function GetList ( querytype: 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) {
     /**
 
 
@@ -270,14 +270,39 @@ async function GetList () {
      ])
      */
 
+    if ( pagecounts <= 0 ) {
+        pagecounts = 5;
+    }
 
+    let where = {};
+    if ( querytype == 'init' ) {
+        //就是初始化，第一次搞
+        where = { isdelete : false };
+    }
+    else {
+        if ( querytype == 'down' ) {
+            where = {
+                isdelete : false ,
+                addunix : { $lt : minid }
+            };
+        }
+
+        if ( querytype == 'up' ) {
+            where = {
+                isdelete : false ,
+                addunix : { $gt : maxid }
+            };
+        }
+
+    }
 
     let obj = pyqmodel.aggregate( [
         {
-            $match : {
-                isdelete : false ,
-                addunix : { $gt : 1 }
-            }
+            // $match : {
+            //     isdelete : false ,
+            //     addunix : { $gt : 1 }
+            // }
+            $match : where
         } ,
         {
             $lookup :
@@ -337,8 +362,7 @@ async function GetList () {
             $sort : { addunix : 1 }
         } ,
         {
-
-            $limit : 1000
+            $limit : pagecounts
         }
     ] );
 

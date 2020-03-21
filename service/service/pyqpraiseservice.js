@@ -28,6 +28,8 @@ async function Add ( postData ) {
     //构建数据
     var newmodel = new pyqpraisemodel( {
         iscancel : false ,
+        isdelete : false ,
+
         pyq_id : pyq_id ,
 
         mobile ,
@@ -83,7 +85,7 @@ async function Delete ( postData ) {
     var result = await Promise.all( [
 
         pyqpraisemodel.findOneAndUpdate( where , {
-            deletedate : nowstr ,
+            updatedate : nowstr ,
             iscancel : true ,
         } , {
             new : true

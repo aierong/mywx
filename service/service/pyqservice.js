@@ -7,6 +7,8 @@
 
 var mongoose = require( 'mongoose' );
 const pyqmodel = require( './models/pyq' )
+const pyqpraisemodel = require( './models/pyqpraise.js' )
+
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
@@ -107,6 +109,13 @@ async function Delete ( _id ) {
         } , {
             new : true
         } ) ,
+        //这个朋友圈的点赞全部删除
+        pyqpraisemodel.updateMany( { pyq_id : _id } , {
+            isdelete : true ,
+            deletedate : nowstr
+        } ) ,
+        //这个朋友的bbs全部删除
+
         log.AddRunLog( mobile , 'DeletePyq' , `用户${ mobile }(${ name })删除一个朋友圈 _id:${ _id }` )
     ] );
 

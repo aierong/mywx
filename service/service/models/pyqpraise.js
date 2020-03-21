@@ -14,8 +14,13 @@ var PyqPraiseSchema = mongoose.Schema( {
         required : true ,
         type : ObjectId
     } ,
-    //是取消点赞  是删除
+    //是取消点赞
     iscancel : {
+        type : Boolean ,
+        default : false
+    } ,
+    //是删除
+    isdelete : {
         type : Boolean ,
         default : false
     } ,

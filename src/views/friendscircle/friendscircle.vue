@@ -527,7 +527,7 @@
                 //     this.$toast.clear()
                 // } );
 
-                pyqapi.getlist().then( ( res ) => {
+                pyqapi.getlist( 'init' , counts , 0 , 0 ).then( ( res ) => {
                     console.log( res )
 
                     let _data = res.data.listdata;
@@ -541,32 +541,67 @@
             onPullRefreshRefresh () {
 
                 //新方法
-                friendscirclemethod.getfriendscirclelistbymaxidBingXing( this.getmaxid ).then( ( res ) => {
+                // friendscirclemethod.getfriendscirclelistbymaxidBingXing( this.getmaxid ).then( ( res ) => {
+                //     console.log( 'onPullRefreshRefresh' , res )
+                //
+                //     if ( res != null && res.length > 0 ) {
+                //         //把列表增加数据
+                //
+                //         this.pyqlist.unshift( ...res )
+                //     }
+                //
+                //     //把新增加数据 加到数组头部
+                //     this.pullrefresh.isLoading = false
+                // } )
+
+                let counts = 2;  //每次搞2个
+
+                pyqapi.getlist( 'up' , counts , this.getminid , this.getmaxid ).then( ( res ) => {
                     console.log( 'onPullRefreshRefresh' , res )
 
-                    if ( res != null && res.length > 0 ) {
+                    let _data = res.data.listdata;    //数据搞回来
+                    if ( _data != null && _data.length > 0 ) {
                         //把列表增加数据
-
-                        this.pyqlist.unshift( ...res )
+                        //把新增加数据 加到数组头部
+                        this.pyqlist.unshift( ..._data )
                     }
 
-                    //把新增加数据 加到数组头部
                     this.pullrefresh.isLoading = false
+
                 } )
 
             } ,
             //下拉刷新加载数据
             onDownRefreshLoad () {
-                let counts = 2;
 
-                friendscirclemethod.getfriendscirclelistbyminidBingXing( this.getminid , counts ).then( ( res ) => {
+                // friendscirclemethod.getfriendscirclelistbyminidBingXing( this.getminid , counts ).then( ( res ) => {
+                //     console.log( 'onDownRefreshLoad' , res )
+                //
+                //     if ( res != null && res.length > 0 ) {
+                //         //把列表增加数据
+                //
+                //         //数据加入到数组尾部
+                //         this.pyqlist.push( ...res )
+                //     }
+                //     else {
+                //         this.downrefresh.finished = true
+                //     }
+                //
+                //     this.downrefresh.loading = false
+                //
+                // } );
+
+                let counts = 2;  //每次搞2个
+
+                pyqapi.getlist( 'down' , counts , this.getminid , this.getmaxid ).then( ( res ) => {
                     console.log( 'onDownRefreshLoad' , res )
 
-                    if ( res != null && res.length > 0 ) {
+                    let _data = res.data.listdata;    //数据搞回来
+                    if ( _data != null && _data.length > 0 ) {
                         //把列表增加数据
 
                         //数据加入到数组尾部
-                        this.pyqlist.push( ...res )
+                        this.pyqlist.push( ..._data )
                     }
                     else {
                         this.downrefresh.finished = true
@@ -574,7 +609,7 @@
 
                     this.downrefresh.loading = false
 
-                } );
+                } )
 
             } ,
         } ,

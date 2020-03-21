@@ -89,6 +89,7 @@ module.exports = {
         let obj = await pyqservice.GetList( querytype , pagecounts , minid , maxid )
 
         ctx.body = {
+            // 一个数组
             listdata : obj
         }
     } ,

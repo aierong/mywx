@@ -44,6 +44,8 @@ export const deletepyq = ( _id , mobile ) => {
  *
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const getlist = () => {
-    return axios.get( `${ prefix }/getlist` );
+export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) => {
+    return axios.get( `${ prefix }/getlist/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
 }
+
+

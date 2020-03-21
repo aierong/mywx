@@ -307,7 +307,7 @@
 
                 return "";
             } ,
-            //点赞
+            //点赞 ok
             praiseClick ( _id , _index ) {
                 //objectId
                 ;( async () => {
@@ -504,7 +504,7 @@
 
                 } );
             } ,
-            //得朋友圈列表
+            //得朋友圈列表 ok
             getpyqlist ( counts ) {
 
                 this.$toast.loading( {

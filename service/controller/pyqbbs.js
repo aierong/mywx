@@ -7,6 +7,7 @@
 
 // 引入 service 文件
 const pyqbbsservice = require( '../service/pyqbbsservice' )
+const pyqservice = require( '../service/pyqservice' )
 const common = require( '../common/common.js' )
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
 
             isok : true ,
             errmsg : '' ,
+            data : null
 
         }
 
@@ -26,12 +28,16 @@ module.exports = {
 
         let obj = await pyqbbsservice.Add( postData );
 
-        if ( obj != null ) {
+        if ( obj ) {
+
+            let { pyq_id } = postData;
+            let _data = await pyqservice.GetPyqById( pyq_id );  //取最新的这条记录回来
+
             result = {
 
                 isok : true ,
                 errmsg : '' ,
-
+                data : _data
             }
         }
         else {
@@ -39,7 +45,7 @@ module.exports = {
 
                 isok : false ,
                 errmsg : '评论失败' ,
-
+                data : null
             }
         }
 

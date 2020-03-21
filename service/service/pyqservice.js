@@ -295,7 +295,7 @@ async function GetList () {
 
                                                     { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
                                                     //没有取消 没有删除的
-                                                    { $eq : [ "$iscancel" , false ] },
+                                                    { $eq : [ "$iscancel" , false ] } ,
                                                     { $eq : [ "$isdelete" , false ] }
                                                 ]
                                         }
@@ -345,13 +345,90 @@ async function GetList () {
     return obj;
 }
 
+/**
+ * 由id得一条朋友圈
+ * @param _id
+ * @returns {Promise<Aggregate>}
+ * @constructor
+ */
+async function GetPyqById ( _id ) {
+
+    let where = {
+        $match : {
+            _id : _id
+
+        }
+    };
+
+    let obj = pyqmodel.aggregate( [
+        where ,
+        {
+            $lookup :
+                {
+                    from : "pyqpraise" ,
+                    let : { pyq_id : "$_id" } ,
+                    pipeline : [
+                        {
+                            $match :
+                                {
+                                    $expr :
+                                        {
+                                            $and :
+                                                [
+
+                                                    { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
+                                                    //没有取消 没有删除的
+                                                    { $eq : [ "$iscancel" , false ] } ,
+                                                    { $eq : [ "$isdelete" , false ] }
+                                                ]
+                                        }
+                                }
+                        }
+
+                    ] ,
+                    as : "praiselist"
+                }
+
+        } ,
+        {
+            $lookup :
+                {
+                    from : "pyqbbs" ,
+                    let : { pyq_id : "$_id" } ,
+                    pipeline : [
+                        {
+                            $match :
+                                {
+                                    $expr :
+                                        {
+                                            $and :
+                                                [
+
+                                                    { $eq : [ "$pyq_id" , "$$pyq_id" ] } ,
+                                                    { $eq : [ "$isdelete" , false ] }
+
+                                                ]
+                                        }
+                                }
+                        }
+
+                    ] ,
+                    as : "bbslist"
+                }
+        } ,
+
+    ] );
+
+    return obj;
+}
+
 module.exports = {
 
     Add ,
     Delete ,
+    CheckDelete ,
     UpdatePraiseCount ,
     UpdateBbsCount ,
     GetList ,
-    CheckDelete
-
+    GetPyqById ,
 }

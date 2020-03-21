@@ -296,7 +296,7 @@ async function GetList ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
 
     }
 
-    let obj = pyqmodel.aggregate( [
+    let obj = await pyqmodel.aggregate( [
         {
             // $match : {
             //     isdelete : false ,
@@ -377,15 +377,17 @@ async function GetList ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
  */
 async function GetPyqById ( _id ) {
 
-    let where = {
-        $match : {
-            _id : _id
+    // let where = {
+    //     _id : _id
+    // };
 
-        }
-    };
+    let obj = await pyqmodel.aggregate( [
+        {
+            $match : {
+                _id : _id
 
-    let obj = pyqmodel.aggregate( [
-        where ,
+            }
+        } ,
         {
             $lookup :
                 {
@@ -443,7 +445,13 @@ async function GetPyqById ( _id ) {
 
     ] );
 
-    return obj;
+    // console.log( 'GetPyqById obj' , obj )
+
+    if ( obj != null && obj.length > 0 ) {
+        return obj[ 0 ];
+    }
+
+    return null;
 }
 
 module.exports = {

@@ -55,6 +55,8 @@ async function Add ( postData ) {
 
     let newobj = false;
 
+    console.log( 'Add result' , result )
+
     if ( result != null && result.length >= 3 ) {
         //newobj = result[ 1 ];  //这里返回 朋友圈 这条记录
         newobj = true;
@@ -97,6 +99,8 @@ async function Delete ( postData ) {
     ] );
 
     let newobj = false;
+
+    console.log( 'Delete result' , result )
 
     if ( result != null && result.length >= 3 ) {
         //        newobj = result[ 1 ];  //这里返回 朋友圈 这条记录

@@ -329,6 +329,25 @@
                     //     this.$set( this.pyqlist , _index , _data );
                     // }
 
+                    let resultdata = await pyqpraiseapi.add(
+                        this.loginusermobile , this.loginuseravatar , this.loginusername , _id );
+
+                    // 返回会带数据
+                    if ( resultdata != null ) {
+
+                        let _data = resultdata.data;
+
+                        if ( _data.isok ) {
+                            //成功
+                            //更新这条记录
+                            this.$set( this.pyqlist , _index , _data.data );
+                        }
+                        else {
+                            // 失败了
+                            this.$toast( _data.errmsg )
+                        }
+                    }
+
                     return;
 
                 } )();

@@ -336,10 +336,10 @@
 
             } ,
             //评论
-            bbsClick ( objectId , _index ) {
+            bbsClick ( _id , _index ) {
                 //弹窗
                 this.bbsobj.bbstxt = "";
-                this.bbsobj.selectid = objectId;
+                this.bbsobj.selectid = _id;
                 this.bbsobj.selectindex = _index;
                 this.showdialog = true;
             } ,
@@ -357,21 +357,43 @@
 
                     ;( async () => {
 
-                        //去更新服务器
-                        let resultdata = await friendscirclemethod.updatebbslist(
-                            this.bbsobj.selectid ,
-                            dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
-                            this.bbsobj.bbstxt ,
-                            this.loginusermobile ,
-                            this.loginusername
-                        );
+                        // //去更新服务器
+                        // let resultdata = await friendscirclemethod.updatebbslist(
+                        //     this.bbsobj.selectid ,
+                        //     dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
+                        //     this.bbsobj.bbstxt ,
+                        //     this.loginusermobile ,
+                        //     this.loginusername
+                        // );
 
-                        //重新取一下吧
-                        let _data = await friendscirclemethod.getfriendscirclebyid( this.bbsobj.selectid );
-                        // console.log( '_data' , _data )
-                        if ( _data != null ) {
-                            //更新这条记录
-                            this.$set( this.pyqlist , this.bbsobj.selectindex , _data );
+                        // //重新取一下吧
+                        // let _data = await friendscirclemethod.getfriendscirclebyid( this.bbsobj.selectid );
+                        // // console.log( '_data' , _data )
+                        // if ( _data != null ) {
+                        //     //更新这条记录
+                        //     this.$set( this.pyqlist , this.bbsobj.selectindex , _data );
+                        // }
+
+                        let resultdata = await pyqbbsapi.addbbs( this.loginusermobile ,
+                            this.loginuseravatar ,
+                            this.loginusername ,
+                            this.bbsobj.selectid ,
+                            this.bbsobj.bbstxt );
+
+                        // 返回会带数据
+                        if ( resultdata != null ) {
+
+                            let _data = resultdata.data;
+
+                            if ( _data.isok ) {
+                                //成功
+                                //更新这条记录
+                                this.$set( this.pyqlist , this.bbsobj.selectindex , _data.data );
+                            }
+                            else {
+                                // 失败了
+                                this.$toast( _data.errmsg )
+                            }
                         }
 
                         return;

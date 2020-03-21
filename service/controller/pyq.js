@@ -81,7 +81,12 @@ module.exports = {
     GetList : async ( ctx , next ) => {
         //  http://localhost:3001/api/pyq/getlist
 
-        let obj = await pyqservice.GetList();
+        //先接收参数
+        let params = ctx.params;
+
+        let { querytype , pagecounts , minid , maxid } = params;
+
+        let obj = await pyqservice.GetList( querytype , pagecounts , minid , maxid )
 
         ctx.body = {
             listdata : obj

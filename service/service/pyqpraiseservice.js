@@ -48,9 +48,9 @@ async function Add ( postData , id ) {
     let addlog = log.AddRunLog( mobile , 'AddPyqPraise' , `用户${ mobile }(${ name })点赞一个朋友圈 朋友圈_id:${ pyq_id }` );
 
     let savedata = newmodel.save();
-    let updatedata = null;
+    // let updatedata = null;
     if ( id != '' ) {
-        updatedata = pyqpraisemodel.findOneAndUpdate( {
+        savedata = pyqpraisemodel.findOneAndUpdate( {
             _id : mongoose.Types.ObjectId( id )
         } , {
             updatedate : nowstr ,
@@ -64,7 +64,7 @@ async function Add ( postData , id ) {
     //做3件事情:1.记录点赞流水 2.更新朋友圈表点赞数量 3.记录日志
     var result = await Promise.all( [
 
-        id == '' ? savedata : updatedata ,
+        savedata ,
         updatecount ,
         addlog
 

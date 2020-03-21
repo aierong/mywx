@@ -18,7 +18,7 @@ let prefix = '/pyq';
  * @param imglist
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const add = ( mobile , name , avatar , txt , imglist ) => {
+export const addpyq = ( mobile , name , avatar , txt , imglist ) => {
     let obj = {
         mobile ,
         avatar ,
@@ -30,6 +30,20 @@ export const add = ( mobile , name , avatar , txt , imglist ) => {
     return axios.post( `${ prefix }/add` , obj );
 }
 
+/**
+ * 删除
+ * @param mobile
+ * @param _id
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export const deletepyq = ( mobile , _id ) => {
+    return axios.delete( `${ prefix }/delete/${ _id }/${ mobile }` );
+}
+
+/**
+ *
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export const getlist = () => {
     return axios.get( `${ prefix }/getlist` );
 }

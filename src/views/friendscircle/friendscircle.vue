@@ -182,6 +182,7 @@
 <script>
     // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
     import * as pyqapi from '@/https/api/pyq.js'
+    import * as pyqbbsapi from '@/https/api/pyqbbs.js'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
@@ -348,6 +349,7 @@
 
                     if ( !this.bbsobj.bbstxt ) {
                         this.$toast( "请输入您的留言" )
+
                         done( false )
 
                         return;
@@ -355,7 +357,6 @@
 
                     ;( async () => {
 
-                        // console.log( 'this.bbsobj.selectid' , this.bbsobj.selectid )
                         //去更新服务器
                         let resultdata = await friendscirclemethod.updatebbslist(
                             this.bbsobj.selectid ,
@@ -365,9 +366,6 @@
                             this.loginusername
                         );
 
-                        // console.log( 'resultdata' , resultdata )
-
-                        //this.getpyqlist( 5 ); //重新取一下吧
                         //重新取一下吧
                         let _data = await friendscirclemethod.getfriendscirclebyid( this.bbsobj.selectid );
                         // console.log( '_data' , _data )

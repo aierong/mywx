@@ -218,6 +218,7 @@ async function GetUserByMobile ( mobile = '' , isdisplaypassword = false ) {
 }
 
 module.exports = {
+
     IsExistsMobile ,
     AddUser ,
 
@@ -226,6 +227,7 @@ module.exports = {
     UpdatePassWord ,
     GetUserList ,
     GetUserByMobile
+
 }
 
 

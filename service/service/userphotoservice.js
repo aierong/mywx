@@ -119,11 +119,7 @@ async function GetUserPhoto ( mobile = '' ) {
         mobile : mobile
     }
 
-    // console.log( 'where' , where )
-
     let obj = await userphotomodel.findOne( where );
-
-    // console.log( 'obj' , obj )
 
     return obj;
 }

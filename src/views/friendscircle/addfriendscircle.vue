@@ -70,7 +70,6 @@
     //导入dayjs
     import dayjs from 'dayjs'
 
-    // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
     import * as pyqapi from '@/https/api/pyq.js'
 
     import * as constant from '@/common/constant.js'
@@ -224,17 +223,10 @@
                     return;
                 }
 
-                // if ( this.RongLiang > constant.bmobapidatamax ) {
-                //     this.$toast( "bmob限制api数据大小:" + constant.bmobapidatamax + ",请尽量整小图片!" )
-                //
-                //     return;
-                // }
-
                 //把一些属性补齐
                 this.pyq.name = this.loginusername;
                 this.pyq.mobile = this.loginusermobile;
                 this.pyq.avatar = this.loginuseravatar;
-                // this.pyq.date = dayjs().format( 'YYYY-MM-DD HH:mm:ss' );
 
                 this.$toast.loading( {
                     duration : 0 ,

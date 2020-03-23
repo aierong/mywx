@@ -180,7 +180,7 @@
 
 <!-- js脚本代码片段 -->
 <script>
-    // import * as friendscirclemethod from '@/common/bmobapi/pyq.js'
+
     import * as pyqapi from '@/https/api/pyq.js'
     import * as pyqbbsapi from '@/https/api/pyqbbs.js'
     import * as pyqpraiseapi from '@/https/api/pyqpraise.js'
@@ -294,7 +294,7 @@
             } ,
             //点赞 ok
             praiseClick ( _id , _index ) {
-                //objectId
+
                 ;( async () => {
 
                     let resultdata = await pyqpraiseapi.praise(
@@ -342,23 +342,6 @@
 
                     ;( async () => {
 
-                        // //去更新服务器
-                        // let resultdata = await friendscirclemethod.updatebbslist(
-                        //     this.bbsobj.selectid ,
-                        //     dayjs().format( 'YYYY-MM-DD HH:mm:ss' ) ,
-                        //     this.bbsobj.bbstxt ,
-                        //     this.loginusermobile ,
-                        //     this.loginusername
-                        // );
-
-                        // //重新取一下吧
-                        // let _data = await friendscirclemethod.getfriendscirclebyid( this.bbsobj.selectid );
-                        // // console.log( '_data' , _data )
-                        // if ( _data != null ) {
-                        //     //更新这条记录
-                        //     this.$set( this.pyqlist , this.bbsobj.selectindex , _data );
-                        // }
-
                         let resultdata = await pyqbbsapi.addbbs( this.loginusermobile ,
                             this.loginuseravatar ,
                             this.loginusername ,
@@ -403,14 +386,10 @@
                     title : "删除" ,
                     message : "确定删除吗?"
                 } ).then( () => {
-                    // on confirm
-                    // console.log( "点确定按钮" )
 
                     ;( async () => {
 
                         let result = await pyqapi.deletepyq( _id , loginusermobile );
-                        // console.log( 'result' , result )
-                        //this.getpyqlist( 5 ); //重新取一下吧
 
                         if ( result != null ) {
                             let _resultdata = result.data;
@@ -437,17 +416,6 @@
                     // console.log( "点取消按钮" )
                 } )
 
-                // ;( async () => {
-                //
-                //     let result = await friendscirclemethod.deletefriendscirclebyid( objectId );
-                //     console.log( 'result' , result )
-                //     //this.getpyqlist( 5 ); //重新取一下吧
-                //
-                //     this.$delete( this.pyqlist , _index )
-                //
-                //     return;
-                //
-                // } )();
             } ,
             //图片单击预览
             imgclick ( index , imgs ) {

@@ -11,7 +11,6 @@ const pyqservice = require( '../service/pyqservice' )
 const common = require( '../common/common.js' )
 
 module.exports = {
-
     Praise : async ( ctx , next ) => {
         //  http://localhost:3001/api/pyqpraise/praise
 

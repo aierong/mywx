@@ -46,7 +46,6 @@
 
     import * as util from '@/common/util/util.js'
 
-    // import * as commonmethod from '@/common/bmobapi/users.js'
     import * as userapi from '@/https/api/user.js'
 
     import * as constant from '@/common/constant.js'
@@ -57,7 +56,6 @@
         name : "Login" ,
         //导入混入对象 可以是多个,数组
         mixins : [ mix ] ,
-
         //数据模型
         data () {
             return {

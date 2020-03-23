@@ -83,7 +83,6 @@
     //导入
     import { mix } from "@/mixin/index.js"
 
-    // import * as commonmethod from '@/common/bmobapi/users.js'
     import * as userapi from '@/https/api/user.js'
 
     import * as globalconstant from '@/common/constant.js'
@@ -155,11 +154,8 @@
 
             } ,
             onClickRight () {
-
                 this.$toast( "这里可以注册新用户" )
-
             } ,
-
             regClick () {
 
                 if ( !this.userinfo.mobile ) {

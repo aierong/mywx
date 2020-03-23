@@ -112,7 +112,6 @@
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    // import * as commonmethod from '@/common/bmobapi/users.js'
     import * as userapi from '@/https/api/user.js'
 
     //导入组件

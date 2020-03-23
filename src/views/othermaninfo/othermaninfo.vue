@@ -71,9 +71,6 @@ js脚本代码片段
     import { mix } from "@/mixin/index.js"
     import { loginuserdatamix } from '@/mixin/loginuserdata.js'
 
-    // import * as commonmethod from '@/common/bmobapi/users.js'
-    // import * as userphoto from '@/common/bmobapi/userphoto.js'
-
     import * as userapi from '@/https/api/user.js'
     import * as userphotoapi from '@/https/api/userphoto.js'
 
@@ -182,6 +179,7 @@ js脚本代码片段
             imgclick ( index ) {
                 //点击了图片按钮，我们全屏看图片哦
                 ImagePreview( {
+
                     images : this.imgdatalist ,
                     // 图片预览起始位置索引
                     startPosition : index ,
@@ -215,13 +213,9 @@ js脚本代码片段
         created () {
         } ,
         mounted () {
-            //接收参数
-            //this.maninfo.mobile = this.$route.query.empmobile;
-            // this.maninfo.mobile = this.queryusermobile;
 
             this.getuserinfo();
 
-            // console.log('this.$parent.testmsg',this.$parent.testmsg)
         } ,
     }
 </script>

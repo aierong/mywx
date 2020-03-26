@@ -6,7 +6,7 @@
  */
 
 var mongoose = require( 'mongoose' );
-const runlogmodel = require( './models/runlog.js' )
+const runlogmodel = require( '../models/runlog.js' )
 const common = require( '../common/common.js' )
 
 /**

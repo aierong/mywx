@@ -6,7 +6,7 @@
  */
 
 var mongoose = require( 'mongoose' );
-const pyqpraisemodel = require( './models/pyqpraise.js' )
+const pyqpraisemodel = require( '../models/pyqpraise.js' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 

@@ -6,7 +6,7 @@
  */
 
 var mongoose = require( 'mongoose' );
-const userphotomodel = require( './models/userphoto.js' )
+const userphotomodel = require( '../models/userphoto.js' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 

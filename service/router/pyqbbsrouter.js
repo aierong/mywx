@@ -4,17 +4,18 @@
  Time: 19:12
  功能: js脚本
  */
+let prefix = '/api/pyqbbs';
 
 // require( 'koa-router' )()是引入并且初始化 ,等同于下面2句
 // const Router = require('koa-router')
 // const router = new Router()
-const router = require( 'koa-router' )()
+const router = require( 'koa-router' )( {
+    prefix : prefix
+} )
 
 const pyqbbscontroller = require( '../controller/pyqbbs' )
 
-let prefix = '/api/pyqbbs';
-
-router.post( `${ prefix }/add` , pyqbbscontroller.Add )
-router.post( `${ prefix }/delete` , pyqbbscontroller.Delete )
+router.post( `/add` , pyqbbscontroller.Add )
+router.post( `/delete` , pyqbbscontroller.Delete )
 
 module.exports = router

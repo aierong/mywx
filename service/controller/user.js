@@ -159,7 +159,6 @@ module.exports = {
 
         if ( _user == null ) {
             result = {
-
                 isok : false ,
                 errmsg : '手机号码不存在' ,
                 data : null

@@ -15,6 +15,8 @@ const router = require( 'koa-router' )( {
 
 const usercontroller = require( '../controller/user' )
 
+
+
 router.get( `/getuserlist` , usercontroller.GetUserList )
 router.get( `/getuserbymobile/:mobile` , usercontroller.GetUserByMobile )
 router.post( `/isexistsmobile` , usercontroller.IsExistsMobile )

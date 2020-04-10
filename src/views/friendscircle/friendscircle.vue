@@ -44,20 +44,35 @@
                                   v-for="(item,index) in pyqlist">
                             <van-row class="user-links">
                                 <!--分成左右2部分,左边显示头像，右边显示名称，图片，评论等等-->
-                                <van-col span="4">
+                                <van-col span="2">
                                     <!--头像-->
                                     <svg class="icon"
                                          aria-hidden="true"
-                                         style="font-size:38px;">
+                                         style="font-size:33px;">
                                         <use v-bind:xlink:href="item.avatar  | iconallname"></use>
                                     </svg>
                                 </van-col>
-                                <van-col span="20">
+                                <van-col span="22">
                                     <!--名字
                                     这个栏位肯定有的
                                     -->
                                     <van-cell>
-                                        <div class="username">{{ item.name }}</div>
+
+                                        <van-col span="20">
+                                            <!--                                            {{ item.date | formatdatetxt }}-->
+                                            <span class="username">{{ item.name }}</span>&nbsp;&nbsp;&nbsp;
+                                            <span>({{ item.date | formatdatetxt }})</span>
+                                        </van-col>
+                                        <van-col span="4">
+                                            <div style="text-align: right;">
+                                                <!--删除,要判断是否是自己发的朋友圈-->
+                                                <van-icon v-if="item.mobile==loginusermobile"
+                                                          size="20px"
+                                                          color="red"
+                                                          @click="pyqdelete(item._id,index)"
+                                                          name="close"/>
+                                            </div>
+                                        </van-col>
                                     </van-cell>
                                     <!--内容-->
                                     <van-cell v-if="item.txt">
@@ -87,17 +102,20 @@
                                     <van-cell>
                                         <div>
                                             <van-row class="user-links">
-                                                <van-col span="12">
+                                                <!--                                                <van-col span="8">-->
+                                                <!--                                                    {{ item.date | formatdatetxt }}-->
+
+
+                                                <!--                                                </van-col>-->
+                                                <van-col span="16">
                                                     <van-icon size="20px"
                                                               :color="getpraisecolor(item.praiselist)"
                                                               name="thumb-circle-o"
                                                               @click="praiseClick(item._id,index)"/>
-                                                    <!--
-                                                    <span>{{ getpraisecounttxt(item.praiselist) }}</span>
-                                                    -->
+
                                                     <span>{{ getpraisecounttxt( item.praisecounts ) }}</span>
                                                 </van-col>
-                                                <van-col span="12">
+                                                <van-col span="8">
                                                     <div style="text-align: right;">
                                                         <van-tag mark
                                                                  @click="bbsClick(item._id,index)"
@@ -125,32 +143,12 @@
                                     -->
                                     <van-cell v-if="item.bbslist!=null && item.bbslist.length>0">
                                         <div v-for="(itembbs,bbsindex) in item.bbslist"
-                                             :key="bbsindex">
-                                            {{ itembbs.name +":"+itembbs.txt }}
+                                             :key="bbsindex"><span class="bbsusername">{{ itembbs.name +":" }}</span>
+                                            {{ itembbs.txt }}
+
                                         </div>
                                     </van-cell>
-                                    <!--发布时间  删除等信息
-                                    这个栏位肯定有的
-                                    -->
-                                    <van-cell>
-                                        <div class="friendscircledate">
-                                            <van-row class="user-links">
-                                                <van-col span="12">
-                                                    {{ item.date | formatdatetxt }}
-                                                </van-col>
-                                                <van-col span="12">
-                                                    <div style="text-align: right;">
-                                                        <!--删除,要判断是否是自己发的朋友圈-->
-                                                        <van-icon v-if="item.mobile==loginusermobile"
-                                                                  size="20px"
-                                                                  color="red"
-                                                                  @click="pyqdelete(item._id,index)"
-                                                                  name="close"/>
-                                                    </div>
-                                                </van-col>
-                                            </van-row>
-                                        </div>
-                                    </van-cell>
+
                                 </van-col>
                             </van-row>
                         </van-cell>

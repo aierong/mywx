@@ -15,6 +15,7 @@
 .username {
     font-size: 16px;
     font-weight: bold;
+    color: #003cb3;
 }
 
 .friendscircledate {
@@ -30,4 +31,11 @@
 
 .cellspantitleclass {
     color: green;
+}
+
+
+.bbsusername {
+    font-size: 16px;
+
+    color: #003cb3;
 }

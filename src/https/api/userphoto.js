@@ -7,7 +7,7 @@
 
 import axios from 'axios'
 
-let prefix = '/userphoto';
+let prefix = '/userphotos';
 
 /**
  * 获取用户图片列表
@@ -16,7 +16,7 @@ let prefix = '/userphoto';
  */
 export const getuserphoto = ( mobile = '' ) => {
 
-    return axios.get( `${ prefix }/getuserphoto/${ mobile }` );
+    return axios.get( `${ prefix }/${ mobile }` );
 }
 
 /**
@@ -35,7 +35,7 @@ export const save = ( mobile = '' , isshare = false , imgs = [] ) => {
 
     console.log( 'save obj' , obj )
 
-    return axios.post( `${ prefix }/save` , obj );
+    return axios.post( `${ prefix }` , obj );
 }
 
 

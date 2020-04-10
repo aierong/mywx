@@ -7,7 +7,7 @@
 
 import axios from 'axios'
 
-let prefix = '/user';
+let prefix = '/users';
 
 /**
  * 是存在手机号码
@@ -19,7 +19,6 @@ export const isexistsmobile = ( mobile ) => {
 
     return axios.post( `${ prefix }/isexistsmobile` , obj );
 }
-
 
 /**
  * 添加用户（注册用户）
@@ -88,7 +87,7 @@ export function updatepassword ( mobile = '' , oldpassword = '' , newpassword = 
  */
 export function getuserlist () {
 
-    return axios.get( `${ prefix }/getuserlist` );
+    return axios.get( `${ prefix }` );
 }
 
 /**
@@ -98,7 +97,7 @@ export function getuserlist () {
  */
 export function getuserbymobile ( mobile = '' ) {
 
-    return axios.get( `${ prefix }/getuserbymobile/${ mobile }` );
+    return axios.get( `${ prefix }/${ mobile }` );
 }
 
 

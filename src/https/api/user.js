@@ -29,7 +29,7 @@ export function adduser ( registerUser ) {
 
     // console.log(registerUser)
 
-    return axios.post( `${ prefix }/add` , registerUser );
+    return axios.post( `${ prefix }` , registerUser );
 }
 
 /**

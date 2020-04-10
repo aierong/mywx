@@ -52,8 +52,9 @@ mongoose.connection.on( 'disconnected' , function () {
     console.log( 'Mongoose connection disconnected' );
 } ); /** * 连接断开 */
 
-// require-directory可以自动加载某个目录下的所有路由文件
-
+/**
+ * require-directory可以自动加载某个目录下的所有路由文件
+ */
 requireDirectory( module , "./router" , {
     visit : ( obj ) => {
         // 判断当前对象是否是一个Router，这种判断方式很简单，只适用于导出时没有使用大括号的方式，如果使用了大括号，这里的判断逻辑相对就会复杂一些

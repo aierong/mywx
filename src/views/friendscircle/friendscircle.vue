@@ -249,11 +249,9 @@
             } ,
             //判断当前操作者是否点赞
             ismypraise ( praiselist ) {
-
                 if ( this.getpraiselistindex( praiselist ) > -1 ) {
                     return true;
                 }
-
                 return false;
             } ,
             getpraiselistindex ( praiselist ) {

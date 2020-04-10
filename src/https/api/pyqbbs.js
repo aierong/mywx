@@ -7,7 +7,7 @@
 
 import axios from 'axios'
 
-let prefix = '/pyqbbs';
+let prefix = '/pyqbbss';
 
 /**
  * 添加bbs
@@ -27,7 +27,11 @@ export const addbbs = ( mobile , avatar , name , pyq_id , txt ) => {
         txt
     }
 
-    return axios.post( `${ prefix }/add` , obj );
+    return axios.post( `${ prefix }` , obj );
 }
+
+
+//怎么少一个删除
+
 
 

@@ -20,7 +20,7 @@ const router = require( 'koa-router' )( {
 
 const pyqbbscontroller = require( '../controller/pyqbbs' )
 
-router.post( `` , pyqbbscontroller.Add )
+router.post( `/` , pyqbbscontroller.Add )
 router.delete( `/:id` , pyqbbscontroller.Delete )
 
 module.exports = router

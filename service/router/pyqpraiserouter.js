@@ -20,6 +20,6 @@ const router = require( 'koa-router' )( {
 
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
 
-router.post( `` , pyqpraisecontroller.Praise )
+router.post( `/` , pyqpraisecontroller.Praise )
 
 module.exports = router

@@ -16,7 +16,7 @@ const router = require( 'koa-router' )( {
 const userphotocontroller = require( '../controller/userphoto' )
 
 router.get( `/:mobile` , userphotocontroller.GetUserPhoto )
-router.post( `` , userphotocontroller.Save )
+router.post( `/` , userphotocontroller.Save )
 
 module.exports = router
 

@@ -16,7 +16,7 @@ const router = require( 'koa-router' )( {
 const pyqcontroller = require( '../controller/pyq' )
 
 router.get( `/:querytype/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
-router.post( `` , pyqcontroller.Add )
+router.post( `/` , pyqcontroller.Add )
 router.delete( `/:_id/:mobile` , pyqcontroller.Delete )
 
 module.exports = router

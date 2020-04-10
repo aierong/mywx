@@ -15,10 +15,10 @@ const router = require( 'koa-router' )( {
 
 const usercontroller = require( '../controller/user' )
 
-router.get( `` , usercontroller.GetUserList )
+router.get( `/` , usercontroller.GetUserList )
 router.get( `/:mobile` , usercontroller.GetUserByMobile )
 router.post( `/isexistsmobile` , usercontroller.IsExistsMobile )
-router.post( `` , usercontroller.AddUser )
+router.post( `/` , usercontroller.AddUser )
 router.post( `/login` , usercontroller.Login )
 router.put( `/updateuseravatar` , usercontroller.UpdateUserAvatar )
 router.put( `/updatepassword` , usercontroller.UpdatePassWord )

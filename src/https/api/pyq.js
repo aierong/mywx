@@ -7,7 +7,7 @@
 
 import axios from 'axios'
 
-let prefix = '/pyq';
+let prefix = '/pyqs';
 
 /**
  * 发朋友圈
@@ -27,7 +27,7 @@ export const addpyq = ( mobile , name , avatar , txt , imglist ) => {
         imglist
     }
 
-    return axios.post( `${ prefix }/add` , obj );
+    return axios.post( `${ prefix }` , obj );
 }
 
 /**
@@ -37,7 +37,7 @@ export const addpyq = ( mobile , name , avatar , txt , imglist ) => {
  * @returns {Promise<AxiosResponse<T>>}
  */
 export const deletepyq = ( _id , mobile ) => {
-    return axios.delete( `${ prefix }/delete/${ _id }/${ mobile }` );
+    return axios.delete( `${ prefix }/${ _id }/${ mobile }` );
 }
 
 /**
@@ -45,7 +45,7 @@ export const deletepyq = ( _id , mobile ) => {
  * @returns {Promise<AxiosResponse<T>>}
  */
 export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) => {
-    return axios.get( `${ prefix }/getlist/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
+    return axios.get( `${ prefix }/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
 }
 
 

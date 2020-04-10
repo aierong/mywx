@@ -7,7 +7,7 @@
 
 import axios from 'axios'
 
-let prefix = '/pyqpraise';
+let prefix = '/pyqpraises';
 
 /**
  * 点赞(点赞和取消点赞 都是这个方法)
@@ -27,7 +27,7 @@ export const praise = ( mobile , avatar , name , pyq_id ) => {
 
     }
 
-    return axios.post( `${ prefix }/praise` , obj );
+    return axios.post( `${ prefix }` , obj );
 }
 
 

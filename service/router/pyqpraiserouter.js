@@ -4,7 +4,12 @@
  Time: 18:13
  功能: js脚本
  */
-let prefix = '/api/pyqpraise';
+
+/**
+ * 前缀
+ * @type {string}
+ */
+let prefix = '/api/pyqpraises';
 
 // require( 'koa-router' )()是引入并且初始化 ,等同于下面2句
 // const Router = require('koa-router')
@@ -15,6 +20,6 @@ const router = require( 'koa-router' )( {
 
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
 
-router.post( `/praise` , pyqpraisecontroller.Praise )
+router.post( `` , pyqpraisecontroller.Praise )
 
 module.exports = router

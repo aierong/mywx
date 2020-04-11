@@ -3,8 +3,12 @@
  功能: 定义一些常量
  */
 
-//token名称
+
 import createPersistedState from "vuex-persistedstate";
+
+//token名称
+export const tokenname = 'loginusertoken'
+
 
 export const usertokenname = 'MyWxNewToken'
 

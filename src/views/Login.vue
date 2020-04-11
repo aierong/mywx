@@ -99,9 +99,17 @@
                     else {
                         //登录成功
                         //     // 存储token
-                        let token = result.data
+                        let userdata = result.data
+                        //     // 存储token
+                        let tokendata = result.tokendata
+
+                        // console.log( 'token' , token )
+
+                        //koa 返回的token是可以用的
+                        localStorage.setItem( constant.tokenname , tokendata );
+
                         //
-                        this.updateloginuser( token );
+                        this.updateloginuser( userdata );
 
                         // 页面跳转
                         this.$router.push( "/chats" )

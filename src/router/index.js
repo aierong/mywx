@@ -67,12 +67,19 @@ const router = new Router( {
             name : 'login' ,
 
             component : () => import( '@/views/Login.vue') ,
-
+            meta : {
+                //不需要登录验证
+                requiresAuth : false
+            }
         } ,
         {
             path : '/register' ,
             name : 'register' ,
-            component : () => import( '@/views/Register.vue')
+            component : () => import( '@/views/Register.vue') ,
+            meta : {
+                //不需要登录验证
+                requiresAuth : false
+            }
         } ,
 
         {
@@ -102,9 +109,11 @@ const router = new Router( {
 
 router.beforeEach( ( to , from , next ) => {
 
-    if ( to.path == '/login' || to.path == '/register' ) {
+    // if ( to.path == '/login' || to.path == '/register' ) {
+    if ( to.meta != null && to.meta.requiresAuth != null && !to.meta.requiresAuth ) {
 
         next();
+
     }
     else {
 
@@ -114,8 +123,10 @@ router.beforeEach( ( to , from , next ) => {
 
         let isLogin = false;
 
+        var loginusertoken = localStorage.getItem( constant.tokenname );
+
         //注意是分模块的，所以这里要用data.user.loginuserid
-        if ( data && data.user.loginuserid ) {
+        if ( data && data.user.loginuserid && loginusertoken ) {
             isLogin = true;
         }
 

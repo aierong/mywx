@@ -5,11 +5,10 @@
  功能: 关于用户的控制器
  */
 
-
-
 // 引入 service 文件
 const userservice = require( '../service/userservice.js' )
 const common = require( '../common/common.js' )
+const { CreateToken } = require( '../common/jwttoken.js' )
 
 module.exports = {
     IsExistsMobile : async ( ctx , next ) => {
@@ -184,11 +183,15 @@ module.exports = {
                 let newuser = await userservice.RunLogin( mobile );
                 newuser.password = '';  //密码置空一下
 
+                let tokendata = CreateToken( newuser );
+
                 result = {
 
                     isok : true ,
                     errmsg : '' ,
-                    data : newuser
+                    data : newuser ,
+                    tokendata
+
                 }
             }
         }

@@ -14,7 +14,6 @@ const router = require( 'koa-router' )( {
 } )
 
 const pyqcontroller = require( '../controller/pyq' )
-
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
 const pyqbbscontroller = require( '../controller/pyqbbs' )
 

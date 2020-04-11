@@ -9,6 +9,7 @@
 const pyqbbsservice = require( '../service/pyqbbsservice' )
 const pyqservice = require( '../service/pyqservice' )
 const common = require( '../common/common.js' )
+const { GetTokenData } = require( '../common/jwttoken' )
 
 module.exports = {
     Add : async ( ctx , next ) => {
@@ -22,11 +23,17 @@ module.exports = {
 
         }
 
-        //先接收post的参数
+        //先接收参数
+        // let params = ctx.params
+        // let { id : pyq_id } = params;
+        let tokendata = GetTokenData( ctx );
+
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
 
-        let obj = await pyqbbsservice.Add( postData );
+        let { pyq_id , txt } = postData;
+
+        let obj = await pyqbbsservice.Add( tokendata , pyq_id , txt );
 
         if ( obj ) {
 

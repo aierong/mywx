@@ -27,6 +27,6 @@ router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
 
 //bbs的路由
 router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
-router.delete( `/:id/pyqbbs` , pyqbbscontroller.Delete )
+router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
 module.exports = router

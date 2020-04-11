@@ -180,7 +180,7 @@
 <script>
 
     import * as pyqapi from '@/https/api/pyq.js'
-    import * as pyqbbsapi from '@/https/api/pyqbbs.js'
+    // import * as pyqbbsapi from '@/https/api/pyqbbs.js'
     // import * as pyqpraiseapi from '@/https/api/pyqpraise.js'
 
     // 引入阿里图标js
@@ -337,11 +337,13 @@
 
                     ;( async () => {
 
-                        let resultdata = await pyqbbsapi.addbbs( this.loginusermobile ,
-                            this.loginuseravatar ,
-                            this.loginusername ,
-                            this.bbsobj.selectid ,
-                            this.bbsobj.bbstxt );
+                        // let resultdata = await pyqapi.addbbs( this.loginusermobile ,
+                        //     this.loginuseravatar ,
+                        //     this.loginusername ,
+                        //     this.bbsobj.selectid ,
+                        //     this.bbsobj.bbstxt );
+
+                        let resultdata = await pyqapi.addbbs( this.bbsobj.selectid , this.bbsobj.bbstxt );
 
                         // 返回会带数据
                         if ( resultdata != null ) {

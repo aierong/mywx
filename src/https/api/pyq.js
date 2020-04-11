@@ -68,3 +68,26 @@ export const praise = ( pyq_id ) => {
 
     return axios.post( `${ prefix }/${ pyq_id }/pyqpraise` );
 }
+
+
+
+/**
+ * 添加bbs
+ * @param mobile
+ * @param avatar
+ * @param name
+ * @param pyq_id
+ * @param txt
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export const addbbs = ( pyq_id , txt ) => {
+    let obj = {
+
+        pyq_id ,
+        txt
+    }
+
+    return axios.post( `${ prefix }/${ pyq_id }/pyqbbs` , obj );
+}
+
+//好像少一个删除 bbs

@@ -18,11 +18,9 @@ let prefix = '/pyqbbss';
  * @param txt
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const addbbs = ( mobile , avatar , name , pyq_id , txt ) => {
+export const addbbs = ( pyq_id , txt ) => {
     let obj = {
-        mobile ,
-        avatar ,
-        name ,
+
         pyq_id ,
         txt
     }
@@ -30,8 +28,7 @@ export const addbbs = ( mobile , avatar , name , pyq_id , txt ) => {
     return axios.post( `${ prefix }` , obj );
 }
 
-
-//怎么少一个删除
+//好像少一个删除 bbs
 
 
 

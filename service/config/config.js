@@ -6,14 +6,24 @@
  */
 
 module.exports = {
-    //定义定义密钥
-    //My_Token_Key
+    /**
+     * 定义jwt密钥
+     */
     TokenPrivateKey : "0727-0413-1209" ,
 
-    //服务的端口
+    /**
+     * jwt有效期 单位秒  (7天)
+     */
+    TokenValidity : 60 * 60 * 24 * 7 ,
+
+    /**
+     * 服务的端口
+     */
     ServerPort : 3001 ,
 
-    //数据库地址
+    /**
+     * 数据库地址
+     */
     mongodburl : 'mongodb://localhost/wx'
 }
 

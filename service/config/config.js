@@ -10,7 +10,11 @@ module.exports = {
     //My_Token_Key
     TokenPrivateKey : "c2f26f24-1ea0-4389-9536-8a64ab0d5642" ,
 
-    ServerPort : 3001
+    //服务的端口
+    ServerPort : 3001 ,
+
+    //数据库地址
+    mongodburl : 'mongodb://localhost/wx'
 }
 
 

@@ -8,7 +8,7 @@
 // 引入 service 文件
 const userservice = require( '../service/userservice.js' )
 const common = require( '../common/common.js' )
-const { CreateToken } = require( '../common/jwttoken.js' )
+const { CreateToken , GetTokenData } = require( '../common/jwttoken.js' )
 
 module.exports = {
     IsExistsMobile : async ( ctx , next ) => {
@@ -201,6 +201,10 @@ module.exports = {
     } ,
     GetUserList : async ( ctx , next ) => {
         let obj = await userservice.GetUserList();
+
+        // let tokendata = ctx.state.jwtdata;
+        // console.log( 'tokendata' , GetTokenData( ctx ) )
+
         ctx.body = obj
     } ,
     GetUserByMobile : async ( ctx , next ) => {

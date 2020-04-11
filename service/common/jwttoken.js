@@ -7,6 +7,12 @@
 
 const jwt = require( 'jsonwebtoken' );
 
+/**
+ * 创建token
+ * @param payload
+ * @returns {undefined|*}
+ * @constructor
+ */
 function CreateToken ( payload ) {
     let token = jwt.sign( {
 
@@ -18,8 +24,22 @@ function CreateToken ( payload ) {
     return token;
 }
 
+/**
+ * 得token中数据
+ * @param ctx
+ * @returns {*}
+ * @constructor
+ */
+function GetTokenData ( ctx ) {
+    let tokendata = ctx.state.jwtdata.data;
+    // console.log( 'tokendata' , tokendata )
+
+    return tokendata;
+}
+
 module.exports = {
 
-    CreateToken
+    CreateToken ,
+    GetTokenData
 
 }

@@ -45,7 +45,10 @@ export const deletepyq = ( _id ) => {
  * @returns {Promise<AxiosResponse<T>>}
  */
 export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid = 0 ) => {
-    return axios.get( `${ prefix }/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
+    let url = `${ prefix }?querytype=${ querytype }&pagecounts=${ pagecounts }&minid=${ minid }&maxid=${ maxid }`;
+    return axios.get( url );
+
+    //return axios.get( `${ prefix }/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
 }
 
 /**

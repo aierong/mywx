@@ -17,7 +17,8 @@ const pyqcontroller = require( '../controller/pyq' )
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
 const pyqbbscontroller = require( '../controller/pyqbbs' )
 
-router.get( `/:querytype/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
+// router.get( `/:querytype/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
+router.get( `/` , pyqcontroller.GetList )
 router.post( `/` , pyqcontroller.Add )
 router.delete( `/:id` , pyqcontroller.Delete )
 

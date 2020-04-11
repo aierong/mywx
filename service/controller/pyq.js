@@ -90,7 +90,7 @@ module.exports = {
         //  http://localhost:3001/api/pyq/getlist
 
         //先接收参数
-        let params = ctx.params;
+        let params = ctx.query;
 
         // 收到的参数全部是 string
         let { querytype , pagecounts , minid , maxid } = params;

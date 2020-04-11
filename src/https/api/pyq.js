@@ -56,7 +56,7 @@ export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
  * @param pyq_id
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const praise = ( mobile , avatar , name , pyq_id ) => {
+export const praise = ( pyq_id ) => {
     // let obj = {
     //
     //     mobile ,

@@ -293,8 +293,7 @@
 
                 ;( async () => {
 
-                    let resultdata = await pyqapi.praise(
-                        this.loginusermobile , this.loginuseravatar , this.loginusername , _id );
+                    let resultdata = await pyqapi.praise( _id );
 
                     // 返回会带数据
                     if ( resultdata != null ) {

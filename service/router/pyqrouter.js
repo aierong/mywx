@@ -16,12 +16,17 @@ const router = require( 'koa-router' )( {
 const pyqcontroller = require( '../controller/pyq' )
 
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
+const pyqbbscontroller = require( '../controller/pyqbbs' )
 
 router.get( `/:querytype/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
 router.post( `/` , pyqcontroller.Add )
 router.delete( `/:_id/:mobile` , pyqcontroller.Delete )
 
 //点赞的路由
-router.post( `/:_id/pyqpraise` , pyqpraisecontroller.Praise )
+router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
+
+//bbs的路由
+router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
+router.delete( `/:id/pyqbbs` , pyqbbscontroller.Delete )
 
 module.exports = router

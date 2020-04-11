@@ -18,8 +18,8 @@ const router = require( 'koa-router' )( {
     prefix : prefix
 } )
 
-const pyqpraisecontroller = require( '../controller/pyqpraise' )
-
-router.post( `/` , pyqpraisecontroller.Praise )
+// const pyqpraisecontroller = require( '../controller/pyqpraise' )
+//
+// router.post( `/` , pyqpraisecontroller.Praise )
 
 module.exports = router

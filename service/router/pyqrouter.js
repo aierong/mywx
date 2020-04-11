@@ -20,7 +20,7 @@ const pyqbbscontroller = require( '../controller/pyqbbs' )
 
 router.get( `/:querytype/:pagecounts/:minid/:maxid` , pyqcontroller.GetList )
 router.post( `/` , pyqcontroller.Add )
-router.delete( `/:_id/:mobile` , pyqcontroller.Delete )
+router.delete( `/:id` , pyqcontroller.Delete )
 
 //点赞的路由
 router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )

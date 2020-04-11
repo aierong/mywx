@@ -31,15 +31,22 @@ function CreateToken ( payload ) {
  * @constructor
  */
 function GetTokenData ( ctx ) {
-    let tokendata = ctx.state.jwtdata.data;
-    // console.log( 'tokendata' , tokendata )
+    if ( ctx != null
+        && ctx.state != null
+        && ctx.state.jwtdata != null
+        && ctx.state.jwtdata.data != null ) {
 
-    return tokendata;
+        let tokendata = ctx.state.jwtdata.data;
+
+        // console.log( 'tokendata' , tokendata )
+
+        return tokendata;
+    }
+
+    return null;
 }
 
 module.exports = {
-
     CreateToken ,
     GetTokenData
-
 }

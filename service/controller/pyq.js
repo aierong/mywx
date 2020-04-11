@@ -8,6 +8,7 @@
 // 引入 service 文件
 const pyqservice = require( '../service/pyqservice' )
 const common = require( '../common/common.js' )
+const { GetTokenData } = require( '../common/jwttoken' )
 
 module.exports = {
 
@@ -49,7 +50,7 @@ module.exports = {
         //先接收参数
         let params = ctx.params;
 
-        let { _id , mobile } = params;
+        let { id : _id } = params;
 
         let resultcheck = await pyqservice.CheckDelete( _id , mobile );
 

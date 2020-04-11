@@ -14,8 +14,10 @@ const pyqservice = require( './pyqservice.js' )
 
 /**
  * 评论
- * @param postData
- * @returns {Promise<null>}
+ * @param tokendata
+ * @param pyq_id
+ * @param txt
+ * @returns {Promise<boolean>}
  * @constructor
  */
 async function Add ( tokendata , pyq_id , txt ) {
@@ -64,7 +66,9 @@ async function Add ( tokendata , pyq_id , txt ) {
 
 /**
  * 删除评论
- * @param postData
+ * @param tokendata
+ * @param pyq_id 朋友圈的ID
+ * @param _id    bbs的ID
  * @returns {Promise<null>}
  * @constructor
  */
@@ -103,8 +107,6 @@ async function Delete ( tokendata , pyq_id , _id ) {
 }
 
 module.exports = {
-
     Add ,
     Delete
-
 }

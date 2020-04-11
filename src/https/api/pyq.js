@@ -36,8 +36,8 @@ export const addpyq = ( mobile , name , avatar , txt , imglist ) => {
  * @param _id
  * @returns {Promise<AxiosResponse<T>>}
  */
-export const deletepyq = ( _id , mobile ) => {
-    return axios.delete( `${ prefix }/${ _id }/${ mobile }` );
+export const deletepyq = ( _id ) => {
+    return axios.delete( `${ prefix }/${ _id }` );
 }
 
 /**
@@ -68,8 +68,6 @@ export const praise = ( pyq_id ) => {
 
     return axios.post( `${ prefix }/${ pyq_id }/pyqpraise` );
 }
-
-
 
 /**
  * 添加bbs

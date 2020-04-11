@@ -52,6 +52,9 @@ module.exports = {
 
         let { id : _id } = params;
 
+        let tokendata = GetTokenData( ctx );
+        let { mobile } = tokendata;
+
         let resultcheck = await pyqservice.CheckDelete( _id , mobile );
 
         if ( resultcheck != '' ) {

@@ -386,7 +386,7 @@
 
                     ;( async () => {
 
-                        let result = await pyqapi.deletepyq( _id , loginusermobile );
+                        let result = await pyqapi.deletepyq( _id );
 
                         if ( result != null ) {
                             let _resultdata = result.data;

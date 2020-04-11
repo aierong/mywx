@@ -11,7 +11,7 @@ var mongoose = require( 'mongoose' );
 var UserPhotoSchema = mongoose.Schema( {
     ids : {
         type : String ,
-        unique : true
+        // unique : true
     } ,
     mobile : {
         type : String ,

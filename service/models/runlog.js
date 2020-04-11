@@ -16,7 +16,7 @@ var RunLogSchema = mongoose.Schema( {
     } ,
     ids : {
         type : String ,
-        unique : true
+
     } ,
     mobile : {
 

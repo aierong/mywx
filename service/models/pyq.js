@@ -16,7 +16,7 @@ var PyqSchema = mongoose.Schema( {
     } ,
     ids : {
         type : String ,
-        unique : true
+
     } ,
     //发朋友圈的时间
     date : {

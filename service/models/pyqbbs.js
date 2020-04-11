@@ -23,7 +23,7 @@ var PyqBbsSchema = mongoose.Schema( {
     } ,
     ids : {
         type : String ,
-        unique : true
+
     } ,
     date : {
         type : String ,

@@ -11,7 +11,7 @@ var mongoose = require( 'mongoose' );
 var kittySchema = mongoose.Schema( {
     ids : {
         type : String ,
-        unique : true
+
     } ,
     mobile : {
         type : String ,

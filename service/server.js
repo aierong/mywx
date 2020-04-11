@@ -8,12 +8,17 @@
  */
 
 const Koa = require( 'koa' )
+//引入配置文件
+const config = require( './config/config.js' )
 var cors = require( 'koa2-cors' );  //引入跨域的组件
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const bodyParser = require( 'koa-bodyparser' )
 
 const app = new Koa()
+//把数据全部挂载在global.config中
+global.config = config;
+
 app.use( cors() ); //注册一下 即可
 
 // app.use( bodyParser() )
@@ -27,7 +32,7 @@ app.use( bodyParser( {
 
 var mongoose = require( 'mongoose' );
 //链接说明：默认端口27017可以不写   mytest是数据库名 (如果链接的数据库名不存在，会自动创建一个)
-mongoose.connect( 'mongodb://localhost/wx' , {
+mongoose.connect( global.config.mongodburl , {
     //不加这2个参数 ,程序编译启动 会有警告提示
     useNewUrlParser : true ,
     useUnifiedTopology : true ,
@@ -64,7 +69,7 @@ requireDirectory( module , "./router" , {
     }
 } )
 
-let port = 3001;
+let port = global.config.ServerPort;
 app.listen( port , () => {
     console.log( `server is running at http://localhost:${ port }` )
 } )

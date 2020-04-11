@@ -53,9 +53,12 @@ module.exports = {
         let { id : _id } = params;
 
         let tokendata = GetTokenData( ctx );
+        // console.log( 'tokendata' , tokendata )
         let { mobile } = tokendata;
-
+        // console.log( ' _id , mobile ' , _id , mobile )
         let resultcheck = await pyqservice.CheckDelete( _id , mobile );
+
+        // console.log( 'resultcheck' , resultcheck )
 
         if ( resultcheck != '' ) {
             result = {
@@ -66,7 +69,7 @@ module.exports = {
             }
         }
         else {
-            let obj = await pyqservice.Delete( _id );
+            let obj = await pyqservice.Delete( _id , tokendata );
 
             if ( obj != null ) {
                 result.isok = true;

@@ -93,7 +93,10 @@ async function CheckDelete ( _id , mobile ) {
  * @returns {Promise<null>}
  * @constructor
  */
-async function Delete ( _id ) {
+async function Delete ( _id , tokendata ) {
+
+    //数据解构出来
+    let { name , mobile } = tokendata;
 
     let now = new Date();
     let nowstr = common.GetNowString( now );

@@ -10,23 +10,23 @@ const usermodel = require( '../models/user.js' )
 const common = require( '../common/common.js' )
 const log = require( '../common/log' )
 
-/**
- * 判断手机号码是否存在
- * @param mobile
- * @returns {Promise<*>}
- * @constructor
- */
-async function IsExistsMobile ( mobile = '' ) {
-
-    //构建条件
-    let where = {
-        mobile : mobile
-    }
-
-    let isexists = await usermodel.exists( where );
-
-    return isexists;
-}
+// /**
+//  * 判断手机号码是否存在
+//  * @param mobile
+//  * @returns {Promise<*>}
+//  * @constructor
+//  */
+// async function IsExistsMobile ( mobile = '' ) {
+//
+//     //构建条件
+//     let where = {
+//         mobile : mobile
+//     }
+//
+//     let isexists = await usermodel.exists( where );
+//
+//     return isexists;
+// }
 
 /**
  * 添加用户
@@ -203,6 +203,7 @@ async function GetUserList () {
 async function GetUserByMobile ( mobile = '' , isdisplaypassword = false ) {
 
     let obj;
+
     if ( isdisplaypassword ) {
 
         obj = await usermodel.findOne( { mobile : mobile } );
@@ -219,7 +220,7 @@ async function GetUserByMobile ( mobile = '' , isdisplaypassword = false ) {
 
 module.exports = {
 
-    IsExistsMobile ,
+    // IsExistsMobile ,
     AddUser ,
 
     RunLogin ,

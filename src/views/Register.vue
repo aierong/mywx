@@ -210,9 +210,9 @@
                 ( async () => {
                     let mobile = this.userinfo.mobile;
 
-                    let result = await userapi.isexistsmobile( mobile );
+                    let result = await userapi.getuserbymobile( mobile );
                     // console.log( 'result' , result )
-                    if ( !result.data.isok ) {
+                    if ( result != null ) {
 
                         this.$toast( "手机号码已经注册" )
 

@@ -23,7 +23,31 @@ var UserPhotoSchema = mongoose.Schema( {
         default : false
     } ,
     imgs : {
-        type : Array ,
+        type : [
+            {
+                imgdata : {
+                    type : String ,
+
+                } ,
+                size : {
+                    type : Number ,
+                    min : 0 ,
+
+                } ,
+                filename : {
+                    type : String ,
+                    default : ''
+                },
+                filetype : {
+                    type : String ,
+                    default : ''
+                },
+                uploadimgdate : {
+                    type : String ,
+                    default : ''
+                },
+            }
+        ] ,
         default : []
     } ,
     //Unix 时间戳 13位

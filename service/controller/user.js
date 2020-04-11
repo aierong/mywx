@@ -11,34 +11,7 @@ const common = require( '../common/common.js' )
 const { CreateToken , GetTokenData } = require( '../common/jwttoken.js' )
 
 module.exports = {
-    // IsExistsMobile : async ( ctx , next ) => {
-    //     //  http://localhost:3001/api/user/isexists
-    //
-    //     let result = {
-    //
-    //         isok : true ,
-    //         errmsg : '' ,
-    //
-    //     }
-    //
-    //     //先接收post的参数
-    //     //接收到post数据 postData是一个对象
-    //     let postData = ctx.request.body;
-    //
-    //     let { mobile } = postData;
-    //
-    //     //这里不验证是否为空
-    //     //判断是否唯一
-    //     let isexists = await userservice.IsExistsMobile( mobile );
-    //
-    //     if ( isexists ) {
-    //         result.isok = false;
-    //         result.errmsg = "手机号码已存在";
-    //     }
-    //
-    //     ctx.body = result
-    //
-    // } ,
+
     AddUser : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/add
 

@@ -48,7 +48,6 @@ export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
     let url = `${ prefix }?querytype=${ querytype }&pagecounts=${ pagecounts }&minid=${ minid }&maxid=${ maxid }`;
     return axios.get( url );
 
-    //return axios.get( `${ prefix }/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
 }
 
 /**

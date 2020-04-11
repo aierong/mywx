@@ -212,9 +212,10 @@
 
                     let result = await userapi.getuserbymobile( mobile );
                     // console.log( 'result' , result )
-                    if ( result != null ) {
+                    // console.log( 'result.data' , result.data )
+                    if ( result.data.data != null ) {
 
-                        this.$toast( "手机号码已经注册" )
+                        this.$toast( "手机号码已注册" )
 
                         return;
                     }

@@ -11,6 +11,9 @@ const Koa = require( 'koa' )
 //引入配置文件
 const config = require( './config/config.js' )
 var cors = require( 'koa2-cors' );  //引入跨域的组件
+//引入验证组件
+const koajwt = require( 'koa-jwt' );
+
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const bodyParser = require( 'koa-bodyparser' )
@@ -20,6 +23,22 @@ const app = new Koa()
 global.config = config;
 
 app.use( cors() ); //注册一下 即可
+
+//验证token，如果请求时没有token或者token过期，则会返回401异常
+//前端可以去捕获这个401错误
+app.use( koajwt( {
+    //密钥
+    secret : global.config.TokenPrivateKey ,
+    //设置存储jwt数据的类名 ,如果不设置默认是user ，在通过验证的路由中 使用ctx.state.user取到值
+    key : 'jwtdata'
+} ).unless( {
+    // 这里可以设置排除验证的路由地址 数组可以设置多个
+    // 登录和注册的 不验证
+    path : [
+        '/api/users/login' ,
+        '/api/users/register'
+    ]
+} ) );
 
 // app.use( bodyParser() )
 //设置一下容量大小，要不又限制，会提交失败

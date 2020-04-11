@@ -181,7 +181,7 @@
 
     import * as pyqapi from '@/https/api/pyq.js'
     import * as pyqbbsapi from '@/https/api/pyqbbs.js'
-    import * as pyqpraiseapi from '@/https/api/pyqpraise.js'
+    // import * as pyqpraiseapi from '@/https/api/pyqpraise.js'
 
     // 引入阿里图标js
     import "@/assets/ali/iconfont/iconfont.js"
@@ -293,7 +293,7 @@
 
                 ;( async () => {
 
-                    let resultdata = await pyqpraiseapi.praise(
+                    let resultdata = await pyqapi.praise(
                         this.loginusermobile , this.loginuseravatar , this.loginusername , _id );
 
                     // 返回会带数据

@@ -48,4 +48,23 @@ export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
     return axios.get( `${ prefix }/${ querytype }/${ pagecounts }/${ minid }/${ maxid }` );
 }
 
+/**
+ * 点赞(点赞和取消点赞 都是这个方法)
+ * @param mobile
+ * @param avatar
+ * @param name
+ * @param pyq_id
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export const praise = ( mobile , avatar , name , pyq_id ) => {
+    // let obj = {
+    //
+    //     mobile ,
+    //     avatar ,
+    //     name ,
+    //     pyq_id ,
+    //
+    // }
 
+    return axios.post( `${ prefix }/${ pyq_id }/pyqpraise` );
+}

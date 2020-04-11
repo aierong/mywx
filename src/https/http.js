@@ -8,6 +8,7 @@
 import Vue from 'vue'
 import axios from 'axios';
 import router from '@/router/index.js';
+import * as constant from '@/common/constant.js'
 
 let _url = process.env.VUE_APP_serverurl;
 axios.defaults.baseURL = `${ _url }/api`
@@ -18,9 +19,14 @@ Vue.prototype.$axios = axios;
 // 请求拦截
 axios.interceptors.request.use(
     config => {
-        // if ( localStorage.wxpyqToken ) {
-        //     config.headers.Authorization = JSON.parse( localStorage.wxpyqToken );
-        // }
+        let loginusertoken = localStorage.getItem( constant.tokenname );
+        if ( loginusertoken ) {
+            // Bearer是JWT的认证头部信息
+            // 注意要加:'Bearer '  有一个空格
+            // 我们后端是用koa-jwt自动验证，必须要加上'Bearer ',如果是自己写验证还得把'Bearer '去掉再调用jwt.verify验证
+            config.headers.common[ 'Authorization' ] = 'Bearer ' + loginusertoken;
+        }
+
         return config;
     } ,
     error => {
@@ -35,14 +41,13 @@ axios.interceptors.response.use(
     } ,
     error => {
         // 错误提醒
-        // console.log( error )
 
         const { status } = error.response;
 
         if ( status == 401 ) {
             alert( 'token过期, 请重新登录!' );
             // 清楚token
-            localStorage.removeItem( 'wxpyqToken' );
+            localStorage.removeItem( constant.tokenname );
             // 页面跳转
             router.push( '/login' );
         }

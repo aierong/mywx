@@ -123,7 +123,7 @@ router.beforeEach( ( to , from , next ) => {
 
         let isLogin = false;
 
-        var loginusertoken = localStorage.getItem( constant.tokenname );
+        let loginusertoken = localStorage.getItem( constant.tokenname );
 
         //注意是分模块的，所以这里要用data.user.loginuserid
         // 这里判断了Cookies中的用户数据和token都存在，才可以

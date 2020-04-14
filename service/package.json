@@ -20,7 +20,7 @@
     "koa-parameter": "^3.0.1",
     "koa-router": "^8.0.8",
     "koa2-cors": "^2.0.6",
-    "log4js": "^6.1.2",
+    "log4js": "^6.2.0",
     "mongoose": "^5.9.9",
     "require-directory": "^2.1.1",
     "uuid": "^7.0.3"

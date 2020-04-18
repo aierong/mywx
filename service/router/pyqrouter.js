@@ -29,6 +29,6 @@ router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
 router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
 router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
-router.get( `/:id/pyqconfig` , pyqconfigcontroller.GetData )
+router.get( `/:id/pyqconfig` , pyqconfigcontroller.GetConfig )
 
 module.exports = router

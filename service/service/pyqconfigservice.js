@@ -18,7 +18,7 @@ const log = require( '../common/log' )
  * @returns {Promise<null>}
  * @constructor
  */
-async function Save ( mobile , bgpath , bgpicfilename ) {
+async function Save ( mobile , bgpicpath , bgpicfilename ) {
     let now = new Date();
 
     let where = {
@@ -31,7 +31,7 @@ async function Save ( mobile , bgpath , bgpicfilename ) {
     if ( data != null ) {
         //记录存在，修改一下
         data.bgpicfilename = bgpicfilename;
-        data.bgpath = bgpath;
+        data.bgpicpath = bgpicpath;
         data.updatedate = common.GetNowString( now );
     }
     else {
@@ -39,7 +39,7 @@ async function Save ( mobile , bgpath , bgpicfilename ) {
         //构建数据
         data = new pyqconfigmodel( {
             bgpicfilename ,
-            bgpath ,
+            bgpicpath ,
             isdelete : false ,
 
             // 搞一个guid
@@ -58,7 +58,7 @@ async function Save ( mobile , bgpath , bgpicfilename ) {
         data.save() ,
         log.AddRunLog( mobile ,
             'SavePyqConfig' ,
-            `${ mobile }保存朋友圈配置数据(${ issharetxt }),路径:${ bgpath },文件名:${ bgpicfilename }` )
+            `${ mobile }保存朋友圈配置数据(${ issharetxt }),路径:${ bgpicpath },文件名:${ bgpicfilename }` )
     ] );
 
     let newobj = null;

@@ -15,7 +15,7 @@ var PyqConfigSchema = mongoose.Schema( {
         default : '' ,
         required : true
     } ,
-    bgpath : {
+    bgpicpath : {
         type : String ,
         default : '' ,
         required : true

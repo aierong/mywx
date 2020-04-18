@@ -12,7 +12,7 @@ const common = require( '../common/common.js' )
 // const { GetTokenData } = require( '../common/jwttoken' )
 
 module.exports = {
-    GetData : async ( ctx , next ) => {
+    GetConfig : async ( ctx , next ) => {
         //
 
         let result = {
@@ -32,9 +32,12 @@ module.exports = {
         let _data = await pyqconfigservice.GetData( mobile );
 
         if ( _data != null && _data.bgpicfilename ) {
-            result.bgurl = common.GetUploadImageUrl( ctx.origin , _data.bgpath , _data.bgpicfilename );
+            result.bgurl = common.GetUploadImageUrl( ctx.origin , _data.bgpicpath , _data.bgpicfilename );
         }
-
+        else {
+            //没有配置，给一个默认图片地址
+            result.bgurl = '';
+        }
         // console.log( 'GetData obj' , result )
 
         ctx.body = result;

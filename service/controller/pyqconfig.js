@@ -17,7 +17,7 @@ module.exports = {
 
         let result = {
 
-            bgurl : ''
+            bgpicurl : ''
 
         }
 
@@ -32,11 +32,11 @@ module.exports = {
         let _data = await pyqconfigservice.GetData( mobile );
 
         if ( _data != null && _data.bgpicfilename ) {
-            result.bgurl = common.GetUploadImageUrl( ctx.origin , _data.bgpicpath , _data.bgpicfilename );
+            result.bgpicurl = common.GetUploadImageUrl( ctx.origin , _data.bgpicpath , _data.bgpicfilename );
         }
         else {
             //没有配置，给一个默认图片地址
-            result.bgurl = `${ ctx.origin }/Pic/BgImage/pyqdefaultbg.png`;
+            result.bgpicurl = `${ ctx.origin }/Pic/BgImage/pyqdefaultbg.png`;
         }
         // console.log( 'GetData obj' , result )
 

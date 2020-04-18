@@ -236,6 +236,9 @@
                 } ,
 
                 isshowloading : true ,
+
+                //背景图片url
+                bgpicurl : ''
             }
         } ,
         //方法
@@ -439,7 +442,9 @@
             } ,
             getpyqconfig () {
                 pyqapi.getpyqconfig( this.loginusermobile ).then( ( res ) => {
-                    console.log( 'getpyqconfig' , res )
+                    // console.log( 'getpyqconfig' , res )
+
+                    this.bgpicurl = res.data.bgpicurl;
                 } )
             } ,
             //得朋友圈列表 ok
@@ -455,7 +460,7 @@
                 } )
 
                 pyqapi.getlist( 'init' , counts , 0 , 0 ).then( ( res ) => {
-                    console.log( res )
+                    // console.log( 'init' , res )
 
                     let _data = res.data.listdata;
                     this.pyqlist = _data;

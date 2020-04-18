@@ -27,16 +27,13 @@ var PyqConfigSchema = mongoose.Schema( {
     } ,
     ids : {
         type : String ,
-
     } ,
-    // date : {
-    //     type : String ,
-    //     default : ''
-    // } ,
+
     mobile : {
         type : String ,
         default : '' ,
-        required : true
+        required : true ,
+        unique : true ,
     } ,
     //Unix 时间戳 13位
     addunix : {

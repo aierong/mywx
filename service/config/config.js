@@ -24,7 +24,12 @@ module.exports = {
     /**
      * 数据库地址
      */
-    mongodburl : 'mongodb://localhost/wx'
+    mongodburl : 'mongodb://localhost/wx' ,
+
+    /**
+     * 存放图片的路径
+     */
+    ImageUploadPath : 'uploads'
 }
 
 

@@ -79,6 +79,18 @@ function GetGuid () {
     return u1;
 }
 
+/**
+ * 得图片地址
+ * @param origin
+ * @param datepath
+ * @param filename
+ * @returns {string}
+ * @constructor
+ */
+function GetUploadImageUrl ( origin , datepath , filename ) {
+    return `${ origin }/${ global.config.ImageUploadPath }/${ datepath }/${ filename }`;
+}
+
 module.exports = {
 
     GetNowString ,
@@ -86,6 +98,7 @@ module.exports = {
     GetGuid ,
     EncryptString ,
     EncryptPassWord ,
+    GetUploadImageUrl
 
 }
 

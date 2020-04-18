@@ -16,6 +16,7 @@ const router = require( 'koa-router' )( {
 const pyqcontroller = require( '../controller/pyq' )
 const pyqpraisecontroller = require( '../controller/pyqpraise' )
 const pyqbbscontroller = require( '../controller/pyqbbs' )
+const pyqconfigcontroller = require( '../controller/pyqconfig' )
 
 router.get( `/` , pyqcontroller.GetList )
 router.post( `/` , pyqcontroller.Add )
@@ -28,6 +29,6 @@ router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
 router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
 router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
-router.get( `/:id/bg` , pyqcontroller.GetList )
+router.get( `/:id/pyqconfig` , pyqconfigcontroller.GetData )
 
 module.exports = router

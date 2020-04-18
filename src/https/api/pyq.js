@@ -51,6 +51,18 @@ export const getlist = ( querytype = 'init' , pagecounts = 5 , minid = 0 , maxid
 }
 
 /**
+ *
+ * @param mobile
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const getpyqconfig = ( mobile = '' ) => {
+
+    let url = `${ prefix }/${ mobile }/pyqconfig`;
+    return axios.get( url );
+
+}
+
+/**
  * 点赞(点赞和取消点赞 都是这个方法)
  * @param mobile
  * @param avatar

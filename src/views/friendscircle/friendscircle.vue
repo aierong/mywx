@@ -437,6 +437,11 @@
 
                 } );
             } ,
+            getpyqconfig () {
+                pyqapi.getpyqconfig( this.loginusermobile ).then( ( res ) => {
+                    console.log( 'getpyqconfig' , res )
+                } )
+            } ,
             //得朋友圈列表 ok
             getpyqlist ( counts ) {
 
@@ -546,6 +551,7 @@
             //初始化一下
             dayjs.extend( relativeTime )  // 使用插件
 
+            this.getpyqconfig();
             this.getpyqlist( this.defaultcounts );
         } ,
         //过滤器

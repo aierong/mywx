@@ -36,7 +36,7 @@ module.exports = {
         }
         else {
             //没有配置，给一个默认图片地址
-            result.bgurl = '';
+            result.bgurl = `${ ctx.origin }/Pic/BgImage/pyqdefaultbg.png`;
         }
         // console.log( 'GetData obj' , result )
 

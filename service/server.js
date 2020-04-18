@@ -8,6 +8,7 @@
  */
 
 const Koa = require( 'koa' )
+const KoaStatic = require( "koa-static" )
 //引入配置文件
 const config = require( './config/config.js' )
 var cors = require( 'koa2-cors' );  //引入跨域的组件
@@ -17,10 +18,14 @@ const koajwt = require( 'koa-jwt' );
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const koaBody = require( 'koa-body' )
+const path = require( "path" );
 
 const app = new Koa()
 //把数据全部挂载在global.config中
 global.config = config;
+
+//指定public
+app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
 
 app.use( cors() ); //注册一下 即可
 

@@ -7,5 +7,11 @@
 
 
 
+// 引入 service 文件
+const pyqconfigservice = require( '../service/pyqconfigservice' )
+// const pyqservice = require( '../service/pyqservice' )
+const common = require( '../common/common.js' )
+const { GetTokenData } = require( '../common/jwttoken' )
+
 
 

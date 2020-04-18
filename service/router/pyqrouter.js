@@ -28,4 +28,6 @@ router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
 router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
 router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
+router.get( `/:id/bg` , pyqcontroller.GetList )
+
 module.exports = router

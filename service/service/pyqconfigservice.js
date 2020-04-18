@@ -58,7 +58,7 @@ async function Save ( mobile , bgpicpath , bgpicfilename ) {
         data.save() ,
         log.AddRunLog( mobile ,
             'SavePyqConfig' ,
-            `${ mobile }保存朋友圈配置数据(${ issharetxt }),路径:${ bgpicpath },文件名:${ bgpicfilename }` )
+            `${ mobile }保存朋友圈配置数据,路径:${ bgpicpath },文件名:${ bgpicfilename }` )
     ] );
 
     let newobj = null;

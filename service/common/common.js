@@ -4,6 +4,8 @@
  Time: 12:48
  功能: js脚本
  */
+const path = require( 'path' );
+const fs = require( 'fs' );
 
 var dayjs = require( 'dayjs' )
 
@@ -91,6 +93,47 @@ function GetUploadImageUrl ( origin , datepath , filename ) {
     return `${ origin }/${ global.config.ImageUploadPath }/${ datepath }/${ filename }`;
 }
 
+/**
+ * 得上传目录
+ * @returns {string}
+ * @constructor
+ */
+function GetUploadDirName () {
+    const date = new Date();
+
+    // 20200413
+    const dir = DateFormatter( date );
+
+    return dir;
+}
+
+/**
+ *
+ * @param date
+ * @returns {string}
+ * @constructor
+ */
+function DateFormatter ( date ) {
+    //参数:date是js的Date类型数据
+    //格式化为:yyyyMMdd
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    var d = date.getDate();
+
+    return y + '' + ( m < 10 ? ( '0' + m ) : m ) + '' + ( d < 10 ? ( '0' + d ) : d );
+};
+
+/**
+ * 检查路径是否存在，不存在就创建一个
+ * @param p
+ * @constructor
+ */
+function CheckDirExist ( p ) {
+    if ( !fs.existsSync( p ) ) {
+        fs.mkdirSync( p );
+    }
+}
+
 module.exports = {
 
     GetNowString ,
@@ -98,7 +141,9 @@ module.exports = {
     GetGuid ,
     EncryptString ,
     EncryptPassWord ,
-    GetUploadImageUrl
+    GetUploadImageUrl ,
+    GetUploadDirName ,
+    CheckDirExist
 
 }
 

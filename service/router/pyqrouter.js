@@ -30,5 +30,6 @@ router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
 router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
 router.get( `/:id/pyqconfig` , pyqconfigcontroller.GetConfig )
+router.post( `/:id/upload` , pyqconfigcontroller.Upload )
 
 module.exports = router

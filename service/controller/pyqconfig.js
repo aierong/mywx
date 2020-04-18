@@ -4,6 +4,7 @@
  Time: 11:26
  功能: js脚本
  */
+const path = require( "path" );
 
 // 引入 service 文件
 const pyqconfigservice = require( '../service/pyqconfigservice' )
@@ -39,6 +40,56 @@ module.exports = {
             result.bgpicurl = `${ ctx.origin }/Pic/BgImage/pyqdefaultbg.png`;
         }
         // console.log( 'GetData obj' , result )
+
+        ctx.body = result;
+    } ,
+    Upload : async ( ctx , next ) => {
+        //
+
+        let result = {
+
+            IsOk : false ,
+            bgpicurl : ''
+
+        }
+
+        //先接收参数
+        let params = ctx.params
+        let { id : mobile } = params;
+        // let tokendata = GetTokenData( ctx );
+        // let { mobile } = tokendata;
+
+        //files中的file是前端传递过来的名字
+        // 如果前端传递多个文件,可以要前端都命名file,这样我这里取到的就是数组了
+        //如果是一个文件 file就是对象，如果是多个文件，file就是数组
+        const file = ctx.request.files.file;
+
+        let filepath = "";
+
+        // let fileinfo = [];
+        // let isarr = Array.isArray( file );
+
+        // 一个文件
+        filepath = file.path;
+
+        let filename = path.basename( filepath )
+        //onFileBegin事件中存储的日期目录名，取回来
+        let datedir = item.datedir;
+
+        // 上传图片的链接
+        let imgurl = common.GetUploadImageUrl( ctx.origin , datedir , filename );
+
+        //保存一下
+        let _data = await pyqconfigservice.Save( mobile , datedir , filename );
+
+        if ( _data != null ) {
+            result = {
+
+                IsOk : true ,
+                bgpicurl : imgurl
+
+            }
+        }
 
         ctx.body = result;
     } ,

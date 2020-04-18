@@ -20,6 +20,8 @@ const Router = require( "koa-router" );
 const koaBody = require( 'koa-body' )
 const path = require( "path" );
 
+const { GetUploadDirName , CheckDirExist } = require( './common/common.js' )
+
 const app = new Koa()
 //把数据全部挂载在global.config中
 global.config = config;
@@ -51,7 +53,37 @@ app.use( koaBody( {
     enableTypes : [ 'json' , 'form' , 'text' ] ,
     formLimit : '360mb' ,
     jsonLimit : '360mb' ,
-    textLimit : '360mb'
+    textLimit : '360mb' ,
+    multipart : true ,
+    formidable : {
+        //  上传目录 ,uploads目录
+        uploadDir : path.join( __dirname , 'public/uploads' ) , // 设置文件上传目录
+        keepExtensions : true ,    // 保持文件的后缀
+        // maxFieldsSize : 2 * 1024 * 1024 , //
+        // maxFileSize 这个才是设置最大文件尺寸,我看网络上好多是设置maxFieldsSize，没有用的
+        maxFileSize : 200 * 1024 * 1024 ,      // default 200 * 1024 * 1024 (200mb); limit the size of uploaded file.
+        //
+        onFileBegin : ( name , file ) => {
+            //如果前端传递多个文件过来,这个事件onFileBegin会触发多次的
+
+            //name 是表单的 name 属性传递过来的
+            // console.log( 'onFileBegin name' , name );
+            // console.log( 'onFileBegin file' , file );
+
+            //其实可以利用path.basename取到文件名,这个文件名已经是随机，并且唯一的
+            let filename = path.basename( file.path )
+            // console.log( 'onFileBegin filename' , filename )
+
+            let dates = GetUploadDirName();
+            const dir = path.join( __dirname , `public/uploads/${ dates }` );
+            CheckDirExist( dir ); // 检查文件夹是否存在如果不存在则新建文件夹
+
+            // 重新覆盖 file.path 属性
+            file.path = `${ dir }\\${ filename }`;
+            // 创建一个新属性，后面控制器中可以取到
+            file.datedir = dates;
+        } ,
+    } ,
 } ) )
 
 var mongoose = require( 'mongoose' );
@@ -66,6 +98,7 @@ mongoose.connect( global.config.mongodburl , {
     console.log( 'mongodb链接成功' )
 } );
 
+//数据库
 mongoose.connection.on( 'connected' , function () {
 
     console.log( 'Mongoose connection open  ' );

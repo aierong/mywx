@@ -37,10 +37,10 @@
 
                 <template #default>
                     <div class="demo01">
-                        <div class="left">
-                            <img style="height : 68px;width: 100%"
-                                 :src="bgpicurl"
-                                 alt=""/>
+                        <div class="left" v-bind:style="PicStyleObject">
+<!--                            <img style="height : 68px;width: 100%;min-width: 100%;display: block;"-->
+<!--                                 :src="bgpicurl"-->
+<!--                                 alt=""/>-->
                         </div>
 
                         <div class="right">
@@ -554,7 +554,9 @@
             onRead ( files ) {
 
                 pyqapi.upload( this.loginusermobile , files.file ).then( ( res ) => {
-                    console.log( 'onRead upload' , res )
+                    // console.log( 'onRead upload' , res )
+
+                    this.bgpicurl = res.data.bgpicurl;  //刷新一把图片
                 } )
                 //files.file
 
@@ -579,10 +581,10 @@
             PicStyleObject () {
                 return {
                     backgroundRepeat : 'no-repeat' ,
-                    // background : 'url(' + this.bgpicurl + ')' ,
-                    backgroundSize : '100% 100%' ,
+                    background : 'url(' + this.bgpicurl + ')' ,
+                    // backgroundSize : '100% 100%' ,
                     height : '66px' ,
-                    textAlign : 'right'
+                    // textAlign : 'right'
                 }
             } ,
             //朋友圈数量

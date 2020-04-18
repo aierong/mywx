@@ -53,6 +53,7 @@
 .demo01 .left {
     width: 100%;
     float: left;
+    /*overflow:hidden;*/
 }
 
 

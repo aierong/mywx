@@ -63,6 +63,27 @@ export const getpyqconfig = ( mobile = '' ) => {
 }
 
 /**
+ * 上传图片
+ * @param mobile
+ * @param filedata
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export const upload = ( mobile , filedata ) => {
+
+    let url = `${ prefix }/${ mobile }/upload`;
+    let formData = new FormData()
+    //文件
+    formData.append( 'file' , filedata )
+
+    return axios.post( url , formData , {
+        headers : {
+            'enctype' : 'multipart/form-data'
+        }
+    } );
+
+}
+
+/**
  * 点赞(点赞和取消点赞 都是这个方法)
  * @param mobile
  * @param avatar

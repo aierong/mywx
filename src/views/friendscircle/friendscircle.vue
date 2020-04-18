@@ -25,17 +25,45 @@
              v-bind:style="{backgroundRepeat:'no-repeat',backgroundImage:'http://localhost:3001/Pic/BgImage/pyqdefaultbg.png'}"
 
             :style="{background: 'url('+ bgpicurl +')' }"
+
+            class="head_wrapper"
+
             -->
 
-            <div v-bind:style="PicStyleObject"
-                 class="head_wrapper">
-                <span class="cellspantitleclass">{{ loginusername  }}</span>
-                <svg class="icon"
-                     aria-hidden="true"
-                     style="font-size:58px;">
-                    <use v-bind:xlink:href="loginuseravatar | iconallname"></use>
-                </svg>
-            </div>
+
+            <van-uploader :after-read="onRead"
+                          :max-count="1"
+                          :before-read="onBeforeRead">
+
+                <template #default>
+                    <div class="demo01">
+                        <div class="left">
+                            <img style="height : 68px;width: 100%"
+                                 :src="bgpicurl"
+                                 alt=""/>
+                        </div>
+
+                        <div class="right">
+                            <span class="cellspantitleclass">{{ loginusername  }}</span>
+                            <svg class="icon"
+                                 aria-hidden="true"
+                                 style="font-size:58px;">
+                                <use v-bind:xlink:href="loginuseravatar | iconallname"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </template>
+            </van-uploader>
+
+            <!--            <div v-bind:style="PicStyleObject"-->
+            <!--            >-->
+            <!--                <span class="cellspantitleclass">{{ loginusername  }}</span>-->
+            <!--                <svg class="icon"-->
+            <!--                     aria-hidden="true"-->
+            <!--                     style="font-size:58px;">-->
+            <!--                    <use v-bind:xlink:href="loginuseravatar | iconallname"></use>-->
+            <!--                </svg>-->
+            <!--            </div>-->
         </van-cell>
         <br>
         <!--        //下拉刷新-->
@@ -53,7 +81,7 @@
                                   v-for="(item,index) in pyqlist">
                             <van-row class="user-links">
                                 <!--分成左右2部分,左边显示头像，右边显示名称，图片，评论等等-->
-                                <van-col span="2">
+                                <van-col span="3">
                                     <!--头像-->
                                     <svg class="icon"
                                          aria-hidden="true"
@@ -61,7 +89,7 @@
                                         <use v-bind:xlink:href="item.avatar  | iconallname"></use>
                                     </svg>
                                 </van-col>
-                                <van-col span="22">
+                                <van-col span="21">
                                     <!--名字
                                     这个栏位肯定有的
                                     -->
@@ -485,7 +513,7 @@
                 let counts = 2;  //每次搞2个
 
                 pyqapi.getlist( 'up' , counts , this.getminid , this.getmaxid ).then( ( res ) => {
-                    console.log( 'onPullRefreshRefresh' , res )
+                    // console.log( 'onPullRefreshRefresh' , res )
 
                     let _data = res.data.listdata;    //数据搞回来
                     if ( _data != null && _data.length > 0 ) {
@@ -523,6 +551,27 @@
                 } )
 
             } ,
+            onRead ( files ) {
+
+                pyqapi.upload( this.loginusermobile , files.file ).then( ( res ) => {
+                    console.log( 'onRead upload' , res )
+                } )
+                //files.file
+
+            } ,
+            onBeforeRead ( files ) {
+                var isarr = Array.isArray( files )
+
+                if ( isarr ) {
+                    //选择了多个文件
+                    this.$toast( "只可以选择一张" )
+
+                    return false;
+                }
+
+                //返回true表示校验通过，返回false表示校验失败
+                return true;
+            } ,
         } ,
         //计算属性
         computed : {
@@ -530,7 +579,10 @@
             PicStyleObject () {
                 return {
                     backgroundRepeat : 'no-repeat' ,
-                    background : 'url(' + this.bgpicurl + ')' ,
+                    // background : 'url(' + this.bgpicurl + ')' ,
+                    backgroundSize : '100% 100%' ,
+                    height : '66px' ,
+                    textAlign : 'right'
                 }
             } ,
             //朋友圈数量

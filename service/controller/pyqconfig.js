@@ -74,7 +74,7 @@ module.exports = {
 
         let filename = path.basename( filepath )
         //onFileBegin事件中存储的日期目录名，取回来
-        let datedir = item.datedir;
+        let datedir = file.datedir;
 
         // 上传图片的链接
         let imgurl = common.GetUploadImageUrl( ctx.origin , datedir , filename );

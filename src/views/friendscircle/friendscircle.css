@@ -25,10 +25,11 @@
 .head_wrapper {
     text-align: right;
     height: 68px;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     /*background: url("~@/assets/bgpic.png") no-repeat;*/
     /*background: url("http://localhost:3001/Pic/BgImage/pyqdefaultbg.png") no-repeat;*/
-    background-size: 100% 100%;
-    /*background-repeat: no-repeat;*/
 }
 
 .cellspantitleclass {
@@ -40,4 +41,24 @@
     font-size: 16px;
 
     color: #003cb3;
+}
+
+
+.demo01 {
+    /*width: 600px;*/
+    width: 100%;
+    position: relative;
+}
+
+.demo01 .left {
+    width: 100%;
+    float: left;
+}
+
+
+.demo01 .right {
+    position: absolute;
+    right: 2px;
+    top: 1px;
+    /*font-size: 12px;*/
 }

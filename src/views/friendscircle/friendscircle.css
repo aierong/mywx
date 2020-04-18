@@ -25,8 +25,10 @@
 .head_wrapper {
     text-align: right;
     height: 68px;
-    background: url("~@/assets/cricle_bg.png") no-repeat;
+    /*background: url("~@/assets/bgpic.png") no-repeat;*/
+    /*background: url("http://localhost:3001/Pic/BgImage/pyqdefaultbg.png") no-repeat;*/
     background-size: 100% 100%;
+    /*background-repeat: no-repeat;*/
 }
 
 .cellspantitleclass {

@@ -19,7 +19,16 @@
             </template>
         </van-nav-bar>
         <van-cell>
-            <div class="head_wrapper">
+            <!--            style="background: url('http://localhost:3001/Pic/BgImage/pyqdefaultbg.png') no-repeat;"-->
+
+            <!--            v-bind:style="styleObject"
+             v-bind:style="{backgroundRepeat:'no-repeat',backgroundImage:'http://localhost:3001/Pic/BgImage/pyqdefaultbg.png'}"
+
+            :style="{background: 'url('+ bgpicurl +')' }"
+            -->
+
+            <div v-bind:style="PicStyleObject"
+                 class="head_wrapper">
                 <span class="cellspantitleclass">{{ loginusername  }}</span>
                 <svg class="icon"
                      aria-hidden="true"
@@ -238,7 +247,8 @@
                 isshowloading : true ,
 
                 //背景图片url
-                bgpicurl : ''
+                bgpicurl : '' ,
+
             }
         } ,
         //方法
@@ -516,6 +526,13 @@
         } ,
         //计算属性
         computed : {
+            //背景图片样式
+            PicStyleObject () {
+                return {
+                    backgroundRepeat : 'no-repeat' ,
+                    background : 'url(' + this.bgpicurl + ')' ,
+                }
+            } ,
             //朋友圈数量
             pyqcounts () {
                 if ( this.pyqlist != null ) {

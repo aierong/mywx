@@ -8,7 +8,58 @@
 var mongoose = require( 'mongoose' );
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
+//定义Schema
+var PyqConfigSchema = mongoose.Schema( {
+    bgpicfilename : {
+        type : String ,
+        default : '' ,
+        required : true
+    } ,
+    bgpath : {
+        type : String ,
+        default : '' ,
+        required : true
+    } ,
+    //是删除
+    isdelete : {
+        type : Boolean ,
+        default : false
+    } ,
+    ids : {
+        type : String ,
 
+    } ,
+    // date : {
+    //     type : String ,
+    //     default : ''
+    // } ,
+    mobile : {
+        type : String ,
+        default : '' ,
+        required : true
+    } ,
+    //Unix 时间戳 13位
+    addunix : {
+        type : Number ,
 
+    } ,
+    adddate : {
+        type : String ,
+        default : ''
+    } ,
+    updatedate : {
+        type : String ,
+        default : ''
+    } ,
+    deletedate : {
+        type : String ,
+        default : ''
+    } ,
+} , {
+    //versionKey =false 禁用版本，要不每次插入数据都带一个__v
+    versionKey : false
+} );
+
+module.exports = mongoose.model( 'pyqconfig' , PyqConfigSchema , 'pyqconfig' );
 
 

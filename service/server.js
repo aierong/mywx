@@ -16,7 +16,7 @@ const koajwt = require( 'koa-jwt' );
 
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
-const bodyParser = require( 'koa-bodyparser' )
+const koaBody = require( 'koa-body' )
 
 const app = new Koa()
 //把数据全部挂载在global.config中
@@ -42,7 +42,7 @@ app.use( koajwt( {
 
 // app.use( bodyParser() )
 //设置一下容量大小，要不又限制，会提交失败
-app.use( bodyParser( {
+app.use( koaBody( {
     enableTypes : [ 'json' , 'form' , 'text' ] ,
     formLimit : '360mb' ,
     jsonLimit : '360mb' ,

@@ -31,39 +31,54 @@
             -->
 
 
-            <van-uploader :after-read="onRead"
+            <!--            <van-uploader :after-read="onRead"-->
+            <!--                          :max-count="1"-->
+            <!--                          :before-read="onBeforeRead">-->
+
+            <!--                <template #default>-->
+            <!--                    <div class="demo01">-->
+            <!--                        <div class="left" v-bind:style="PicStyleObject">-->
+            <!-- -->
+            <!--                        </div>-->
+
+            <!--                        <div class="right">-->
+            <!--                            <span class="cellspantitleclass">{{ loginusername  }}</span>-->
+            <!--                            <svg class="icon"-->
+            <!--                                 aria-hidden="true"-->
+            <!--                                 style="font-size:58px;">-->
+            <!--                                <use v-bind:xlink:href="loginuseravatar | iconallname"></use>-->
+            <!--                            </svg>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </template>-->
+            <!--            </van-uploader>-->
+
+            <div @click="uploadclick"
+                 class="head_wrapper"
+                 v-bind:style="PicStyleObject">
+                <span class="cellspantitleclass">{{ loginusername  }}</span>
+                <svg class="icon"
+                     aria-hidden="true"
+                     style="font-size:58px;">
+                    <use v-bind:xlink:href="loginuseravatar | iconallname"></use>
+                </svg>
+            </div>
+
+            <!--        ref起名
+        chooseFile发起上传
+        -->
+            <van-uploader ref="uploader1"
                           :max-count="1"
-                          :before-read="onBeforeRead">
-
+                          accept="image/gif, image/jpeg, image/png, image/bmp"
+                          :before-read="onBeforeRead"
+                          :after-read="onAfterRead">
+                <!--
+                可以用一对空的span，占位  ,这样上传控件就不会显示出来
+                -->
                 <template #default>
-                    <div class="demo01">
-                        <div class="left" v-bind:style="PicStyleObject">
-<!--                            <img style="height : 68px;width: 100%;min-width: 100%;display: block;"-->
-<!--                                 :src="bgpicurl"-->
-<!--                                 alt=""/>-->
-                        </div>
-
-                        <div class="right">
-                            <span class="cellspantitleclass">{{ loginusername  }}</span>
-                            <svg class="icon"
-                                 aria-hidden="true"
-                                 style="font-size:58px;">
-                                <use v-bind:xlink:href="loginuseravatar | iconallname"></use>
-                            </svg>
-                        </div>
-                    </div>
+                    <span></span>
                 </template>
             </van-uploader>
-
-            <!--            <div v-bind:style="PicStyleObject"-->
-            <!--            >-->
-            <!--                <span class="cellspantitleclass">{{ loginusername  }}</span>-->
-            <!--                <svg class="icon"-->
-            <!--                     aria-hidden="true"-->
-            <!--                     style="font-size:58px;">-->
-            <!--                    <use v-bind:xlink:href="loginuseravatar | iconallname"></use>-->
-            <!--                </svg>-->
-            <!--            </div>-->
         </van-cell>
         <br>
         <!--        //下拉刷新-->
@@ -281,6 +296,7 @@
         } ,
         //方法
         methods : {
+
             //返回
             onClickLeft () {
                 this.$router.push( '/discover' );
@@ -551,7 +567,7 @@
                 } )
 
             } ,
-            onRead ( files ) {
+            onupload ( files ) {
 
                 pyqapi.upload( this.loginusermobile , files.file ).then( ( res ) => {
                     // console.log( 'onRead upload' , res )
@@ -574,16 +590,27 @@
                 //返回true表示校验通过，返回false表示校验失败
                 return true;
             } ,
+            uploadclick () {
+                // console.log( 'uploadclick' )
+
+                //发起上传
+                this.$refs.uploader1.chooseFile();
+            } ,
+            onAfterRead ( filedata ) {
+                // console.log( 'filedata' , filedata )
+
+                this.onupload( filedata );
+            } ,
         } ,
         //计算属性
         computed : {
             //背景图片样式
             PicStyleObject () {
                 return {
-                    backgroundRepeat : 'no-repeat' ,
+                    // backgroundRepeat : 'no-repeat' ,
                     background : 'url(' + this.bgpicurl + ')' ,
                     // backgroundSize : '100% 100%' ,
-                    height : '66px' ,
+                    // height : '66px' ,
                     // textAlign : 'right'
                 }
             } ,

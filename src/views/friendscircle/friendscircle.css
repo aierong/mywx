@@ -44,22 +44,21 @@
 }
 
 
-.demo01 {
-    /*width: 600px;*/
-    width: 100%;
-    position: relative;
-}
+/*.demo01 {*/
+/*    !*width: 600px;*!*/
+/*    width: 100%;*/
+/*    position: relative;*/
+/*}*/
 
-.demo01 .left {
-    width: 100%;
-    float: left;
-    /*overflow:hidden;*/
-}
+/*.demo01 .left {*/
+/*    width: 100%;*/
+/*    float: left;*/
+/*    !*overflow:hidden;*!*/
+/*}*/
 
-
-.demo01 .right {
-    position: absolute;
-    right: 2px;
-    top: 1px;
-    /*font-size: 12px;*/
-}
+/*.demo01 .right {*/
+/*    position: absolute;*/
+/*    right: 2px;*/
+/*    top: 1px;*/
+/*    !*font-size: 12px;*!*/
+/*}*/

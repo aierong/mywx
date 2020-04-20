@@ -64,9 +64,10 @@
                 </svg>
             </div>
 
-            <!--        ref起名
-        chooseFile发起上传
-        -->
+            <!--
+            ref起名
+            chooseFile发起上传
+            -->
             <van-uploader ref="uploader1"
                           :max-count="1"
                           accept="image/gif, image/jpeg, image/png, image/bmp"

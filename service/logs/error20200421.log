@@ -1,0 +1,33 @@
+2020-04-21T22:12:15.218 ERROR error20200421 
+D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\server.js:86 
+{
+  message: 'Authentication Error',
+  name: 'UnauthorizedError',
+  stack: 'UnauthorizedError: Authentication Error\n' +
+    '    at Object.throw (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa\\lib\\context.js:97:11)\n' +
+    '    at jwt (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-jwt\\lib\\index.js:23:22)\n' +
+    '    at D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-unless\\index.js:29:12\n' +
+    '    at dispatch (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-compose\\index.js:42:32)\n' +
+    '    at cors (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa2-cors\\dist\\index.js:91:15)\n' +
+    '    at dispatch (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-compose\\index.js:42:32)\n' +
+    '    at verifyParam (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-parameter\\index.js:52:13)\n' +
+    '    at dispatch (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-compose\\index.js:42:32)\n' +
+    '    at serve (D:\\Code\\_TempCode\\MyGitHubCode\\StudyVueAppDemo\\mywx\\service\\node_modules\\koa-static\\index.js:53:15)',
+  status: 401
+}
+
+2020-04-21T22:12:15.223 ERROR error20200421 
+D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\server.js:87 
+UnauthorizedError: Authentication Error
+    at Object.throw (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa\lib\context.js:97:11)
+    at jwt (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-jwt\lib\index.js:23:22)
+    at D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-unless\index.js:29:12
+    at dispatch (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-compose\index.js:42:32)
+    at cors (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa2-cors\dist\index.js:91:15)
+    at dispatch (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-compose\index.js:42:32)
+    at verifyParam (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-parameter\index.js:52:13)
+    at dispatch (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-compose\index.js:42:32)
+    at serve (D:\Code\_TempCode\MyGitHubCode\StudyVueAppDemo\mywx\service\node_modules\koa-static\index.js:53:15) {
+  message: 'Authentication Error'
+}
+

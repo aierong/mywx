@@ -11,9 +11,13 @@ const Koa = require( 'koa' )
 const KoaStatic = require( "koa-static" )
 //引入配置文件
 const config = require( './config/config.js' )
-var cors = require( 'koa2-cors' );  //引入跨域的组件
+//引入
+const error = require( 'koa-json-error' )
+//引入跨域的组件
+var cors = require( 'koa2-cors' );
 //引入验证组件
 const koajwt = require( 'koa-jwt' );
+//日志
 const log4js = require( 'log4js' );
 
 const requireDirectory = require( "require-directory" );
@@ -24,7 +28,11 @@ const parameter = require( 'koa-parameter' );
 
 const path = require( "path" );
 
-const { GetUploadDirName , CheckDirExist } = require( './common/common.js' )
+const {
+    GetUploadDirName ,
+    CheckDirExist ,
+    DateFormatter
+} = require( './common/common.js' )
 
 const app = new Koa()
 //把数据全部挂载在global.config中
@@ -39,7 +47,7 @@ log4js.configure( {
             //这里必须用categoryName
             property : 'categoryName' ,
             //后缀名
-            extension : '.log',
+            extension : '.log' ,
             //下面这个是设置布局 https://log4js-node.github.io/log4js-node/layouts.html
             // 不设置就用默认的
             layout : {
@@ -57,12 +65,33 @@ log4js.configure( {
     categories : {
         default : {
             appenders : [ 'multi' ] ,
-            level : 'all',
+            level : 'all' ,
             enableCallStack : true
         }
-    },
-    pm2:true
+    } ,
+    pm2 : true
 } );
+
+//配置参数 postFormat可以在生产环境中返回异常时不带stack堆栈信息
+app.use( error( {
+    postFormat ( e , obj ) {
+
+        let now = new Date();
+
+        let filename = DateFormatter( now );
+
+        const dateLogger = log4js.getLogger( `error${ filename }` );
+
+        //记录日志
+        dateLogger.error( obj )
+        dateLogger.error( e )
+
+        let { stack , ...rest } = obj;
+
+        //生产环境 不要把堆栈信息返回
+        return process.env.NODE_ENV === 'production' ? rest : { stack , ...rest }
+    }
+} ) );
 
 //指定public
 app.use( KoaStatic( path.join( __dirname , 'public' ) ) );

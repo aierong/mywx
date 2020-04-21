@@ -90,14 +90,6 @@ export const upload = ( mobile , filedata ) => {
  * @returns {Promise<AxiosResponse<T>>}
  */
 export const praise = ( pyq_id ) => {
-    // let obj = {
-    //
-    //     mobile ,
-    //     avatar ,
-    //     name ,
-    //     pyq_id ,
-    //
-    // }
 
     return axios.post( `${ prefix }/${ pyq_id }/pyqpraise` );
 }

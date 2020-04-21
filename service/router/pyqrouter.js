@@ -20,10 +20,10 @@ const pyqconfigcontroller = require( '../controller/pyqconfig' )
 
 router.get( `/` , pyqcontroller.GetList )
 router.post( `/` , pyqcontroller.Add )
-router.delete( `/:id` , pyqcontroller.Delete )
+router.delete( `/:pyqid` , pyqcontroller.Delete )
 
 //点赞的路由
-router.post( `/:id/pyqpraise` , pyqpraisecontroller.Praise )
+router.post( `/:pyqid/pyqpraise` , pyqpraisecontroller.Praise )
 
 //bbs的路由
 router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )

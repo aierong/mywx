@@ -27,7 +27,7 @@ module.exports = {
 
         //先接收参数
         let params = ctx.params
-        let { id : pyq_id } = params;
+        let { pyqid : pyq_id } = params;
         let tokendata = GetTokenData( ctx );
         let { mobile } = tokendata;
 

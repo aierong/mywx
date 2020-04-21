@@ -72,7 +72,7 @@ module.exports = {
         //先接收参数
         let params = ctx.params;
 
-        let { id : _id } = params;
+        let { pyqid : _id } = params;
 
         let tokendata = GetTokenData( ctx );
         // console.log( 'tokendata' , tokendata )

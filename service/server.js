@@ -18,6 +18,9 @@ const koajwt = require( 'koa-jwt' );
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
 const koaBody = require( 'koa-body' )
+//引入
+const parameter = require( 'koa-parameter' );
+
 const path = require( "path" );
 
 const { GetUploadDirName , CheckDirExist } = require( './common/common.js' )
@@ -29,6 +32,10 @@ global.config = config;
 //指定public
 app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
 // app.use( KoaStatic( path.join( __dirname , 'ptest' ) ) );
+
+//2种方式都可以
+//parameter( app );
+app.use( parameter( app ) );
 
 app.use( cors() ); //注册一下 即可
 

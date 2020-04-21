@@ -175,9 +175,6 @@ module.exports = {
     GetUserList : async ( ctx , next ) => {
         let obj = await userservice.GetUserList();
 
-        // let tokendata = ctx.state.jwtdata;
-        // console.log( 'tokendata' , GetTokenData( ctx ) )
-
         ctx.body = obj
     } ,
     GetUserByMobile : async ( ctx , next ) => {

@@ -17,8 +17,7 @@ const usercontroller = require( '../controller/user' )
 
 router.get( `/` , usercontroller.GetUserList )
 router.get( `/:mobile` , usercontroller.GetUserByMobile )
-// 这个方法不要了，用上面这个
-// router.post( `/isexistsmobile` , usercontroller.IsExistsMobile )
+
 router.post( `/register` , usercontroller.AddUser )
 router.post( `/login` , usercontroller.Login )
 router.put( `/updateuseravatar` , usercontroller.UpdateUserAvatar )

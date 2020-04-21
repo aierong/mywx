@@ -27,13 +27,18 @@ module.exports = {
         // let params = ctx.params
         // let { id : pyq_id } = params;
         let tokendata = GetTokenData( ctx );
+        // //数据解构出来
+        let { mobile , avatar , name } = tokendata;
+
+        //先接收参数
+        let params = ctx.params
+        let { pyqid : pyq_id } = params;
 
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
+        let { txt } = postData;
 
-        let { pyq_id , txt } = postData;
-
-        let obj = await pyqbbsservice.Add( tokendata , pyq_id , txt );
+        let obj = await pyqbbsservice.Add( mobile , avatar , name , pyq_id , txt );
 
         if ( obj ) {
 
@@ -74,10 +79,13 @@ module.exports = {
 
         //先接收参数
         let params = ctx.params
-        let { id : pyq_id , bbsid } = params;
-        let tokendata = GetTokenData( ctx );
+        let { pyqid : pyq_id , bbsid } = params;
 
-        let obj = await pyqbbsservice.Delete( tokendata , pyq_id , bbsid );
+        let tokendata = GetTokenData( ctx );
+        // //数据解构出来
+        let { name , mobile } = tokendata;
+
+        let obj = await pyqbbsservice.Delete( mobile , name , pyq_id , bbsid );
 
         if ( obj != null ) {
             result = {

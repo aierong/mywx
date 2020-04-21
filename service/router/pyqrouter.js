@@ -26,10 +26,10 @@ router.delete( `/:pyqid` , pyqcontroller.Delete )
 router.post( `/:pyqid/pyqpraise` , pyqpraisecontroller.Praise )
 
 //bbs的路由
-router.post( `/:id/pyqbbs` , pyqbbscontroller.Add )
-router.delete( `/:id/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
+router.post( `/:pyqid/pyqbbs` , pyqbbscontroller.Add )
+router.delete( `/:pyqid/pyqbbs/:bbsid` , pyqbbscontroller.Delete )
 
-router.get( `/:id/pyqconfig` , pyqconfigcontroller.GetConfig )
-router.post( `/:id/upload` , pyqconfigcontroller.Upload )
+router.get( `/:mobile/pyqconfig` , pyqconfigcontroller.GetConfig )
+router.post( `/:mobile/upload` , pyqconfigcontroller.Upload )
 
 module.exports = router

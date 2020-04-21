@@ -105,8 +105,6 @@ export const praise = ( pyq_id ) => {
  */
 export const addbbs = ( pyq_id , txt ) => {
     let obj = {
-
-        pyq_id ,
         txt
     }
 

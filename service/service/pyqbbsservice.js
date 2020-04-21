@@ -20,9 +20,9 @@ const pyqservice = require( './pyqservice.js' )
  * @returns {Promise<boolean>}
  * @constructor
  */
-async function Add ( tokendata , pyq_id , txt ) {
-    //数据解构出来
-    let { mobile , avatar , name } = tokendata;
+async function Add ( mobile , avatar , name , pyq_id , txt ) {
+    // //数据解构出来
+    // let { mobile , avatar , name } = tokendata;
 
     let now = new Date();
     let nowstr = common.GetNowString( now );
@@ -72,9 +72,9 @@ async function Add ( tokendata , pyq_id , txt ) {
  * @returns {Promise<null>}
  * @constructor
  */
-async function Delete ( tokendata , pyq_id , _id ) {
-    //数据解构出来
-    let { name , mobile } = tokendata;
+async function Delete ( mobile , name , pyq_id , _id ) {
+    // //数据解构出来
+    // let { name , mobile } = tokendata;
 
     let now = new Date();
     let nowstr = common.GetNowString( now );

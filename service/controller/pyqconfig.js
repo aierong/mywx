@@ -14,7 +14,6 @@ const common = require( '../common/common.js' )
 
 module.exports = {
     GetConfig : async ( ctx , next ) => {
-        //
 
         let result = {
 
@@ -24,7 +23,7 @@ module.exports = {
 
         //先接收参数
         let params = ctx.params
-        let { id : mobile } = params;
+        let { mobile } = params;
         // let tokendata = GetTokenData( ctx );
         // let { mobile } = tokendata;
 
@@ -55,7 +54,7 @@ module.exports = {
 
         //先接收参数
         let params = ctx.params
-        let { id : mobile } = params;
+        let { mobile } = params;
         // let tokendata = GetTokenData( ctx );
         // let { mobile } = tokendata;
 

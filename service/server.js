@@ -14,6 +14,7 @@ const config = require( './config/config.js' )
 var cors = require( 'koa2-cors' );  //引入跨域的组件
 //引入验证组件
 const koajwt = require( 'koa-jwt' );
+const log4js = require( 'log4js' );
 
 const requireDirectory = require( "require-directory" );
 const Router = require( "koa-router" );
@@ -28,6 +29,40 @@ const { GetUploadDirName , CheckDirExist } = require( './common/common.js' )
 const app = new Koa()
 //把数据全部挂载在global.config中
 global.config = config;
+
+log4js.configure( {
+    appenders : {
+        multi : {
+            type : 'multiFile' ,
+            //设置一个日志存放目录
+            base : 'logs/' ,
+            //这里必须用categoryName
+            property : 'categoryName' ,
+            //后缀名
+            extension : '.log',
+            //下面这个是设置布局 https://log4js-node.github.io/log4js-node/layouts.html
+            // 不设置就用默认的
+            layout : {
+                type : 'pattern' ,
+                // %d  是日期
+                // %p  日志的level
+                // %c  日志的category
+                // %f:%l  是记录堆栈信息 需要打开 enableCallStack : true 才会记录
+                // %m 日志 data
+                // %n newline 换行
+                pattern : '%d %p %c %n%f:%l %n%m%n'
+            }
+        }
+    } ,
+    categories : {
+        default : {
+            appenders : [ 'multi' ] ,
+            level : 'all',
+            enableCallStack : true
+        }
+    },
+    pm2:true
+} );
 
 //指定public
 app.use( KoaStatic( path.join( __dirname , 'public' ) ) );

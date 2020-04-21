@@ -8,7 +8,7 @@
 var mongoose = require( 'mongoose' );
 const userphotomodel = require( '../models/userphoto.js' )
 const common = require( '../common/common.js' )
-const log = require( '../common/log' )
+const log = require( '../common/runlog.js' )
 
 /**
  * 保存用户相册

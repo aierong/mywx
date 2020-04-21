@@ -10,7 +10,7 @@ const pyqmodel = require( '../models/pyq' )
 const pyqpraisemodel = require( '../models/pyqpraise.js' )
 const pyqbbsmodel = require( '../models/pyqbbs' )
 const common = require( '../common/common.js' )
-const log = require( '../common/log' )
+const log = require( '../common/runlog.js' )
 
 /**
  * 发布朋友圈

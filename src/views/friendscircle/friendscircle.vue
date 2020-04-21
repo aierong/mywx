@@ -395,12 +395,6 @@
 
                     ;( async () => {
 
-                        // let resultdata = await pyqapi.addbbs( this.loginusermobile ,
-                        //     this.loginuseravatar ,
-                        //     this.loginusername ,
-                        //     this.bbsobj.selectid ,
-                        //     this.bbsobj.bbstxt );
-
                         let resultdata = await pyqapi.addbbs( this.bbsobj.selectid , this.bbsobj.bbstxt );
 
                         // 返回会带数据
@@ -550,7 +544,7 @@
                 let counts = 2;  //每次搞2个
 
                 pyqapi.getlist( 'down' , counts , this.getminid , this.getmaxid ).then( ( res ) => {
-                    console.log( 'onDownRefreshLoad' , res )
+                    // console.log( 'onDownRefreshLoad' , res )
 
                     let _data = res.data.listdata;    //数据搞回来
                     if ( _data != null && _data.length > 0 ) {

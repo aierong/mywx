@@ -32,30 +32,46 @@ module.exports = {
             } ,
             name : {
                 type : 'string' ,
-                required : false
+
             } ,
             email : {
                 type : 'string' ,
-                required : false
+                required : false ,
+                allowEmpty : true
             } ,
 
         } );
 
+        let result = {
+            isok : true ,
+            msg : ''
+        }
+
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
-
+        let { mobile } = postData;
         // console.log( postData )
 
-        let obj = await userservice.AddUser( postData );
+        let user = await userservice.GetUserByMobile( mobile , false )
 
-        if ( obj != null ) {
-            ctx.body = true;
+        if ( user != null ) {
+            result.isok = false;
+            result.msg = '手机号已经注册'
         }
         else {
-            ctx.body = false;
+            let obj = await userservice.AddUser( postData );
+
+            if ( obj != null ) {
+                result.isok = true;
+            }
+            else {
+                result.isok = false;
+                result.msg = '添加失败'
+            }
         }
 
+        ctx.body = result;
     } ,
     UpdateUserAvatar : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/updateuseravatar

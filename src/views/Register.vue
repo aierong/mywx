@@ -210,15 +210,15 @@
                 ( async () => {
                     let mobile = this.userinfo.mobile;
 
-                    let result = await userapi.getuserbymobile( mobile );
-                    // console.log( 'result' , result )
-                    // console.log( 'result.data' , result.data )
-                    if ( result.data.data != null ) {
-
-                        this.$toast( "手机号码已注册" )
-
-                        return;
-                    }
+                    // let result = await userapi.getuserbymobile( mobile );
+                    // // console.log( 'result' , result )
+                    // // console.log( 'result.data' , result.data )
+                    // if ( result.data.data != null ) {
+                    //
+                    //     this.$toast( "手机号码已注册" )
+                    //
+                    //     return;
+                    // }
 
                     // this.$toast( "ok" )
                     let registerUser = {
@@ -232,8 +232,8 @@
 
                     let status = await userapi.adduser( registerUser );
 
-                    if ( !status.data ) {
-                        this.$toast( "注册失败,稍后再试" )
+                    if ( !status.data.isok ) {
+                        this.$toast( status.data.msg )
 
                         return;
                     }

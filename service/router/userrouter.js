@@ -20,7 +20,7 @@ router.get( `/:mobile` , usercontroller.GetUserByMobile )
 
 router.post( `/register` , usercontroller.AddUser )
 router.post( `/login` , usercontroller.Login )
-router.put( `/updateuseravatar` , usercontroller.UpdateUserAvatar )
-router.put( `/updatepassword` , usercontroller.UpdatePassWord )
+router.put( `/:mobile/updateuseravatar` , usercontroller.UpdateUserAvatar )
+router.put( `/:mobile/updatepassword` , usercontroller.UpdatePassWord )
 
 module.exports = router

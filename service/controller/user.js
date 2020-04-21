@@ -186,7 +186,7 @@ module.exports = {
         } );
 
         //写个日志试试看
-        systemlog.writelog( 'txt' );
+        // systemlog.writelog( 'txt' );
 
         let result = {
 
@@ -199,7 +199,7 @@ module.exports = {
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
         //写个日志试试看
-        systemlog.writelog( postData );
+        // systemlog.writelog( postData );
 
         let { mobile , password } = postData;
         // console.log( 'Login' , postData )

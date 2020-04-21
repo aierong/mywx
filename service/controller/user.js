@@ -15,6 +15,31 @@ module.exports = {
     AddUser : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/add
 
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+            mobile : {
+                type : 'string' ,
+
+            } ,
+            avatar : {
+                type : 'string' ,
+
+            } ,
+            password : {
+                type : 'string' ,
+
+            } ,
+            name : {
+                type : 'string' ,
+                required : false
+            } ,
+            email : {
+                type : 'string' ,
+                required : false
+            } ,
+
+        } );
+
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
@@ -34,6 +59,20 @@ module.exports = {
     UpdateUserAvatar : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/updateuseravatar
 
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+            mobile : {
+                type : 'string' ,
+
+            } ,
+
+            avatar : {
+                type : 'string' ,
+
+            } ,
+
+        } );
+
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
@@ -52,6 +91,24 @@ module.exports = {
 
     } ,
     UpdatePassWord : async ( ctx , next ) => {
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+            mobile : {
+                type : 'string' ,
+
+            } ,
+
+            oldpassword : {
+                type : 'string' ,
+
+            } ,
+            newpassword : {
+                type : 'string' ,
+
+            } ,
+
+        } );
+
         let result = {
 
             isok : true ,
@@ -114,6 +171,20 @@ module.exports = {
     } ,
     Login : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/login
+
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+            mobile : {
+                type : 'string' ,
+
+            } ,
+
+            password : {
+                type : 'string' ,
+
+            } ,
+
+        } );
 
         let result = {
 

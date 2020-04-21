@@ -84,7 +84,7 @@ app.use( error( {
 
         //记录日志
         dateLogger.error( obj )
-        dateLogger.error( e )
+        // dateLogger.error( e )
 
         let { stack , ...rest } = obj;
 

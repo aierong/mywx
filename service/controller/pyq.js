@@ -20,7 +20,7 @@ module.exports = {
 
             txt : {
                 type : 'string' ,
-
+                allowEmpty : true
             } ,
 
             imglist : {

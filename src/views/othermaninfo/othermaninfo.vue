@@ -9,7 +9,6 @@
 
         <van-nav-bar left-text="返回"
                      left-arrow
-
                      @click-left="onClickLeft">
             <template #title>
                 <span style="color: green;">好友资料</span>

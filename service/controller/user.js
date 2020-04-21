@@ -173,16 +173,14 @@ module.exports = {
     Login : async ( ctx , next ) => {
         //  http://localhost:3001/api/user/login
 
-        //如果验证不成功,会自动抛出异常
+        // //如果验证不成功,会自动抛出异常
         ctx.verifyParams( {
             mobile : {
                 type : 'string' ,
-
             } ,
 
             password : {
                 type : 'string' ,
-
             } ,
 
         } );
@@ -202,6 +200,7 @@ module.exports = {
         let postData = ctx.request.body;
         //写个日志试试看
         systemlog.writelog( postData );
+
         let { mobile , password } = postData;
         // console.log( 'Login' , postData )
 

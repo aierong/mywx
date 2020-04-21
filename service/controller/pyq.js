@@ -15,6 +15,46 @@ module.exports = {
     Add : async ( ctx , next ) => {
         //  http://localhost:3001/api/pyq/add
 
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+            name : 'string' ,
+
+            // 可以写int,因为post中接收的可以是数字
+            age : 'int' ,
+
+            //val1不是必须参数,类型是string
+            // 如果不声明required，就是默认必须参数
+            val1 : {
+                type : 'string' ,
+                required : false
+            },
+
+            //布尔
+            isauto : 'boolean' ,
+
+            //数组类型
+            arr : 'array' ,
+
+            //数组类型,并且每个元素都是整数
+            //	"nums":[1,2,4]
+            nums : {
+                type : 'array' ,
+                //itemType定义每个元素类型
+                itemType : 'int' ,
+                //数组元素最多个数和最少个数
+                max : 3 ,
+                min : 0
+            } ,
+
+            // 	"objs":[ { "a":1,"b":"qq" } ]
+            objs : {
+                type : 'array' ,
+                //itemType定义每个元素都是对象
+                itemType : 'object' ,
+
+            }
+        } );
+
         let result = {
 
             isok : true ,

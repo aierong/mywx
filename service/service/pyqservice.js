@@ -19,7 +19,8 @@ const log = require( '../common/log' )
  * @constructor
  */
 async function Add ( postData ) {
-    //数据解构出来
+
+    // 数据解构出来
     let { mobile , avatar , name , txt , imglist } = postData;
 
     let now = new Date();

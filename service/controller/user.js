@@ -8,6 +8,7 @@
 // 引入 service 文件
 const userservice = require( '../service/userservice.js' )
 const common = require( '../common/common.js' )
+const systemlog = require( '../common/systemlog.js' )
 const { CreateToken , GetTokenData } = require( '../common/jwttoken.js' )
 
 module.exports = {
@@ -186,6 +187,9 @@ module.exports = {
 
         } );
 
+        //写个日志试试看
+        systemlog.writelog( 'txt' );
+
         let result = {
 
             isok : true ,
@@ -196,7 +200,8 @@ module.exports = {
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
-
+        //写个日志试试看
+        systemlog.writelog( postData );
         let { mobile , password } = postData;
         // console.log( 'Login' , postData )
 

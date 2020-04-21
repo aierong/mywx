@@ -17,37 +17,13 @@ module.exports = {
 
         //如果验证不成功,会自动抛出异常
         ctx.verifyParams( {
-            name : 'string' ,
 
-            // 可以写int,因为post中接收的可以是数字
-            age : 'int' ,
-
-            //val1不是必须参数,类型是string
-            // 如果不声明required，就是默认必须参数
-            val1 : {
+            txt : {
                 type : 'string' ,
-                required : false
-            },
 
-            //布尔
-            isauto : 'boolean' ,
-
-            //数组类型
-            arr : 'array' ,
-
-            //数组类型,并且每个元素都是整数
-            //	"nums":[1,2,4]
-            nums : {
-                type : 'array' ,
-                //itemType定义每个元素类型
-                itemType : 'int' ,
-                //数组元素最多个数和最少个数
-                max : 3 ,
-                min : 0
             } ,
 
-            // 	"objs":[ { "a":1,"b":"qq" } ]
-            objs : {
+            imglist : {
                 type : 'array' ,
                 //itemType定义每个元素都是对象
                 itemType : 'object' ,
@@ -65,8 +41,14 @@ module.exports = {
         //先接收post的参数
         //接收到post数据 postData是一个对象
         let postData = ctx.request.body;
+        // 数据解构出来
+        let { txt , imglist } = postData;
 
-        let obj = await pyqservice.Add( postData );
+        let tokendata = GetTokenData( ctx );
+        // console.log( 'tokendata' , tokendata )
+        let { mobile , avatar , name } = tokendata;
+
+        let obj = await pyqservice.Add( mobile , avatar , name , txt , imglist );
 
         if ( obj != null ) {
             result.isok = true;

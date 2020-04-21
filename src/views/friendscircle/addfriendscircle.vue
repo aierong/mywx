@@ -100,9 +100,9 @@
                     txt : '' ,
                     imglist : new Array() ,
 
-                    mobile : '' ,
-                    name : '' ,
-                    avatar : '' ,
+                    // mobile : '' ,
+                    // name : '' ,
+                    // avatar : '' ,
 
                 }
             }
@@ -224,9 +224,9 @@
                 }
 
                 //把一些属性补齐
-                this.pyq.name = this.loginusername;
-                this.pyq.mobile = this.loginusermobile;
-                this.pyq.avatar = this.loginuseravatar;
+                // this.pyq.name = this.loginusername;
+                // this.pyq.mobile = this.loginusermobile;
+                // this.pyq.avatar = this.loginuseravatar;
 
                 this.$toast.loading( {
                     duration : 0 ,
@@ -237,8 +237,9 @@
                     mask : true
                 } )
 
-                pyqapi.addpyq( this.pyq.mobile , this.pyq.name , this.pyq.avatar , this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
-                    console.log( res )
+                //pyqapi.addpyq( this.pyq.mobile , this.pyq.name , this.pyq.avatar , this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
+                pyqapi.addpyq( this.pyq.txt , this.pyq.imglist ).then( ( res ) => {
+                    // console.log( res )
 
                     if ( res != null && res.data.isok ) {
                         //故意延时一下

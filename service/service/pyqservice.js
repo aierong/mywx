@@ -18,10 +18,10 @@ const log = require( '../common/log' )
  * @returns {Promise<null>}
  * @constructor
  */
-async function Add ( postData ) {
+async function Add ( mobile , avatar , name , txt , imglist ) {
 
     // 数据解构出来
-    let { mobile , avatar , name , txt , imglist } = postData;
+    // let { mobile , avatar , name , txt , imglist } = postData;
 
     let now = new Date();
     let nowstr = common.GetNowString( now );

@@ -26,25 +26,6 @@ module.exports = {
 
         let { mobile , isshare , imgs } = postData;
 
-        // //判断是否存在
-        // let isexists = await userphotoservice.IsExistsUserPhoto( mobile );
-        //
-        // if ( !isexists ) {
-        //     let newobj = await userphotoservice.Init( mobile );  //先初始化一个
-        //
-        //     if ( newobj == null ) {
-        //         result = {
-        //             isok : false ,
-        //             errmsg : '初始化相册失败'
-        //         }
-        //
-        //         ctx.body = result;
-        //
-        //         return;
-        //     }
-        //
-        // }
-
         //开始保存
         let obj = await userphotoservice.Save( mobile , isshare , imgs );
 

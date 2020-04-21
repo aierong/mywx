@@ -6,3 +6,11 @@ txt
 D:\Code\_TempCode\MyGitHub\StudyVueAppDemo\mywx\service\common\systemlog.js:19 
 { mobile: '13925520750', password: '123' }
 
+2020-04-21T15:27:33.621 INFO 20200421 
+D:\Code\_TempCode\MyGitHub\StudyVueAppDemo\mywx\service\common\systemlog.js:19 
+txt
+
+2020-04-21T15:27:33.621 INFO 20200421 
+D:\Code\_TempCode\MyGitHub\StudyVueAppDemo\mywx\service\common\systemlog.js:19 
+{ mobile: '13925520750', password: '123' }
+

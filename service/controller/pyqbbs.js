@@ -51,7 +51,6 @@ module.exports = {
 
         if ( obj ) {
 
-            let { pyq_id } = postData;
             let _data = await pyqservice.GetPyqById( pyq_id );  //取最新的这条记录回来
 
             result = {

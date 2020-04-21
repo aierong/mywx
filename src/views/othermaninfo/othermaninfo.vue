@@ -6,10 +6,14 @@
 <!--  -->
 <template>
     <div>
+
         <van-nav-bar left-text="返回"
                      left-arrow
+
                      @click-left="onClickLeft">
-            <span slot="right">好友资料</span>
+            <template #title>
+                <span style="color: green;">好友资料</span>
+            </template>
         </van-nav-bar>
         <br>
         <br>

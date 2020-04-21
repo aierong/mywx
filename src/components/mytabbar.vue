@@ -59,7 +59,7 @@ Time: 22:44
 
             ] ) ,
             setupactive ( path ) {
-                console.log( 'mytabbar setupactive' )
+                // console.log( 'mytabbar setupactive' )
 
                 if ( path == "/chats" ) {
                     this.active = 0;
@@ -84,7 +84,7 @@ Time: 22:44
             } ,
             onchange ( active ) {
                 // active: 当前选中标签
-                console.log( 'mytabbar onchange' , active )
+                // console.log( 'mytabbar onchange' , active )
 
                 if ( active == 0 ) {
                     // 页面跳转
@@ -123,7 +123,7 @@ Time: 22:44
             this.setupactive( _path );
         } ,
         activated () {
-            console.log( 'mytabbar activated' )
+            // console.log( 'mytabbar activated' )
 
             let _path = this.$route.path;
 

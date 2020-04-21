@@ -108,7 +108,7 @@ function GetUploadDirName () {
 }
 
 /**
- *
+ * date格式化为:yyyyMMdd
  * @param date
  * @returns {string}
  * @constructor
@@ -143,7 +143,8 @@ module.exports = {
     EncryptPassWord ,
     GetUploadImageUrl ,
     GetUploadDirName ,
-    CheckDirExist
+    CheckDirExist ,
+    DateFormatter
 
 }
 

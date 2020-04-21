@@ -13,6 +13,29 @@ module.exports = {
     Save : async ( ctx , next ) => {
         //  http://localhost:3001/api/userphoto/save
 
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+
+            mobile : {
+                type : 'string' ,
+
+            } ,
+
+            //布尔
+            isshare : 'boolean' ,
+
+            // //数组类型
+            // imgs : 'array' ,
+
+            // 	"objs":[ { "a":1,"b":"qq" } ]
+            imgs : {
+                type : 'array' ,
+                //itemType定义每个元素都是对象
+                itemType : 'object' ,
+
+            }
+        } );
+
         let result = {
 
             isok : true ,

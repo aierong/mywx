@@ -27,7 +27,8 @@ const app = new Koa()
 global.config = config;
 
 //指定public
-app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
+//app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
+app.use( KoaStatic( path.join( __dirname , 'ptest' ) ) );
 
 app.use( cors() ); //注册一下 即可
 
@@ -43,7 +44,8 @@ app.use( koajwt( {
     // 登录和注册的 不验证
     path : [
         '/api/users/login' ,
-        '/api/users/register'
+        '/api/users/register' ,
+
     ]
 } ) );
 

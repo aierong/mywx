@@ -15,6 +15,17 @@ module.exports = {
     Add : async ( ctx , next ) => {
         //  http://localhost:3001/api/pyqbbs/add
 
+
+        //如果验证不成功,会自动抛出异常
+        ctx.verifyParams( {
+
+            val1 : {
+                txt : 'string' ,
+
+            },
+
+        } );
+
         let result = {
 
             isok : true ,

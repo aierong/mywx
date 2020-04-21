@@ -27,8 +27,8 @@ const app = new Koa()
 global.config = config;
 
 //指定public
-//app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
-app.use( KoaStatic( path.join( __dirname , 'ptest' ) ) );
+app.use( KoaStatic( path.join( __dirname , 'public' ) ) );
+// app.use( KoaStatic( path.join( __dirname , 'ptest' ) ) );
 
 app.use( cors() ); //注册一下 即可
 
@@ -43,6 +43,7 @@ app.use( koajwt( {
     // 这里可以设置排除验证的路由地址 数组可以设置多个
     // 登录和注册的 不验证
     path : [
+
         '/api/users/login' ,
         '/api/users/register' ,
 

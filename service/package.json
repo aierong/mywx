@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "dayjs": "^1.8.27",
+    "dayjs": "^1.8.28",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.12.0",
     "koa-body": "^4.1.3",

@@ -8,7 +8,7 @@ import axios from '@/https/http.js';
 //导入vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
+//引入vant
 Vue.use( Vant );
 
 Vue.config.productionTip = false

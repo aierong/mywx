@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "dayjs": "^1.8.32",
+    "dayjs": "^1.8.33",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
@@ -22,7 +22,7 @@
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
     "log4js": "^6.3.0",
-    "mongoose": "^5.9.27",
+    "mongoose": "^5.9.28",
     "require-directory": "^2.1.1",
     "uuid": "^8.3.0"
   }

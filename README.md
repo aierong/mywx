@@ -1,14 +1,32 @@
-
-```
-我的微信
+# 我的微信
 
 
 
- 
- 
-```
 
- 
+
+
+
+# 技术栈：
+
+vue2.6
+
+vant
+
+vue-router
+
+vuex 
+
+vuex-persistedstate
+
+
+
+ 后端：
+
+koa2
+
+mongodb
+
+
 
 
 

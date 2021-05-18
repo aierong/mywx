@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 
 import axios from '@/https/http.js';
+//绑定到原型上
+Vue.prototype.$axios = axios;
 
 //导入vant
 import Vant from 'vant';

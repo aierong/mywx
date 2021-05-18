@@ -13,9 +13,6 @@ import * as constant from '@/common/constant.js'
 let _url = process.env.VUE_APP_serverurl;
 axios.defaults.baseURL = `${ _url }/api`
 
-//绑定到原型上
-Vue.prototype.$axios = axios;
-
 // 请求拦截
 axios.interceptors.request.use(
     config => {

@@ -5,7 +5,8 @@
  功能: js脚本
  */
 
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '@/https/http.js';
 
 let prefix = '/pyqs';
 
